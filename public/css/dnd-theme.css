@@ -1,0 +1,150 @@
+/* ============================================================
+   DUNGEONS & DRAGONS OFFICIAL THEME (Sistem Peminjaman Naga)
+   Inspired by: dungeonsanddragons.com & dndbeyond.com
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Cinzel:wght@800&family=Roboto+Mono:wght@500;700&display=swap');
+
+:root {
+  --dnd-red: #E41C25;
+  --dnd-red-dark: #A81017;
+  --dnd-gold: #C99A45;
+  --dnd-gold-bright: #E6B800;
+  --bg-darkest: #0B0E14;
+  --bg-surface: #141A24;
+  --bg-card: #1A2230;
+  --bg-elevated: #232D3F;
+  --border-subtle: #2D3748;
+  --border-accent: #3E4C63;
+  --text-white: #FFFFFF;
+  --text-main: #E2E8F0;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  --status-green: #10B981;
+  --status-orange: #F59E0B;
+
+  --font-brand: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-serif: 'Cinzel', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-darkest);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ================== TYPOGRAPHY ================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-brand);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-white);
+}
+
+.mono-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ================== OFFICIAL D&D BUTTONS ================== */
+.btn-dnd-primary {
+  background: var(--dnd-red);
+  color: #FFFFFF;
+  font-family: var(--font-brand);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(228, 28, 37, 0.4);
+}
+
+.btn-dnd-primary:hover {
+  background: #FF2E38;
+  box-shadow: 0 6px 16px rgba(228, 28, 37, 0.6);
+}
+
+.btn-dnd-secondary {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-family: var(--font-brand);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.btn-dnd-secondary:hover {
+  background: var(--bg-elevated);
+  border-color: var(--dnd-gold);
+  color: #FFFFFF;
+}
+
+/* ================== CARDS & STATS ================== */
+.dnd-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+
+.dnd-card:hover {
+  border-color: var(--dnd-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ================== TABLES ================== */
+.dnd-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dnd-table th {
+  background: #0F141D;
+  color: var(--text-dim);
+  font-family: var(--font-brand);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dnd-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  vertical-align: middle;
+}

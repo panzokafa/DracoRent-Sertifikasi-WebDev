@@ -1,0 +1,76 @@
+# =====================================================================
+# 1. Kredensial, Konfigurasi Lingkungan & Rahasia (SANGAT PENTING)
+# =====================================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+auth.json
+
+# =====================================================================
+# 2. Dependensi & Paket Pihak Ketiga (Laravel / PHP & Node.js)
+# =====================================================================
+/vendor/
+/node_modules/
+composer.phar
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =====================================================================
+# 3. Runtime Laravel, Cache, Session & Log
+# =====================================================================
+/bootstrap/cache/*.php
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/Testing/*
+/storage/framework/views/*
+/storage/logs/*
+!/storage/framework/cache/.gitkeep
+!/storage/framework/sessions/.gitkeep
+!/storage/framework/views/.gitkeep
+!/storage/logs/.gitkeep
+/public/hot
+/public/storage
+/public/build
+
+# =====================================================================
+# 4. File Database Lokal & Backup Sensitif
+# =====================================================================
+*.sqlite
+*.sqlite3
+*.db
+database/*.sql.bak
+database/backups/
+
+# =====================================================================
+# 5. File Konfigurasi Editor / IDE & Agen AI Lokal
+# =====================================================================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.agents/
+.gemini/
+
+# =====================================================================
+# 6. File Sistem Operasi (Windows / macOS / Linux) & Arsip Sementara
+# =====================================================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+*.log
+*.tmp
+*.temp
+*.bak

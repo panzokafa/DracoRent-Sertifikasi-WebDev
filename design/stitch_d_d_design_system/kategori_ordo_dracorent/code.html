@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-dim": "#111317", "primary-fixed": "#ffdea4", "on-surface-variant": "#d1c5b4", "secondary-fixed-dim": "#c2c7d0", "on-tertiary-fixed": "#181c22", "gold-ink": "#1A1916", "surface-container-high": "#282a2e", "status-info": "#8FB5D1", "on-error-container": "#ffdad6", "background": "#111317", "surface-raised": "#282C33", "surface-container": "#1e2024", "on-tertiary-container": "#383c43", "secondary-container": "#444951", "on-primary-fixed": "#261900", "on-secondary": "#2c3138", "surface-tint": "#e8c178", "tertiary-container": "#a3a6af", "status-borrowed": "#D5A35B", "status-borrowed-bg": "#3C3020", "secondary": "#c2c7d0", "surface-container-lowest": "#0c0e12", "status-available-bg": "#20392F", "surface-muted": "#1C1F24", "status-available": "#6EB895", "error": "#ffb4ab", "border": "#41464E", "primary": "#e8c178", "outline-variant": "#4e4639", "primary-fixed-dim": "#e8c178", "text-primary": "#F0EBDD", "on-secondary-fixed-variant": "#42474f", "on-primary-container": "#4f3800", "status-info-bg": "#242F39", "secondary-fixed": "#dee2ed", "text-muted": "#B0B2B5", "inverse-surface": "#e2e2e8", "tertiary-fixed-dim": "#c3c6cf", "outline": "#9a8f80", "status-danger": "#E17B79", "surface-bright": "#37393e", "tertiary": "#c3c6cf", "surface-container-highest": "#333539", "surface": "#202329", "gold-hover": "#D5B873", "tertiary-fixed": "#dfe2ec", "error-container": "#93000a", "primary-container": "#c5a15b", "status-danger-bg": "#412527", "on-primary-fixed-variant": "#5c4202", "surface-container-low": "#1a1c20", "on-error": "#690005", "on-primary": "#412d00", "inverse-primary": "#775a1b", "on-background": "#e2e2e8", "on-tertiary": "#2d3138", "on-secondary-fixed": "#171c23", "text-subtle": "#898D93", "surface-variant": "#333539", "on-surface": "#e2e2e8", "on-tertiary-fixed-variant": "#43474e", "on-secondary-container": "#b4b8c2", "inverse-on-surface": "#2f3035" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "margin": "1rem", "margin-desktop": "2rem", "space-sm": "0.5rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-tablet": "1.5rem" }, "fontFamily": { "section-title": [ "Libre Caslon Text" ], "hero-title-mobile": [ "Libre Caslon Text" ], "table-data": [ "Inter" ], "page-title": [ "Libre Caslon Text" ], "hero-title": [ "Libre Caslon Text" ], "label-regular": [ "Inter" ], "body-compact": [ "Inter" ], "body-default": [ "Inter" ], "helper-text": [ "Inter" ], "card-title": [ "Libre Caslon Text" ], "code-metadata": [ "Inter" ] }, "fontSize": { "section-title": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "hero-title-mobile": [ "34px", { "lineHeight": "38px", "fontWeight": "600" } ], "table-data": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "page-title": [ "30px", { "lineHeight": "36px", "fontWeight": "600" } ], "hero-title": [ "48px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-regular": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "body-compact": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-default": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "helper-text": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "card-title": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "code-metadata": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-muted border-r border-border z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="p-space-md border-b border-border bg-surface-container-low"><div class="flex items-center gap-space-sm mb-1"><div class="w-8 h-8 rounded-lg bg-surface-raised border border-primary-container flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary text-[20px]">local_fire_department</span></div><div><span class="font-card-title text-card-title text-text-primary tracking-wide block leading-tight">DracoRent</span></div></div><p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider pl-1">Sistem Rental Naga — Kurator Admin</p></div><nav class="flex flex-col py-space-sm gap-0.5 px-space-xs" data-active-classes="bg-surface-raised text-primary font-label-regular border-r-2 border-primary"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="ringkasan" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Ringkasan</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="unit-naga" href="#"><span class="material-symbols-outlined text-[18px]">pets</span><span>Unit Naga</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="kategori" href="#"><span class="material-symbols-outlined text-[18px]">category</span><span>Kategori</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="anggota" href="#"><span class="material-symbols-outlined text-[18px]">shield_person</span><span>Anggota</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="pinjaman-aktif" href="#"><span class="material-symbols-outlined text-[18px]">contract</span><span>Pinjaman Aktif</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="riwayat-dan-laporan" href="#"><span class="material-symbols-outlined text-[18px]">history_edu</span><span>Riwayat &amp; Laporan</span></a></nav></div><div class="p-space-md border-t border-border bg-surface-container-low"><div class="flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-surface-raised border border-border flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary text-[18px]">shield</span></div><div class="min-w-0 flex-1"><p class="font-label-regular text-label-regular text-text-primary truncate leading-tight">Kaelen</p><p class="font-code-metadata text-code-metadata text-text-subtle uppercase truncate">ADM-001</p></div></div><a class="text-text-subtle hover:text-status-danger transition-colors p-1 rounded hover:bg-status-danger-bg shrink-0" data-path="masuk-kurator" href="#" title="Keluar / Logout"><span class="material-symbols-outlined text-[18px]">logout</span></a></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-muted/95 border-b border-border z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-text-subtle text-[18px]">temple_hindu</span><span class="font-label-regular text-label-regular text-text-subtle">Pustaka Guild</span><span class="text-border font-label-regular text-label-regular">/</span><span class="font-label-regular text-label-regular text-text-primary">Arsip Administrasi</span></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded border border-border"><span class="material-symbols-outlined text-text-subtle text-[15px]">calendar_today</span><span class="font-code-metadata text-code-metadata text-text-muted">24 Okt 2026</span></div><a class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-status-borrowed-bg border border-status-borrowed/30 text-status-borrowed font-helper-text text-helper-text hover:bg-status-borrowed-bg/80 transition-colors" data-path="pinjaman-aktif" href="#"><span class="w-1.5 h-1.5 rounded-full bg-status-borrowed animate-pulse"></span><span>3 Pengembalian Menunggu</span></a><a class="hidden sm:flex items-center gap-1 px-space-sm py-1.5 rounded bg-surface border border-border text-text-primary font-label-regular text-label-regular hover:border-primary transition-colors" data-path="katalog-publik" href="#"><span class="material-symbols-outlined text-primary text-[16px]">open_in_new</span><span>Katalog Publik</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 min-h-screen bg-background w-full px-gutter-desktop py-margin-desktop"><div class="flex flex-col w-full">
+<!-- Top Context Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[16px]">category</span>
+</span>
+<span class="font-code-metadata text-code-metadata text-primary uppercase tracking-widest">Bab 5.10 — Buku Besar Klasifikasi</span>
+</div>
+<h1 class="font-page-title text-page-title text-text-primary tracking-tight">Taksonomi Kategori Ordo</h1>
+<p class="font-body-default text-body-default text-text-muted max-w-2xl">
+        Kelola klasifikasi taksonomi dan peran ordo spesimen naga untuk kebutuhan penyaringan katalog dan warkat kontrak serikat pengemban tugas.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded bg-surface hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-all shadow-sm" id="btn-audit">
+<span class="material-symbols-outlined text-[18px] text-text-subtle">verified_user</span>
+<span>Audit Relasi Unit</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded bg-primary-container hover:bg-gold-hover text-gold-ink font-label-regular text-label-regular transition-all shadow-sm" id="btn-open-modal">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Tambah Kategori Baru</span>
+</button>
+</div>
+</div>
+<!-- Operational Summary Metrics (Ledger Counters) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Stat 1 -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Total Kategori</p>
+<p class="font-page-title text-page-title text-text-primary mt-1">8 <span class="font-label-regular text-label-regular text-text-subtle font-normal">Ordo &amp; Peran</span></p>
+</div>
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-text-subtle group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-status-available font-helper-text text-helper-text">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Terstandarisasi Arkais</span>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Kategori Terisi</p>
+<p class="font-page-title text-page-title text-text-primary mt-1">8 <span class="font-label-regular text-label-regular text-text-subtle font-normal">Kategori Aktif</span></p>
+</div>
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-text-subtle group-hover:text-status-available transition-colors">
+<span class="material-symbols-outlined text-[22px]">pets</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-text-muted font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px] text-status-available">check_circle</span>
+<span>Tidak ada kategori kosong</span>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Keterkaitan Relasi</p>
+<p class="font-page-title text-page-title text-text-primary mt-1">38 <span class="font-label-regular text-label-regular text-text-subtle font-normal">Spesimen Terikat</span></p>
+</div>
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-text-subtle group-hover:text-status-borrowed transition-colors">
+<span class="material-symbols-outlined text-[22px]">hub</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-status-borrowed font-helper-text text-helper-text">
+<span class="font-code-metadata text-code-metadata bg-status-borrowed-bg px-1.5 py-0.5 rounded">category_unit</span>
+<span>Tervalidasi aktif</span>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Integritas Relasi</p>
+<p class="font-page-title text-page-title text-status-available mt-1">100% <span class="font-label-regular text-label-regular text-text-subtle font-normal">Bebas Yatim</span></p>
+</div>
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-status-available">
+<span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-text-muted font-helper-text text-helper-text">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Kepatuhan Bab 7 Terjaga</span>
+</div>
+</div>
+</div>
+<!-- Main Workstation Layout: Ledger Table + Policy & Guardrails Card -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Registry Table & Controls (8 cols) -->
+<div class="xl:col-span-8 space-y-space-md">
+<!-- Filter & Search Toolbar -->
+<div class="bg-surface rounded-lg p-space-sm flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-subtle text-[18px]">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-muted rounded text-text-primary font-body-compact text-body-compact placeholder-text-subtle focus:outline-none focus:ring-1 focus:ring-primary" id="table-search" placeholder="Cari nama kategori ordo, kode, atau karakteristik..." type="text"/>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<select class="bg-surface-muted text-text-primary font-label-regular text-label-regular px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer" id="filter-tipe">
+<option value="all">Semua Jenis Taksonomi</option>
+<option value="ordo">Ordo Biologis</option>
+<option value="tugas">Peran &amp; Penugasan</option>
+</select>
+<button class="p-2 rounded bg-surface-muted hover:bg-surface-raised text-text-subtle hover:text-text-primary transition-colors" title="Muat Ulang Ledger">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Categories Table Container -->
+<div class="bg-surface rounded-lg overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="category-table">
+<thead>
+<tr class="bg-surface-muted font-code-metadata text-code-metadata text-text-muted uppercase tracking-wider">
+<th class="py-3 px-4">Kode</th>
+<th class="py-3 px-4">Nama Kategori</th>
+<th class="py-3 px-4">Karakteristik &amp; Ekologi</th>
+<th class="py-3 px-4 text-center">Spesimen</th>
+<th class="py-3 px-4">Proteksi Ledger</th>
+<th class="py-3 px-4 text-right">Tindakan</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-raised font-table-data text-table-data text-text-primary">
+<!-- Row 1: Wyrm Api -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-01</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Wyrm Api</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Ordo Biologis • Sub-Piroforik</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Suhu tubuh ekstrem, habitat kerak magma Kaldera Ignis. Kebal panas mutlak.">
+                    Suhu tubuh ekstrem, habitat kerak magma Kaldera Ignis. Kebal panas mutlak.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>6 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (6 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-01" data-desc="Suhu tubuh ekstrem, habitat kerak magma Kaldera Ignis. Kebal panas mutlak." data-name="Wyrm Api" data-role="Ekspedisi Ekstrem" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed group/del relative" title="Tidak dapat dihapus: terikat 6 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Frost Drake -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-02</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Frost Drake</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Ordo Biologis • Glacialis</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Sisik kriogenik, stabil pada elevasi beku Puncak Niveus. Napas es penekan api.">
+                    Sisik kriogenik, stabil pada elevasi beku Puncak Niveus. Napas es penekan api.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>4 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (4 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-02" data-desc="Sisik kriogenik, stabil pada elevasi beku Puncak Niveus. Napas es penekan api." data-name="Frost Drake" data-role="Patroli Utara" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed group/del" title="Tidak dapat dihapus: terikat 4 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Wyvern Badai -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-03</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Wyvern Badai</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Ordo Biologis • Aero-Volt</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Bentang sayap ganda, kelincahan aerobatik maksimum dalam arus badai guntur.">
+                    Bentang sayap ganda, kelincahan aerobatik maksimum dalam arus badai guntur.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>7 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (7 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-03" data-desc="Bentang sayap ganda, kelincahan aerobatik maksimum dalam arus badai guntur." data-name="Wyvern Badai" data-role="Patroli Cepat" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 7 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Lindworm Batuan -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-04</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Lindworm Batuan</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Ordo Biologis • Litho-Terestrial</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Tubuh tanpa sayap bertulang baja, penggali terowongan tambang andal.">
+                    Tubuh tanpa sayap bertulang baja, penggali terowongan tambang andal.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>3 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (3 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-04" data-desc="Tubuh tanpa sayap bertulang baja, penggali terowongan tambang andal." data-name="Lindworm Batuan" data-role="Eksplorasi Tambang" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 3 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Leviathan Laut -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-05</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Leviathan Laut</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Ordo Biologis • Hydro-Abisal</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Spesimen amfibi laut dalam berdaya apung tinggi, sanggup menyelam hingga palung.">
+                    Spesimen amfibi laut dalam berdaya apung tinggi, sanggup menyelam hingga palung.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>2 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (2 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-05" data-desc="Spesimen amfibi laut dalam berdaya apung tinggi, sanggup menyelam hingga palung." data-name="Leviathan Laut" data-role="Pelayaran Maritim" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 2 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Transportasi Berat -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-06</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Transportasi Berat</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Peran Tugas • Muatan Logistik</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Daya angkut kargo melampaui 12.000 pon, dilengkapi titik pelana pengait rantai tempered.">
+                    Daya angkut kargo melampaui 12.000 pon, dilengkapi titik pelana pengait rantai tempered.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>8 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (8 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-06" data-desc="Daya angkut kargo melampaui 12.000 pon, dilengkapi titik pelana pengait rantai tempered." data-name="Transportasi Berat" data-role="Transportasi" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 8 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Patroli Udara -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-07</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Patroli Udara</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Peran Tugas • Pengawasan Cepat</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Ketahanan terbang jarak jauh 18 jam tanpa henti, penglihatan nokturnal tajam.">
+                    Ketahanan terbang jarak jauh 18 jam tanpa henti, penglihatan nokturnal tajam.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>5 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (5 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-07" data-desc="Ketahanan terbang jarak jauh 18 jam tanpa henti, penglihatan nokturnal tajam." data-name="Patroli Udara" data-role="Patroli" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 5 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 8: Eskor & Tempur -->
+<tr class="hover:bg-surface-raised/60 transition-colors group">
+<td class="py-3.5 px-4 font-code-metadata text-code-metadata text-primary">KAT-08</td>
+<td class="py-3.5 px-4">
+<div class="font-label-regular text-label-regular text-text-primary font-semibold">Eskor &amp; Tempur</div>
+<span class="text-[11px] font-code-metadata text-text-subtle uppercase">Peran Tugas • Perlindungan Militer</span>
+</td>
+<td class="py-3.5 px-4 max-w-xs">
+<p class="font-body-compact text-body-compact text-text-muted truncate" title="Lapis sisik perisai tebal berstandar ekspedisi serikat, resistensi proyektil tajam.">
+                    Lapis sisik perisai tebal berstandar ekspedisi serikat, resistensi proyektil tajam.
+                  </p>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-muted font-code-metadata text-code-metadata text-text-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">token</span>
+<span>3 Unit</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Terkunci (3 Relasi)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="btn-edit p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-primary transition-colors" data-code="KAT-08" data-desc="Lapis sisik perisai tebal berstandar ekspedisi serikat, resistensi proyektil tajam." data-name="Eskor &amp; Tempur" data-role="Pertahanan Tempur" title="Ubah Parameter Kategori">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded text-text-subtle/40 cursor-not-allowed" title="Tidak dapat dihapus: terikat 3 unit naga aktif">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Ledger Status Bar -->
+<div class="bg-surface-muted px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-text-subtle font-code-metadata text-code-metadata">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-available"></span>
+<span>Total 8 Ordo terindeks dalam Skema Relasi Database Serikat</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Pemeriksaan hash integritas: <span class="text-text-primary">#ORD-99824-OK</span></span>
+<span class="text-border">|</span>
+<span>Kurator: Kaelen ADM-001</span>
+</div>
+</div>
+</div>
+<!-- Specimen Distribution Insight Visual -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Distribusi Spesimen per Kategori</h3>
+<p class="font-helper-text text-helper-text text-text-subtle">Kerapatan alokasi unit pada tiap klasifikasi ordo aktif</p>
+</div>
+<span class="font-code-metadata text-code-metadata text-primary uppercase">Kapasitas Pustaka</span>
+</div>
+<div class="space-y-3 pt-2">
+<!-- Wyrm Api -->
+<div class="space-y-1">
+<div class="flex justify-between font-helper-text text-helper-text">
+<span class="text-text-primary font-medium">Wyrm Api (KAT-01)</span>
+<span class="text-text-muted">6 Unit (15.7%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-muted overflow-hidden">
+<div class="h-full bg-primary" style="width: 15.7%;"></div>
+</div>
+</div>
+<!-- Transportasi Berat -->
+<div class="space-y-1">
+<div class="flex justify-between font-helper-text text-helper-text">
+<span class="text-text-primary font-medium">Transportasi Berat (KAT-06)</span>
+<span class="text-primary font-medium">8 Unit (21.0% - Beban Tertinggi)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-muted overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 21.0%;"></div>
+</div>
+</div>
+<!-- Wyvern Badai -->
+<div class="space-y-1">
+<div class="flex justify-between font-helper-text text-helper-text">
+<span class="text-text-primary font-medium">Wyvern Badai (KAT-03)</span>
+<span class="text-text-muted">7 Unit (18.4%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-muted overflow-hidden">
+<div class="h-full bg-status-info" style="width: 18.4%;"></div>
+</div>
+</div>
+<!-- Patroli Udara -->
+<div class="space-y-1">
+<div class="flex justify-between font-helper-text text-helper-text">
+<span class="text-text-primary font-medium">Patroli Udara (KAT-07)</span>
+<span class="text-text-muted">5 Unit (13.1%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-muted overflow-hidden">
+<div class="h-full bg-status-available" style="width: 13.1%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Safety Policy & Quick Add / Edit Slate (4 cols) -->
+<div class="xl:col-span-4 space-y-space-md">
+<!-- Specimen Taxonomy Image Frame -->
+<div class="bg-surface rounded-lg overflow-hidden shadow-sm">
+<div class="relative h-44 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An ancient archival parchment chart illustrating different dragon lineages, anatomical sketches of wings and talons, forged brass calipers on weathered basalt stone, dark fantasy guild registry aesthetic with warm amber lantern glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH70Qc9v7aZ8O4__J770MdQs5oM3bCa1GdNS4kYZHcn_8cvweDIoZFcC39uLm6nTvE2b3wZmTTkWujQ7h3sxS5C_o2BX5csVvW0L0bUtEDyiw9g9KVxLBv_M-_GA_wiIX5qp8IEs-m8lDA4JHq2Mph68pK7dFAU8f1bF4WJuxcA_e7XQYjyuDLdbjbLrjtyduaSfFi070z26LFzQnLSnZT-uwgfrGgcguFVKdUrtY0CA6rZfusczgl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+<span class="font-code-metadata text-code-metadata text-primary uppercase tracking-wider bg-surface-muted/90 px-2 py-0.5 rounded">
+              Arsip Ilustrasi Ordo
+            </span>
+<span class="font-helper-text text-helper-text text-text-subtle">Revisi IV — Guild Draken</span>
+</div>
+</div>
+</div>
+<!-- Regulatory Policy Callout Card (Bab 5.10 & Bab 7) -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm space-y-space-sm relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded bg-status-borrowed-bg text-status-borrowed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Regulasi Integritas Relasi</h3>
+<p class="font-code-metadata text-code-metadata text-status-borrowed uppercase tracking-wider mt-0.5">Kaidah Bab 5.10 &amp; Bab 7</p>
+</div>
+</div>
+<div class="bg-surface-muted p-space-sm rounded space-y-2 text-text-muted font-body-compact text-body-compact leading-relaxed">
+<p>
+<strong class="text-text-primary">Proteksi Penghapusan:</strong> Kategori yang masih terikat pada spesimen dalam entitas <code class="text-primary font-code-metadata text-code-metadata">category_unit</code> tidak dapat dimusnahkan secara langsung dari sistem.
+          </p>
+<p>
+            Tindakan ini diberlakukan demi mencegah putusnya rantai taksonomi historis pada warkat kontrak dan laporan ekspedisi yang telah diarsipkan serikat.
+          </p>
+</div>
+<!-- Protocol Checklist -->
+<div class="space-y-1.5 pt-1">
+<div class="flex items-start gap-2 text-text-subtle font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[16px] text-status-available shrink-0">check</span>
+<span>Unik: Nama kategori tidak boleh menduplikasi entri yang ada (maks. 100 karakter).</span>
+</div>
+<div class="flex items-start gap-2 text-text-subtle font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[16px] text-status-available shrink-0">check</span>
+<span>Relasi Aman: Unit naga wajib dipindahkan ke ordo lain sebelum kategori dikosongkan.</span>
+</div>
+<div class="flex items-start gap-2 text-text-subtle font-helper-text text-helper-text">
+<span class="material-symbols-outlined text-[16px] text-status-available shrink-0">check</span>
+<span>Audit Kurasi: Seluruh mutasi taksonomi tercatat dalam log kurator <span class="text-text-primary">ADM-001</span>.</span>
+</div>
+</div>
+</div>
+<!-- Quick Add Category Form Panel -->
+<div class="bg-surface rounded-lg p-space-md shadow-sm space-y-space-md" id="category-form-panel">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" id="form-icon">add_box</span>
+<h3 class="font-card-title text-card-title text-text-primary" id="form-title">Tambah Kategori Baru</h3>
+</div>
+<span class="font-code-metadata text-code-metadata text-text-subtle" id="form-mode-badge">MODE INPUT</span>
+</div>
+<form class="space-y-space-md" id="category-form">
+<!-- Field 1: Nama Kategori -->
+<div class="space-y-1">
+<label class="block font-label-regular text-label-regular text-text-primary" for="input-nama-kategori">
+              Nama Kategori Ordo <span class="text-status-danger">*</span>
+</label>
+<input class="w-full px-3.5 py-2.5 bg-surface-muted rounded text-text-primary font-body-compact text-body-compact placeholder-text-subtle focus:outline-none focus:ring-1 focus:ring-primary" id="input-nama-kategori" maxlength="100" placeholder="mis. Amphithere Hutan, Drake Magma" required="" type="text"/>
+<p class="font-helper-text text-helper-text text-text-subtle">
+              Wajib diisi, unik, maksimal 100 karakter. Ledger menolak nama duplikat.
+            </p>
+</div>
+<!-- Field 2: Karakteristik Taksonomi & Standar Pelana -->
+<div class="space-y-1">
+<label class="block font-label-regular text-label-regular text-text-primary" for="input-karakteristik">
+              Karakteristik &amp; Standar Pelana <span class="text-status-danger">*</span>
+</label>
+<textarea class="w-full px-3.5 py-2.5 bg-surface-muted rounded text-text-primary font-body-compact text-body-compact placeholder-text-subtle focus:outline-none focus:ring-1 focus:ring-primary resize-none" id="input-karakteristik" placeholder="Uraikan fisiologi, resistensi elemen, dan toleransi perlengkapan pelana serikat..." required="" rows="3"></textarea>
+<p class="font-helper-text text-helper-text text-text-subtle">
+              Panduan teknis bagi kurator saat inspeksi spesimen masuk.
+            </p>
+</div>
+<!-- Field 3: Rekomendasi Beban Penugasan -->
+<div class="space-y-1">
+<label class="block font-label-regular text-label-regular text-text-primary" for="select-beban">
+              Rekomendasi Beban Penugasan
+            </label>
+<select class="w-full px-3.5 py-2.5 bg-surface-muted rounded text-text-primary font-body-compact text-body-compact focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer" id="select-beban">
+<option value="Transportasi">Transportasi Kargo Berat</option>
+<option value="Patroli">Patroli Pengawasan Cepat</option>
+<option value="Ekspedisi">Ekspedisi Wilayah Ekstrem</option>
+<option value="Eskor">Pertahanan Tempur &amp; Eskor</option>
+</select>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-space-sm pt-2">
+<button class="flex-1 py-2.5 px-4 rounded bg-primary-container hover:bg-gold-hover text-gold-ink font-label-regular text-label-regular font-semibold transition-all shadow-sm flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span id="btn-submit-label">Simpan Kategori</span>
+</button>
+<button class="py-2.5 px-4 rounded bg-surface-muted hover:bg-surface-raised text-text-muted hover:text-text-primary font-label-regular text-label-regular transition-colors" id="btn-reset-form" type="button">
+              Batal
+            </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Notification Toast Container (Simulated Guild Ledger Notice) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-ledger">
+<div class="bg-surface-raised border border-primary/30 p-4 rounded-lg shadow-xl flex items-center gap-3 text-text-primary">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<div>
+<p class="font-label-regular text-label-regular font-semibold" id="toast-title">Ledger Diperbarui</p>
+<p class="font-helper-text text-helper-text text-text-muted" id="toast-msg">Kategori baru berhasil dicatat dalam register taksonomi.</p>
+</div>
+</div>
+</div>
+<!-- Audit Modal Dialog (Interaktif) -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-surface-container-lowest/80 p-4" id="audit-modal">
+<div class="bg-surface rounded-lg max-w-lg w-full p-space-lg shadow-2xl space-y-space-md relative">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded bg-status-available-bg text-status-available flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+</div>
+<div>
+<h3 class="font-card-title text-card-title text-text-primary">Laporan Audit Integritas Relasi</h3>
+<p class="font-code-metadata text-code-metadata text-text-subtle">Kompilasi Tabel: category_unit</p>
+</div>
+</div>
+<button class="p-1.5 rounded hover:bg-surface-muted text-text-subtle hover:text-text-primary" id="btn-close-audit">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-3 font-body-compact text-body-compact text-text-muted">
+<p>Pemeriksaan sistem telah memvalidasi seluruh 8 kategori ordo pada register serikat:</p>
+<div class="bg-surface-muted p-space-sm rounded space-y-2 font-code-metadata text-code-metadata text-text-primary">
+<div class="flex justify-between py-1 border-b border-surface-raised">
+<span>Spesimen Naga Tanpa Kategori (Orphan):</span>
+<span class="text-status-available font-semibold">0 Unit (Nir-Masalah)</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-raised">
+<span>Kategori Nir-Spesimen (Dormant):</span>
+<span class="text-status-available font-semibold">0 Kategori</span>
+</div>
+<div class="flex justify-between py-1">
+<span>Integritas Kunci Asing (Foreign Key Integrity):</span>
+<span class="text-status-available font-semibold">VALID (38 Relasi Terkunci)</span>
+</div>
+</div>
+<p class="font-helper-text text-helper-text text-text-subtle">
+          Sesuai amanat Bab 5.10 dan Bab 7, tombol hapus dinonaktifkan secara otomatis bila kategori terkait dengan setidaknya satu spesimen aktif.
+        </p>
+</div>
+<div class="flex justify-end pt-2">
+<button class="px-space-md py-2 bg-primary-container text-gold-ink font-label-regular text-label-regular font-semibold rounded hover:bg-gold-hover transition-colors" id="btn-dismiss-audit">
+          Tutup Hasil Audit
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Minimal Client-Side Interaction Logic
+    (function() {
+      const searchInput = document.getElementById('table-search');
+      const tableRows = document.querySelectorAll('#category-table tbody tr');
+      const form = document.getElementById('category-form');
+      const formTitle = document.getElementById('form-title');
+      const formIcon = document.getElementById('form-icon');
+      const formBadge = document.getElementById('form-mode-badge');
+      const submitLabel = document.getElementById('btn-submit-label');
+      const resetBtn = document.getElementById('btn-reset-form');
+      const inputNama = document.getElementById('input-nama-kategori');
+      const inputDesc = document.getElementById('input-karakteristik');
+      const selectBeban = document.getElementById('select-beban');
+      const toast = document.getElementById('toast-ledger');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMsg = document.getElementById('toast-msg');
+
+      const auditModal = document.getElementById('audit-modal');
+      const btnAudit = document.getElementById('btn-audit');
+      const btnCloseAudit = document.getElementById('btn-close-audit');
+      const btnDismissAudit = document.getElementById('btn-dismiss-audit');
+      const btnOpenModal = document.getElementById('btn-open-modal');
+
+      function showToast(title, msg) {
+        toastTitle.textContent = title;
+        toastMsg.textContent = msg;
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3400);
+      }
+
+      // Filter Table Rows on Search
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          const val = e.target.value.toLowerCase().trim();
+          tableRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(val) ? '' : 'none';
+          });
+        });
+      }
+
+      // Populate Edit Mode
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const code = this.dataset.code;
+          const name = this.dataset.name;
+          const desc = this.dataset.desc;
+          const role = this.dataset.role;
+
+          formTitle.textContent = `Ubah Kategori: ${code}`;
+          formIcon.textContent = 'edit_note';
+          formBadge.textContent = 'MODE SUNTEK';
+          submitLabel.textContent = 'Perbarui Kategori';
+
+          inputNama.value = name;
+          inputDesc.value = desc;
+          if (role && selectBeban) {
+            for (let i = 0; i < selectBeban.options.length; i++) {
+              if (selectBeban.options[i].text.includes(role)) {
+                selectBeban.selectedIndex = i;
+                break;
+              }
+            }
+          }
+          inputNama.focus();
+          document.getElementById('category-form-panel').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Reset to Add Mode
+      function resetForm() {
+        form.reset();
+        formTitle.textContent = 'Tambah Kategori Baru';
+        formIcon.textContent = 'add_box';
+        formBadge.textContent = 'MODE INPUT';
+        submitLabel.textContent = 'Simpan Kategori';
+      }
+
+      if (resetBtn) resetBtn.addEventListener('click', resetForm);
+
+      if (btnOpenModal) {
+        btnOpenModal.addEventListener('click', () => {
+          resetForm();
+          inputNama.focus();
+          document.getElementById('category-form-panel').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Form Submit (Client ledger mock)
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const isEdit = formBadge.textContent.includes('SUNTEK');
+          const name = inputNama.value.trim();
+
+          showToast(
+            isEdit ? 'Kategori Diperbarui' : 'Kategori Dicatat',
+            `Kategori '${name}' berhasil didaftarkan ke dalam ledger taksonomi.`
+          );
+          resetForm();
+        });
+      }
+
+      // Audit Modal Toggles
+      if (btnAudit) btnAudit.addEventListener('click', () => auditModal.classList.remove('hidden', 'flex'));
+      if (btnAudit) btnAudit.addEventListener('click', () => auditModal.classList.add('flex'));
+      if (btnCloseAudit) btnCloseAudit.addEventListener('click', () => auditModal.classList.add('hidden'));
+      if (btnDismissAudit) btnDismissAudit.addEventListener('click', () => auditModal.classList.add('hidden'));
+
+    })();
+  </script>
+</div></main></div></body></html>

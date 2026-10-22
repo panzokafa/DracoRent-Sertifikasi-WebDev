@@ -1,0 +1,72 @@
+#!/usr/bin/env php
+<?php
+/**
+ * DracoRent CLI (Laravel Artisan Compatible Runner)
+ * Mendukung perintah standar:
+ *   - php artisan serve [--host=127.0.0.1] [--port=8000]
+ *   - php artisan migrate [--seed]
+ *   - php artisan migrate:fresh [--seed]
+ *   - php artisan db:seed
+ */
+
+$args = array_slice($argv, 1);
+$command = $args[0] ?? 'list';
+
+switch ($command) {
+    case 'serve':
+        $host = '127.0.0.1';
+        $port = '8000';
+        foreach ($args as $arg) {
+            if (strpos($arg, '--host=') === 0) {
+                $host = substr($arg, 7);
+            } elseif (strpos($arg, '--port=') === 0) {
+                $port = substr($arg, 7);
+            }
+        }
+        $publicDir = __DIR__ . DIRECTORY_SEPARATOR . 'public';
+        $router = $publicDir . DIRECTORY_SEPARATOR . 'index.php';
+
+        echo "\n  INFO  Server running on [http://{$host}:{$port}].\n\n";
+        echo "  Press Ctrl+C to stop the server\n\n";
+
+        // Pastikan koneksi ke localhost maupun 127.0.0.1 berjalan lancar
+        $cmd = sprintf('"%s" -S %s:%s -t "%s" "%s"', PHP_BINARY, $host, $port, $publicDir, $router);
+        passthru($cmd, $status);
+        exit($status);
+
+    case 'migrate':
+    case 'migrate:fresh':
+    case 'db:seed':
+        echo "\n  INFO  Menjalankan migrasi dan seeder database DracoRent...\n\n";
+        require __DIR__ . '/database/migrate.php';
+        exit(0);
+
+    case 'route:list':
+        echo "\n  Daftar Rute DracoRent (routes/web.php):\n";
+        echo "  GET|HEAD  / .......................... dracorent.portal (preview-dnd.html)\n";
+        echo "  GET|HEAD  /masuk ..................... dracorent.masuk\n";
+        echo "  GET|HEAD  /katalog-naga .............. dracorent.user.katalog\n";
+        echo "  GET|HEAD  /detail-naga ............... dracorent.user.detail\n";
+        echo "  GET|HEAD  /pinjaman-saya ............. dracorent.user.pinjaman\n";
+        echo "  GET|HEAD  /riwayat-rental ............ dracorent.user.riwayat\n";
+        echo "  GET|HEAD  /profil-saya ............... dracorent.user.profil\n";
+        echo "  GET|HEAD  /admin/ringkasan ........... dracorent.admin.ringkasan\n";
+        echo "  GET|HEAD  /admin/unit-naga ........... dracorent.admin.unit\n";
+        echo "  GET|HEAD  /admin/tambah-unit ......... dracorent.admin.unit.create\n";
+        echo "  GET|HEAD  /admin/kategori ............ dracorent.admin.kategori\n";
+        echo "  GET|HEAD  /admin/anggota ............. dracorent.admin.anggota\n";
+        echo "  GET|HEAD  /admin/pinjaman-aktif ...... dracorent.admin.pinjaman\n";
+        echo "  GET|HEAD  /admin/riwayat-dan-laporan . dracorent.admin.laporan\n";
+        echo "  ANY       /api.php ................... dracorent.api (Database MySQL)\n\n";
+        exit(0);
+
+    default:
+        echo "\nDracoRent Laravel Artisan CLI\n\n";
+        echo "Perintah yang tersedia:\n";
+        echo "  php artisan serve            Menjalankan server aplikasi di http://127.0.0.1:8000\n";
+        echo "  php artisan migrate          Membuat ulang & mengisi tabel database sistem_peminjaman_naga\n";
+        echo "  php artisan migrate:fresh    Reset bersih seluruh 6 tabel & isi data awal (seeder)\n";
+        echo "  php artisan db:seed          Mengisi data awal (akun admin & user, unit naga, kategori, pinjaman)\n";
+        echo "  php artisan route:list       Menampilkan daftar rute aplikasi\n\n";
+        exit(0);
+}

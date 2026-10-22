@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DracoRent — Guild Ledger &amp; Volcanic Hearth (13 Layar Penuh)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #111317;
+      color: #F0EBDD;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    #screen-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #111317;
+    }
+    /* Floating Guild Ledger Screen Switcher Dock */
+    .ledger-dock {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      background: rgba(28, 31, 36, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid #C5A15B;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.75);
+      max-width: 96vw;
+      overflow-x: auto;
+    }
+    .ledger-dock::-webkit-scrollbar { height: 4px; }
+    .ledger-dock::-webkit-scrollbar-thumb { background: #41464E; border-radius: 2px; }
+    .dock-label {
+      font-family: 'Libre Caslon Text', serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #E8C178;
+      white-space: nowrap;
+      padding-right: 6px;
+      border-right: 1px solid #41464E;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dock-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dock-divider {
+      width: 1px;
+      height: 20px;
+      background: #41464E;
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+    .dock-btn {
+      background: #202329;
+      color: #B0B2B5;
+      border: 1px solid #41464E;
+      border-radius: 4px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .dock-btn:hover {
+      color: #F0EBDD;
+      border-color: #C5A15B;
+      background: #282C33;
+    }
+    .dock-btn.active {
+      background: #C5A15B;
+      color: #1A1916;
+      border-color: #E8C178;
+      font-weight: 600;
+    }
+    .dock-toggle {
+      background: #282C33;
+      color: #E8C178;
+      border: 1px solid #41464E;
+      border-radius: 4px;
+      padding: 4px 7px;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .ledger-dock.minimized .dock-group,
+    .ledger-dock.minimized .dock-divider {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="screen-frame" src="screens/katalog-naga.html" title="DracoRent UI"></iframe>
+
+  <div class="ledger-dock" id="ledgerDock">
+    <div class="dock-label">
+      <span>🐉 DracoRent UI</span>
+    </div>
+    <div class="dock-group">
+      <button class="dock-btn" data-screen="masuk">1. Masuk (Login)</button>
+    </div>
+    <div class="dock-divider"></div>
+    <div class="dock-group">
+      <button class="dock-btn active" data-screen="katalog-naga">2. Katalog Naga</button>
+      <button class="dock-btn" data-screen="detail-naga">3. Detail &amp; Modal Pinjam</button>
+      <button class="dock-btn" data-screen="pinjaman-saya">4. Pinjaman Saya</button>
+      <button class="dock-btn" data-screen="riwayat-rental">5. Riwayat Member</button>
+      <button class="dock-btn" data-screen="profil-saya">6. Profil Saya</button>
+    </div>
+    <div class="dock-divider"></div>
+    <div class="dock-group">
+      <button class="dock-btn" data-screen="ringkasan">7. Admin Ringkasan</button>
+      <button class="dock-btn" data-screen="unit-naga">8. Unit Naga</button>
+      <button class="dock-btn" data-screen="tambah-unit-modal">9. + Modal Unit</button>
+      <button class="dock-btn" data-screen="kategori">10. Kategori Ordo</button>
+      <button class="dock-btn" data-screen="anggota">11. Anggota</button>
+      <button class="dock-btn" data-screen="pinjaman-aktif">12. Pengembalian &amp; Denda</button>
+      <button class="dock-btn" data-screen="riwayat-dan-laporan">13. Laporan &amp; Cetak</button>
+    </div>
+    <button class="dock-toggle" id="dockToggle" title="Sembunyikan/Tampilkan Navigasi">⎯</button>
+  </div>
+
+  <script>
+    const frame = document.getElementById('screen-frame');
+    const buttons = document.querySelectorAll('.dock-btn');
+    const dock = document.getElementById('ledgerDock');
+    const dockToggle = document.getElementById('dockToggle');
+
+    const aliasMap = {
+      'masuk-kurator': 'masuk',
+      'keluar': 'masuk',
+      'katalog-publik': 'katalog-naga'
+    };
+
+    window.switchDracoScreen = function(slug) {
+      const normalized = aliasMap[slug] || slug;
+      frame.src = 'screens/' + normalized + '.html';
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-screen') === normalized);
+      });
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.switchDracoScreen(btn.getAttribute('data-screen'));
+      });
+    });
+
+    dockToggle.addEventListener('click', () => {
+      dock.classList.toggle('minimized');
+      dockToggle.textContent = dock.classList.contains('minimized') ? '☰ 13 Layar' : '⎯';
+    });
+  </script>
+</body>
+</html>

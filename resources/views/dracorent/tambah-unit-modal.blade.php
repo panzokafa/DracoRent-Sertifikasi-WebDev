@@ -1,0 +1,721 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-dim": "#111317", "primary-fixed": "#ffdea4", "on-surface-variant": "#d1c5b4", "secondary-fixed-dim": "#c2c7d0", "on-tertiary-fixed": "#181c22", "gold-ink": "#1A1916", "surface-container-high": "#282a2e", "status-info": "#8FB5D1", "on-error-container": "#ffdad6", "background": "#111317", "surface-raised": "#282C33", "surface-container": "#1e2024", "on-tertiary-container": "#383c43", "secondary-container": "#444951", "on-primary-fixed": "#261900", "on-secondary": "#2c3138", "surface-tint": "#e8c178", "tertiary-container": "#a3a6af", "status-borrowed": "#D5A35B", "status-borrowed-bg": "#3C3020", "secondary": "#c2c7d0", "surface-container-lowest": "#0c0e12", "status-available-bg": "#20392F", "surface-muted": "#1C1F24", "status-available": "#6EB895", "error": "#ffb4ab", "border": "#41464E", "primary": "#e8c178", "outline-variant": "#4e4639", "primary-fixed-dim": "#e8c178", "text-primary": "#F0EBDD", "on-secondary-fixed-variant": "#42474f", "on-primary-container": "#4f3800", "status-info-bg": "#242F39", "secondary-fixed": "#dee2ed", "text-muted": "#B0B2B5", "inverse-surface": "#e2e2e8", "tertiary-fixed-dim": "#c3c6cf", "outline": "#9a8f80", "status-danger": "#E17B79", "surface-bright": "#37393e", "tertiary": "#c3c6cf", "surface-container-highest": "#333539", "surface": "#202329", "gold-hover": "#D5B873", "tertiary-fixed": "#dfe2ec", "error-container": "#93000a", "primary-container": "#c5a15b", "status-danger-bg": "#412527", "on-primary-fixed-variant": "#5c4202", "surface-container-low": "#1a1c20", "on-error": "#690005", "on-primary": "#412d00", "inverse-primary": "#775a1b", "on-background": "#e2e2e8", "on-tertiary": "#2d3138", "on-secondary-fixed": "#171c23", "text-subtle": "#898D93", "surface-variant": "#333539", "on-surface": "#e2e2e8", "on-tertiary-fixed-variant": "#43474e", "on-secondary-container": "#b4b8c2", "inverse-on-surface": "#2f3035" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "margin": "1rem", "margin-desktop": "2rem", "space-sm": "0.5rem", "gutter": "1rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-tablet": "1.5rem" }, "fontFamily": { "section-title": [ "Libre Caslon Text" ], "hero-title-mobile": [ "Libre Caslon Text" ], "table-data": [ "Inter" ], "page-title": [ "Libre Caslon Text" ], "hero-title": [ "Libre Caslon Text" ], "label-regular": [ "Inter" ], "body-compact": [ "Inter" ], "body-default": [ "Inter" ], "helper-text": [ "Inter" ], "card-title": [ "Libre Caslon Text" ], "code-metadata": [ "Inter" ] }, "fontSize": { "section-title": [ "22px", { "lineHeight": "28px", "fontWeight": "600" } ], "hero-title-mobile": [ "34px", { "lineHeight": "38px", "fontWeight": "600" } ], "table-data": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "page-title": [ "30px", { "lineHeight": "36px", "fontWeight": "600" } ], "hero-title": [ "48px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-regular": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "body-compact": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-default": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "helper-text": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "card-title": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "code-metadata": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-muted border-r border-border z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="p-space-md border-b border-border bg-surface-container-low"><div class="flex items-center gap-space-sm mb-1"><div class="w-8 h-8 rounded-lg bg-surface-raised border border-primary-container flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary text-[20px]">local_fire_department</span></div><div><span class="font-card-title text-card-title text-text-primary tracking-wide block leading-tight">DracoRent</span></div></div><p class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider pl-1">Sistem Rental Naga — Kurator Admin</p></div><nav class="flex flex-col py-space-sm gap-0.5 px-space-xs" data-active-classes="bg-surface-raised text-primary font-label-regular border-r-2 border-primary"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="ringkasan" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Ringkasan</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="unit-naga" href="#"><span class="material-symbols-outlined text-[18px]">pets</span><span>Unit Naga</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="kategori" href="#"><span class="material-symbols-outlined text-[18px]">category</span><span>Kategori</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="anggota" href="#"><span class="material-symbols-outlined text-[18px]">shield_person</span><span>Anggota</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="pinjaman-aktif" href="#"><span class="material-symbols-outlined text-[18px]">contract</span><span>Pinjaman Aktif</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="riwayat-dan-laporan" href="#"><span class="material-symbols-outlined text-[18px]">history_edu</span><span>Riwayat &amp; Laporan</span></a></nav></div><div class="p-space-md border-t border-border bg-surface-container-low"><div class="flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-surface-raised border border-border flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary text-[18px]">shield</span></div><div class="min-w-0 flex-1"><p class="font-label-regular text-label-regular text-text-primary truncate leading-tight">Kaelen</p><p class="font-code-metadata text-code-metadata text-text-subtle uppercase truncate">ADM-001</p></div></div><a class="text-text-subtle hover:text-status-danger transition-colors p-1 rounded hover:bg-status-danger-bg shrink-0" data-path="masuk-kurator" href="#" title="Keluar / Logout"><span class="material-symbols-outlined text-[18px]">logout</span></a></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-muted/95 border-b border-border z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-text-subtle text-[18px]">temple_hindu</span><span class="font-label-regular text-label-regular text-text-subtle">Pustaka Guild</span><span class="text-border font-label-regular text-label-regular">/</span><span class="font-label-regular text-label-regular text-text-primary">Arsip Administrasi</span></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded border border-border"><span class="material-symbols-outlined text-text-subtle text-[15px]">calendar_today</span><span class="font-code-metadata text-code-metadata text-text-muted">24 Okt 2026</span></div><a class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-status-borrowed-bg border border-status-borrowed/30 text-status-borrowed font-helper-text text-helper-text hover:bg-status-borrowed-bg/80 transition-colors" data-path="pinjaman-aktif" href="#"><span class="w-1.5 h-1.5 rounded-full bg-status-borrowed animate-pulse"></span><span>3 Pengembalian Menunggu</span></a><a class="hidden sm:flex items-center gap-1 px-space-sm py-1.5 rounded bg-surface border border-border text-text-primary font-label-regular text-label-regular hover:border-primary transition-colors" data-path="katalog-publik" href="#"><span class="material-symbols-outlined text-primary text-[16px]">open_in_new</span><span>Katalog Publik</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 min-h-screen bg-background w-full px-gutter-desktop py-margin-desktop"><div class="flex flex-col w-full pb-16">
+<!-- Top Stat Highlights -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop mb-space-lg">
+<div class="bg-surface rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Total Spesimen Terdaftar</span>
+<span class="font-hero-title text-28px sm:text-page-title text-text-primary mt-1 font-semibold">24</span>
+<span class="font-helper-text text-helper-text text-text-muted mt-0.5">Semua ordo &amp; subordo</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[26px]">pets</span>
+</div>
+</div>
+<div class="bg-surface rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Siap Penugasan</span>
+<span class="font-hero-title text-28px sm:text-page-title text-status-available mt-1 font-semibold">16</span>
+<span class="font-helper-text text-helper-text text-text-muted mt-0.5">Sarang siaga &amp; terinspeksi</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-status-available-bg/60 flex items-center justify-center text-status-available">
+<span class="material-symbols-outlined text-[26px]">task_alt</span>
+</div>
+</div>
+<div class="bg-surface rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Kontrak Aktif (Dipinjam)</span>
+<span class="font-hero-title text-28px sm:text-page-title text-status-borrowed mt-1 font-semibold">8</span>
+<span class="font-helper-text text-helper-text text-text-muted mt-0.5">Warkat sewa berjalan</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-status-borrowed-bg/60 flex items-center justify-center text-status-borrowed">
+<span class="material-symbols-outlined text-[26px]">contract</span>
+</div>
+</div>
+<div class="bg-surface rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Kapasitas Sarang</span>
+<span class="font-hero-title text-28px sm:text-page-title text-text-primary mt-1 font-semibold">80%</span>
+<span class="font-helper-text text-helper-text text-text-muted mt-0.5">24 dari 30 palung pos terisi</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-status-info">
+<span class="material-symbols-outlined text-[26px]">cabin</span>
+</div>
+</div>
+</div>
+<!-- Main Header & Action Bar -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg mb-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-xs text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span class="font-code-metadata text-code-metadata uppercase tracking-wider">Registri Inventaris Kurator — Protokol Dragonkeep</span>
+</div>
+<h1 class="font-page-title text-page-title text-text-primary tracking-normal">Manajemen Unit Naga</h1>
+<p class="font-body-default text-body-compact text-text-muted mt-1 leading-relaxed">
+        Daftar inventaris spesimen ordo, status kesiapan sarang, dan registrasi unit baru sesuai protokol Dragonkeep.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg bg-primary text-gold-ink font-label-regular text-label-regular font-semibold hover:bg-gold-hover transition-colors shadow-sm" onclick="toggleSidePanel(true, 'add')">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Tambah Unit Naga</span>
+</button>
+</div>
+</div>
+<!-- Search, Filter & Meta Toolbar -->
+<div class="bg-surface rounded-xl p-space-md mb-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Search Box -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-text-subtle text-[18px]">search</span>
+<input class="w-full pl-10 pr-9 py-2 bg-surface-muted text-text-primary placeholder:text-text-subtle text-body-compact rounded-lg focus:outline-none focus:ring-1 focus:ring-primary transition-all font-body-default" id="searchInput" placeholder="Cari nama atau kode unit..." type="text" value=""/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-text-subtle hover:text-text-primary transition-colors" id="clearSearchBtn" onclick="clearSearch()">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Action Meta / Counter -->
+<div class="flex items-center justify-between sm:justify-end gap-space-md text-text-subtle font-code-metadata text-code-metadata">
+<span class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-primary text-[15px]">inventory_2</span>
+<span>Menampilkan <strong class="text-text-primary font-semibold">6</strong> dari <strong class="text-text-primary font-semibold">24</strong> spesimen terdaftar</span>
+</span>
+<button class="flex items-center gap-1 text-text-subtle hover:text-text-primary transition-colors px-2 py-1 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-[15px]">file_download</span>
+<span>Ekspor Warkat</span>
+</button>
+</div>
+</div>
+<!-- Filter Pills Row -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<span class="font-code-metadata text-code-metadata uppercase tracking-wider text-text-subtle mr-1">Kategori:</span>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-primary text-gold-ink font-semibold">Semua Kategori</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-text-muted hover:text-text-primary hover:bg-surface-raised transition-colors">Wyrm Api</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-text-muted hover:text-text-primary hover:bg-surface-raised transition-colors">Frost Drake</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-text-muted hover:text-text-primary hover:bg-surface-raised transition-colors">Wyvern Badai</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-text-muted hover:text-text-primary hover:bg-surface-raised transition-colors">Lindworm Batuan</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-text-muted hover:text-text-primary hover:bg-surface-raised transition-colors">Leviathan Laut</button>
+<div class="h-4 w-px bg-surface-container-highest mx-2 hidden sm:block"></div>
+<span class="font-code-metadata text-code-metadata uppercase tracking-wider text-text-subtle mr-1">Status:</span>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container-high text-primary font-semibold">Semua Status</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-status-available hover:bg-surface-raised transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Tersedia (16)</span>
+</button>
+<button class="px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container text-status-borrowed hover:bg-surface-raised transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-borrowed"></span>
+<span>Dipinjam (8)</span>
+</button>
+</div>
+</div>
+<!-- Specimen Inventory Table (Admin Ledger) -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-table-data text-table-data text-on-surface">
+<thead>
+<tr class="bg-surface-muted text-text-muted font-code-metadata text-code-metadata tracking-wider uppercase">
+<th class="py-3 px-space-md font-semibold">Spesimen &amp; Kode Unit</th>
+<th class="py-3 px-space-md font-semibold">Kategori Ordo</th>
+<th class="py-3 px-space-md font-semibold">Pos Kandang / Sarang</th>
+<th class="py-3 px-space-md font-semibold">Status Kesiapan</th>
+<th class="py-3 px-space-md font-semibold">Pemeriksaan Terakhir</th>
+<th class="py-3 px-space-md font-semibold text-right">Tindakan Kurasi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<!-- Row 1: NGA-101 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up majestic red volcanic dragon with smoking dark obsidian horns and smoldering ember scales looking proud and noble in dark stable lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0EOE7SNCU7KK5AIPZoVWMEbkNfdPPidclw3oG1aCZ-LehgKB00dciocI_z6hDhsM8ne29kbLiv04Jfvw8e4aJLE2vDGunfxGpSTv8QBjwXHawgbsvqbe-D99dmZEQUsoOqh4RrcQxrcBi8YA3q5CvtiuCHgwVqvYM8r29UB4ljOQIrAmZAiVnr3ltnZZMdV0NS0eX-pnTJVXqhWAaOsobOsZuMTYO-0qn14tlhgBMgROHRXk-EtQw"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Ignis Ashbringer</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-101</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Dewasa • 4.2 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Wyrm Api</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Transportasi Berat</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Pos Barat — Palung S-04</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-borrowed-bg text-status-borrowed font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-borrowed"></span>
+<span>Dipinjam</span>
+</span>
+<span class="font-code-metadata text-code-metadata text-text-subtle flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">person</span>
+<span>Lyra Valen • TRX-0891</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">22 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Log Mutasi Peminjaman</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-101')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<div class="relative group inline-block">
+<button class="p-1.5 rounded bg-surface-container-low text-text-subtle/40 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 hidden group-hover:block w-48 p-2 rounded bg-surface-raised text-text-muted text-[11px] font-helper-text text-left shadow-xl pointer-events-none z-20">
+<span class="text-status-danger font-semibold flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[12px]">lock</span> Proteksi Relasi
+                    </span>
+                    Spesimen dalam warkat sewa aktif tidak dapat dihapus.
+                  </div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2: NGA-102 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Heavy armored stone-scaled lindworm dragon resting on basalt rocks with metallic grey reflective plating in moody stable light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW29bkWWL7FxYuhdZJbRizaS3hhjKJ8Hj2CAg10INoYkYimYQkv9LX7gfeXbCcJ1eCzsaqQMR6vIfyxlxnxv8rCyDkZRTt9AOgArluTyU7tyhFUuN1Wpjc9ozxwTAsgMsaugwVxtG9TznxW5yUGQweR0-TLJReWMJt_drDS-GB_u_idVVtgcraJafAjo4cd_8jGW7fMdTlzqEGGJDfLSbse3t36vWpmo0Q_aUA9I6PPQRR2EeDix5F"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Vermithrax Obsidian</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-102</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Kuno • 6.8 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Lindworm Batuan</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Kargo Berat</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Pos Barat — Palung B-02</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-borrowed-bg text-status-borrowed font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-borrowed"></span>
+<span>Dipinjam</span>
+</span>
+<span class="font-code-metadata text-code-metadata text-text-subtle flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">person</span>
+<span>Kaelen Varr • TRX-0882</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">19 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Inspeksi Rantai Kemudi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-102')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<div class="relative group inline-block">
+<button class="p-1.5 rounded bg-surface-container-low text-text-subtle/40 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 hidden group-hover:block w-48 p-2 rounded bg-surface-raised text-text-muted text-[11px] font-helper-text text-left shadow-xl pointer-events-none z-20">
+<span class="text-status-danger font-semibold flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[12px]">lock</span> Proteksi Relasi
+                    </span>
+                    Spesimen dalam warkat sewa aktif tidak dapat dihapus.
+                  </div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3: NGA-103 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Slender emerald and silver winged wyvern perched on an aerial stone parapet overlooking misty clouds and high stone tower" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbmnmuQNrB9t3-Lkr7Ds7eoPb2iOJvRuyv8vE9rgLoKROkN1-LlRoIuV1TM6-xWv90vQIMX1i2ZJwIQJp-p44VRqj4RwRGU3WMjOpmmY-9csGhlJGUNEjFYsvxVVyDHrWK-UMoSf8VApQCxUmYQvzbjGgv8szcclTco7qCvao815GAl_LtBZEFsLdyaGyDEaK8N7BZR07d2tUSsRggQTMUX1HDo_Co7f_ctXhRRfC76mB-sjzUgfqW"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Aetherius Zenith</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-103</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Muda • 2.1 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Wyvern Angin</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Patroli Udara</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Menara Utara — Sarang F-02</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col items-start gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-borrowed-bg text-status-borrowed font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-borrowed"></span>
+<span>Dipinjam</span>
+</span>
+<span class="font-code-metadata text-code-metadata text-text-subtle flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">person</span>
+<span>Lyra Valen • TRX-0894</span>
+</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">23 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Surat Jalan Patroli</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-103')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<div class="relative group inline-block">
+<button class="p-1.5 rounded bg-surface-container-low text-text-subtle/40 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 hidden group-hover:block w-48 p-2 rounded bg-surface-raised text-text-muted text-[11px] font-helper-text text-left shadow-xl pointer-events-none z-20">
+<span class="text-status-danger font-semibold flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[12px]">lock</span> Proteksi Relasi
+                    </span>
+                    Spesimen dalam warkat sewa aktif tidak dapat dihapus.
+                  </div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 4: NGA-104 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Pale crystalline frost dragon with icy blue spines and frosty breath misting in a cold alpine stone cavern enclosure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCLWy3kmPwdlTLjiOAzkJKe3i-O8uP9helzh8P27Vpr_yOIi6uaSYdunaHWsUaDRbFCw_kA3-OE9_pxrvfafYWZmj9lso7uo5f9Y45Sgr5BDKHDgyoaeblpL90R9LRahJMzUMBCdj4AOzJqBV85ByUrH3SgL-eQcR_sF12-HQZUDG6HvDfqh2tK71g-B961brvLFvhKMK_sPjh49MhjAd4s0iOjHkWdAXDgwcYW-F647bBMqf4iV2v"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Boreas Glacie</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-104</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Dewasa • 3.5 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Frost Drake</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Pertahanan Udara</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Pos Salju Utara — Palung N-01</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-available-bg text-status-available font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Tersedia</span>
+</span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">24 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Sertifikasi Sayap &amp; Kuku</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-104')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-status-danger-bg text-text-subtle hover:text-status-danger transition-colors" onclick="confirmDelete('NGA-104', 'Boreas Glacie')" title="Hapus Spesimen">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: NGA-105 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Sleek electrical dark-violet feathered wyvern with lightning accents resting quietly inside an antique carved stone perch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN03ffeX5lzT0b7zYQ1-ZmRCYVGpLdm_4zLxA3pm9C5fToavIvB1Z_XDt092zCfh0ILDdN4In4HWSLzJJqgRj2iLD4dFFItGlxIV0vc6PLfQFAFAoAx0od0A2p8dEt7GiWEM4nEbXrpfdAkg9PJXybadFbwfwJRWTUebQUaDJ7fDkDQTnips8ZzBb6GB5TTfABhI11wQw2vv6dNuvxaysH2C_uQMe2QeU9eDz50OGGDo7axXxCTRi-"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Zephyr Galecrest</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-105</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Muda • 1.9 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Wyvern Badai</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Kurir Cepat</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Pos Sentral — Palung C-03</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-available-bg text-status-available font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Tersedia</span>
+</span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">20 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Pemeriksaan Pelana Navigasi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-105')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-status-danger-bg text-text-subtle hover:text-status-danger transition-colors" onclick="confirmDelete('NGA-105', 'Zephyr Galecrest')" title="Hapus Spesimen">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: NGA-106 -->
+<tr class="hover:bg-surface-raised/60 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Ancient colossal four-legged Draconis with bronze-tinted armored ridge scales, deep amber slit eyes and golden chest glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAace1CfliGw20QpY8A6evAIKORjH-umCaw5-mCMMblE9eCeDktlxBmCcffJ2rHVHLjcNzG40dt_-BfCNijuXbhULgKYJ8GY2ChC_QBLlqu188CVL5VL0eAO7qTHGQWT5yFKfQzw0AzOQPw17pBkxEt0BF9RJtCltIG4dMDeprs_CykmXWyiTiesFcPBlHd_c8W4qaTw6lZOa8fxm1fzfAEz7PMJeheTOEknEaNfwU0tZVrOd0bQTjO"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-card-title text-card-title text-text-primary tracking-tight font-semibold truncate">Pyrothrax the Bold</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-metadata text-code-metadata bg-surface-container px-1.5 py-0.5 rounded text-primary font-medium">NGA-106</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Purba • 7.4 Ton</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-wrap items-center gap-1.5 max-w-[200px]">
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container-high text-text-primary">Draconis Purba</span>
+<span class="px-2 py-0.5 rounded text-helper-text font-helper-text bg-surface-container text-text-muted">Kombat / Ekspedisi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-1.5 text-text-muted font-body-compact text-body-compact">
+<span class="material-symbols-outlined text-text-subtle text-[16px]">location_on</span>
+<span>Kandang Barat — Palung B-01</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-helper-text font-helper-text bg-status-available-bg text-status-available font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span>
+<span>Tersedia</span>
+</span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-compact text-body-compact text-text-primary">24 Okt 2026</span>
+<span class="font-helper-text text-helper-text text-text-subtle">Audit Vitalitas &amp; Sisik</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised text-text-primary font-label-regular text-label-regular transition-colors" onclick="toggleSidePanel(true, 'edit', 'NGA-106')" title="Edit Unit">
+                  Edit
+                </button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-surface-raised text-text-muted hover:text-text-primary transition-colors" title="Log Histori &amp; Inspeksi">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded bg-surface-container hover:bg-status-danger-bg text-text-subtle hover:text-status-danger transition-colors" onclick="confirmDelete('NGA-106', 'Pyrothrax the Bold')" title="Hapus Spesimen">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="p-space-md bg-surface-muted border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="font-helper-text text-helper-text text-text-muted">
+        Halaman <span class="text-text-primary font-semibold">1</span> dari <span class="text-text-primary font-semibold">4</span> (24 data unit spesimen)
+      </div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded text-text-subtle/50 bg-surface-container cursor-not-allowed font-label-regular text-label-regular" disabled="">
+          Sebelumnya
+        </button>
+<button class="px-3 py-1 rounded bg-primary text-gold-ink font-semibold font-label-regular text-label-regular">1</button>
+<button class="px-3 py-1 rounded bg-surface-container text-text-primary hover:bg-surface-raised transition-colors font-label-regular text-label-regular">2</button>
+<button class="px-3 py-1 rounded bg-surface-container text-text-primary hover:bg-surface-raised transition-colors font-label-regular text-label-regular">3</button>
+<button class="px-3 py-1 rounded bg-surface-container text-text-primary hover:bg-surface-raised transition-colors font-label-regular text-label-regular">4</button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-text-primary hover:bg-surface-raised transition-colors font-label-regular text-label-regular">
+          Berikutnya
+        </button>
+</div>
+</div>
+</div>
+<!-- Guild Regulatory Guideline Footer -->
+<div class="mt-space-lg p-space-md bg-surface-container-low rounded-xl flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-regular text-label-regular text-text-primary font-semibold mb-1">Ketentuan Protokol Mutasi &amp; Pendaftaran Dragonkeep (Bab 5.9)</h4>
+<p class="font-helper-text text-helper-text text-text-muted leading-relaxed">
+        Setiap spesimen baru wajib mendapatkan verifikasi taksonomi sebelum dapat dialokasikan ke kontrak sewa serikat. Unit yang berstatus 'Dipinjam' dikunci secara otomatis oleh sistem pencatatan cerdas untuk mencegah anomali inventaris ganda dan pembatalan warkat sepihak.
+      </p>
+</div>
+</div>
+<!-- Slide-Over Drawer / Registration & Edit Form Panel -->
+<div class="fixed inset-0 bg-[#0B0C0E]/80 backdrop-blur-sm z-50 flex items-center justify-center p-space-md overflow-y-auto" id="modalRegistrationBackdrop"><div class="relative w-full max-w-2xl bg-surface rounded-lg border border-border shadow-2xl overflow-hidden my-auto flex flex-col"><div class="px-space-lg py-space-md border-b border-border bg-surface-container-low flex items-start justify-between gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-primary mb-1"><span class="material-symbols-outlined text-[16px]">shield</span><span class="font-code-metadata text-code-metadata uppercase tracking-wider">PROTOKOL DRAGONKEEP — FORMULIR BAB 5.9</span></div><h2 class="font-section-title text-section-title text-text-primary">Registrasi Spesimen Naga Baru</h2><p class="font-helper-text text-helper-text text-text-muted mt-0.5 leading-relaxed">Daftarkan spesimen naga baru ke inventaris sarang serikat. Seluruh kode unit diverifikasi unik dalam ledger ordo.</p></div><button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-raised text-text-subtle hover:text-text-primary transition-colors shrink-0" onclick="document.getElementById('modalRegistrationBackdrop').classList.add('hidden')" title="Tutup Formulir"><span class="material-symbols-outlined text-[20px]">close</span></button></div><div class="p-space-lg max-h-[72vh] overflow-y-auto space-y-space-md"><div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md"><div><label class="block font-label-regular text-label-regular text-text-primary mb-1" for="inputKodeUnit">Kode Unit <span class="text-status-danger">*</span></label><div class="relative"><input class="w-full pl-3 pr-8 py-2 bg-surface-muted text-text-primary border border-border rounded-lg text-body-compact font-body-default focus:outline-none focus:border-primary transition-colors" id="inputKodeUnit" maxlength="50" type="text" value="NGA-107"/><span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-status-available text-[18px]" title="Kode unik tersedia">check_circle</span></div><div class="flex items-center justify-between mt-1"><span class="font-helper-text text-helper-text text-status-available font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">verified</span> Kode tersedia</span><span class="font-helper-text text-helper-text text-text-subtle">Maks. 50 karakter</span></div></div><div><label class="block font-label-regular text-label-regular text-text-primary mb-1" for="inputNamaUnit">Nama Unit / Julukan Spesimen <span class="text-status-danger">*</span></label><input class="w-full px-3 py-2 bg-surface-muted text-text-primary border border-border rounded-lg text-body-compact font-body-default focus:outline-none focus:border-primary transition-colors" id="inputNamaUnit" maxlength="100" placeholder="misal: Solarian Sunstrider" type="text" value="Solarian Sunstrider"/><p class="font-helper-text text-helper-text text-text-subtle mt-1">Maksimal 100 karakter. Boleh sama jika kode berbeda.</p></div></div><div><div class="flex items-center justify-between mb-1.5"><label class="font-label-regular text-label-regular text-text-primary">Kategori Ordo &amp; Peran (Minimal 1) <span class="text-status-danger">*</span></label><span class="font-code-metadata text-code-metadata text-primary">2 Kategori Dipilih</span></div><div class="p-3 bg-surface-muted border border-border rounded-lg flex flex-wrap gap-2 items-center"><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-primary text-gold-ink font-semibold shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-[14px]">check</span><span>Wyrm Api</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-primary text-gold-ink font-semibold shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-[14px]">check</span><span>Transportasi Berat</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Frost Drake</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Wyvern Badai</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Lindworm Batuan</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Patroli Udara</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Leviathan Laut</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-regular font-label-regular bg-surface-container hover:bg-surface-raised border border-border text-text-muted hover:text-text-primary transition-all" type="button"><span class="material-symbols-outlined text-[14px]">add</span><span>Eskor &amp; Tempur</span></button></div><p class="font-helper-text text-helper-text text-text-subtle mt-1.5">Pilih satu atau lebih kategori taksonomi ordo sesuai sertifikat fisik Dragonkeep.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md"><div><label class="block font-label-regular text-label-regular text-text-primary mb-1" for="inputPosKandang">Lokasi Kandang &amp; Alokasi Palung Sarang <span class="text-status-danger">*</span></label><select class="w-full px-3 py-2 bg-surface-muted text-text-primary border border-border rounded-lg text-body-compact font-body-default focus:outline-none focus:border-primary transition-colors" id="inputPosKandang"><option selected="" value="Kandang Barat — Palung B-03 (Siap Huni)">Kandang Barat — Palung B-03 (Siap Huni)</option><option value="Pos Barat — Palung S-01 (Siap Huni)">Pos Barat — Palung S-01 (Siap Huni)</option><option value="Menara Utara — Sarang F-01 (Siap Huni)">Menara Utara — Sarang F-01 (Siap Huni)</option><option value="Pos Salju Utara — Palung N-02 (Siap Huni)">Pos Salju Utara — Palung N-02 (Siap Huni)</option><option value="Pos Sentral — Palung C-01 (Siap Huni)">Pos Sentral — Palung C-01 (Siap Huni)</option></select><p class="font-helper-text text-helper-text text-text-subtle mt-1">Pos penjemputan fisik spesimen kurator dan peminjam.</p></div><div><label class="block font-label-regular text-label-regular text-text-primary mb-1">Status Awal Spesimen</label><div class="px-3 py-2 bg-surface-muted border border-border rounded-lg flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-status-available"></span><span class="font-label-regular text-label-regular text-status-available font-semibold">Tersedia</span></div><span class="font-code-metadata text-code-metadata text-text-subtle bg-surface-container px-1.5 py-0.5 rounded">STANDAR SERIKAT</span></div><p class="font-helper-text text-helper-text text-text-subtle mt-1">Otomatis berstatus Tersedia dan siap dialokasikan ke kontrak sewa.</p></div></div><div><label class="block font-label-regular text-label-regular text-text-primary mb-1">Ilustrasi / Berkas Visual Spesimen (Opsional)</label><div class="p-space-md bg-surface-muted border border-border rounded-lg flex flex-col sm:flex-row items-center gap-space-md"><div class="relative w-24 h-20 rounded-lg overflow-hidden bg-surface-container border border-primary-container shrink-0"><img alt="Solarian Sunstrider specimen preview" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAace1CfliGw20QpY8A6evAIKORjH-umCaw5-mCMMblE9eCeDktlxBmCcffJ2rHVHLjcNzG40dt_-BfCNijuXbhULgKYJ8GY2ChC_QBLlqu188CVL5VL0eAO7qTHGQWT5yFKfQzw0AzOQPw17pBkxEt0BF9RJtCltIG4dMDeprs_CykmXWyiTiesFcPBlHd_c8W4qaTw6lZOa8fxm1fzfAEz7PMJeheTOEknEaNfwU0tZVrOd0bQTjO"/><div class="absolute bottom-0 inset-x-0 bg-surface-container-low/80 py-0.5 text-center"><span class="font-code-metadata text-[9px] text-primary uppercase">Pratinjau</span></div></div><div class="flex-1 text-center sm:text-left min-w-0"><div class="flex items-center gap-1.5 justify-center sm:justify-start"><span class="material-symbols-outlined text-primary text-[16px]">image</span><span class="font-label-regular text-label-regular text-text-primary font-medium truncate">solarian_sunstrider_doc.webp</span><span class="font-code-metadata text-code-metadata text-text-subtle">(1.4 MB)</span></div><p class="font-helper-text text-helper-text text-text-subtle mt-1">Format diterima: JPG, JPEG, PNG, WEBP. Maksimal ukuran berkas 2 MB.</p><div class="flex items-center justify-center sm:justify-start gap-space-sm mt-2.5"><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-raised border border-border text-text-primary font-label-regular text-label-regular transition-colors inline-flex items-center gap-1" type="button"><span class="material-symbols-outlined text-[15px]">sync</span><span>Ganti Gambar</span></button><button class="px-2.5 py-1 rounded bg-surface-container hover:bg-status-danger-bg text-text-subtle hover:text-status-danger border border-border transition-colors inline-flex items-center gap-1" type="button"><span class="material-symbols-outlined text-[15px]">delete</span><span>Hapus</span></button></div></div></div></div><div class="p-space-md bg-status-info-bg/50 border border-status-info/30 rounded-lg flex items-start gap-space-sm"><span class="material-symbols-outlined text-status-info text-[18px] shrink-0 mt-0.5">info</span><div class="text-left"><p class="font-helper-text text-helper-text text-status-info font-semibold">Peringatan Integritas &amp; Audit (Dragonkeep Bab 5.9)</p><p class="font-helper-text text-helper-text text-text-muted mt-0.5 leading-relaxed">Kode unit yang tersimpan akan dikunci permanen pada warkat kontrak sewa pertama untuk menjaga keabsahan audit serikat.</p></div></div></div><div class="px-space-lg py-space-md border-t border-border bg-surface-container-low flex items-center justify-end gap-space-sm"><button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-raised border border-border text-text-primary font-label-regular text-label-regular transition-colors" onclick="document.getElementById('modalRegistrationBackdrop').classList.add('hidden')" type="button">Batal</button><button class="px-space-lg py-2 rounded-lg bg-primary hover:bg-gold-hover text-gold-ink font-label-regular text-label-regular font-semibold transition-colors flex items-center gap-1.5 shadow-sm" onclick="alert('Spesimen Solarian Sunstrider (NGA-107) berhasil didaftarkan ke ledger Dragonkeep!'); document.getElementById('modalRegistrationBackdrop').classList.add('hidden')" type="button"><span class="material-symbols-outlined text-[18px]">check_circle</span><span>Simpan Spesimen Baru</span></button></div></div></div>
+<!-- Interactive Scripts for Modal & Microinteractions -->
+<script>
+    function toggleSidePanel(show, mode = 'add', unitCode = '') {
+      const panel = document.getElementById('sidePanel');
+      const backdrop = document.getElementById('sidePanelBackdrop');
+      const title = document.getElementById('panelTitle');
+      const subtitle = document.getElementById('panelSubtitle');
+      const submitText = document.getElementById('panelSubmitText');
+      const kodeInput = document.getElementById('formKodeUnit');
+      const namaInput = document.getElementById('formNamaUnit');
+
+      if (show) {
+        if (mode === 'edit') {
+          title.textContent = 'Edit Spesimen ' + unitCode;
+          subtitle.textContent = 'Pembaruan Data Register Unit';
+          submitText.textContent = 'Perbarui Warkat Unit';
+          kodeInput.value = unitCode;
+          kodeInput.setAttribute('disabled', 'disabled');
+          namaInput.value = unitCode === 'NGA-101' ? 'Ignis Ashbringer' : (unitCode === 'NGA-104' ? 'Boreas Glacie' : 'Zephyr Galecrest');
+        } else {
+          title.textContent = 'Registrasi Spesimen Baru';
+          subtitle.textContent = 'Registrasi Spesimen Baru';
+          submitText.textContent = 'Simpan Unit Spesimen';
+          kodeInput.value = 'NGA-107';
+          kodeInput.removeAttribute('disabled');
+          namaInput.value = '';
+        }
+        backdrop.classList.remove('hidden');
+        setTimeout(() => {
+          panel.classList.remove('translate-x-full');
+        }, 10);
+      } else {
+        panel.classList.add('translate-x-full');
+        setTimeout(() => {
+          backdrop.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function confirmDelete(code, name) {
+      if (confirm(`Peringatan Kurator:\nApakah Anda yakin ingin menghapus data spesimen ${name} (${code})?\nTindakan ini tidak dapat dibatalkan.`)) {
+        alert(`Spesimen ${code} telah dinonaktifkan dari daftar inventaris.`);
+      }
+    }
+
+    function saveUnit() {
+      const kode = document.getElementById('formKodeUnit').value;
+      const nama = document.getElementById('formNamaUnit').value;
+      if (!nama.trim()) {
+        alert('Harap isi nama unit spesimen.');
+        return;
+      }
+      alert(`Warkat spesimen ${nama} (${kode}) berhasil disimpan ke dalam registri Dragonkeep.`);
+      toggleSidePanel(false);
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (e.target.value.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+    });
+  </script>
+</div></main></div><script>
+(function() {
+  const pathMap = {
+    'masuk': 'masuk.html',
+    'masuk-kurator': 'masuk.html',
+    'keluar': 'masuk.html',
+    'ringkasan': 'ringkasan.html',
+    'unit-naga': 'unit-naga.html',
+    'tambah-unit-modal': 'tambah-unit-modal.html',
+    'kategori': 'kategori.html',
+    'anggota': 'anggota.html',
+    'pinjaman-aktif': 'pinjaman-aktif.html',
+    'riwayat-dan-laporan': 'riwayat-dan-laporan.html',
+    'katalog-naga': 'katalog-naga.html',
+    'katalog-publik': 'katalog-naga.html',
+    'detail-naga': 'detail-naga.html',
+    'pinjaman-saya': 'pinjaman-saya.html',
+    'riwayat-rental': 'riwayat-rental.html',
+    'profil-saya': 'profil-saya.html'
+  };
+
+  function navigateTo(slug) {
+    const target = pathMap[slug] || (slug + '.html');
+    if (window.parent && window.parent !== window && window.parent.switchDracoScreen) {
+      window.parent.switchDracoScreen(slug);
+      return;
+    }
+    const inScreensDir = window.location.pathname.replace(/\\/g, '/').includes('/screens/');
+    window.location.href = inScreensDir ? target : ('screens/' + target);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-path]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        const p = el.getAttribute('data-path');
+        if (p && pathMap[p]) {
+          e.preventDefault();
+          navigateTo(p);
+        }
+      });
+    });
+
+    // Wire catalog detail & rent buttons to detail-naga screen
+    document.querySelectorAll('.view-detail-btn, .rent-action-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigateTo('detail-naga');
+      });
+    });
+
+    // Wire breadcrumb back to catalog
+    document.querySelectorAll('a').forEach(function(a) {
+      const txt = (a.textContent || '').trim();
+      if (txt.includes('Kembali ke Katalog')) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('katalog-naga');
+        });
+      }
+      if (txt.includes('Lihat Semua Kontrak')) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('pinjaman-aktif');
+        });
+      }
+    });
+
+    // Wire Proses Pengembalian buttons on dashboard
+    document.querySelectorAll('button').forEach(function(btn) {
+      const txt = (btn.textContent || '').trim();
+      if (txt.includes('Proses Pengembalian')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('pinjaman-aktif');
+        });
+      }
+      if (txt.includes('+ Tambah Unit Baru') || txt.includes('Tambah Unit Naga')) {
+        btn.addEventListener('click', function(e) {
+          if (!document.getElementById('modal-backdrop') && !window.location.pathname.includes('tambah-unit-modal')) {
+            e.preventDefault();
+            navigateTo('tambah-unit-modal');
+          }
+        });
+      }
+      if (txt.includes('Kelola Kategori')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('kategori');
+        });
+      }
+      if (txt.includes('+ Tambah Anggota Serikat') && !document.getElementById('panel-tambah-anggota')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('anggota');
+        });
+      }
+      if (txt.includes('Semua Pinjaman Aktif')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo('pinjaman-aktif');
+        });
+      }
+    });
+
+    // Wire login form submit
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailVal = (document.getElementById('email')?.value || '').toLowerCase();
+        if (emailVal.includes('admin') || emailVal.includes('kaelen') || emailVal.includes('kurator')) {
+          navigateTo('ringkasan');
+        } else {
+          navigateTo('katalog-naga');
+        }
+      });
+    }
+  });
+})();
+</script>
+<script src="/js/dracorent-app.js"></script></body></html>
