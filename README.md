@@ -31,6 +31,5 @@ Validasi pada setiap field yang diperlukan (email unik, kode unit unik, password
 Migration tabel dan seeder data awal (akun admin, kategori, spesies, dan list naga)
 
 5. Skema Database :
-   <img width="1536" height="1024" alt="Dragon Loan System ERD Diagram" src="https://github.com/user-attachments/assets/20c3ce2d-6bab-4cf0-aa35-d7d62ae11e9f" />
 
 7. Demo Website :
