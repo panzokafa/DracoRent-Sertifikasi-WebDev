@@ -4,6 +4,7 @@ DracoRent: Sistem Rental Naga
 DracoRent adalah website peminjaman naga yang dikelola oleh admin dan digunakan oleh anggota. Naga bisa disewa untuk penerbangan, perjalanan udara, pertunjukan, dan ekspedisi fantasi. Tarif sewa per hari dihitung dari spesies, ukuran, dan tingkat kesulitan penjinakan naga.
 
 4. List Fitur
+
 (Umum)
 Login dan logout, semua halaman hanya bisa diakses setelah login
 Dua jenis pengguna: Admin dan User (anggota)
