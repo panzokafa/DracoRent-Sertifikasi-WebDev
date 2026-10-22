@@ -5,11 +5,25 @@
  * Jalankan di terminal: php database/migrate.php
  */
 
-$host = getenv('DB_HOST') ?: '127.0.0.1';
-$port = getenv('DB_PORT') ?: '3306';
-$dbName = getenv('DB_DATABASE') ?: 'sistem_peminjaman_naga';
-$username = getenv('DB_USERNAME') ?: 'root';
-$password = getenv('DB_PASSWORD') ?: '';
+// Load .env configuration
+$envFile = __DIR__ . '/../.env';
+$envVars = [];
+if (is_file($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') !== false) {
+            [$key, $val] = array_map('trim', explode('=', $line, 2));
+            $val = trim($val, '"\'');
+            $envVars[$key] = $val;
+        }
+    }
+}
+
+$host = $envVars['DB_HOST'] ?? getenv('DB_HOST') ?: '127.0.0.1';
+$port = $envVars['DB_PORT'] ?? getenv('DB_PORT') ?: '3306';
+$dbName = $envVars['DB_DATABASE'] ?? getenv('DB_DATABASE') ?: 'sistem_peminjaman_naga';
+$username = $envVars['DB_USERNAME'] ?? getenv('DB_USERNAME') ?: 'root';
+$password = $envVars['DB_PASSWORD'] ?? getenv('DB_PASSWORD') ?: '';
 
 echo "=====================================================\n";
 echo " DRACORENT — MIGRASI & SEED DATABASE OTOMATIS\n";

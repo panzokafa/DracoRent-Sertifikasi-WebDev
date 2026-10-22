@@ -14,11 +14,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$host = '127.0.0.1';
-$port = 3306;
-$user = 'root';
-$pass = '';
-$dbName = 'sistem_peminjaman_naga';
+// Load .env configuration
+$envFile = __DIR__ . '/../.env';
+$envVars = [];
+if (is_file($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') !== false) {
+            [$key, $val] = array_map('trim', explode('=', $line, 2));
+            $val = trim($val, '"\'');
+            $envVars[$key] = $val;
+        }
+    }
+}
+
+$host = $envVars['DB_HOST'] ?? '127.0.0.1';
+$port = (int)($envVars['DB_PORT'] ?? 3306);
+$user = $envVars['DB_USERNAME'] ?? 'root';
+$pass = $envVars['DB_PASSWORD'] ?? '';
+$dbName = $envVars['DB_DATABASE'] ?? 'sistem_peminjaman_naga';
 
 try {
     $pdo = new PDO(
@@ -240,16 +254,27 @@ try {
             break;
 
         case 'borrow_loan':
-            $userId = (int)($input['user_id'] ?? 2);
+            $userId = (int)($input['user_id'] ?? 0);
+            if ($userId <= 0) {
+                throw new RuntimeException("User ID wajib disertakan dan harus terdaftar sebagai anggota.");
+            }
             $kodeUnit = trim((string)($input['kode_unit'] ?? ''));
             $unitId = (int)($input['unit_id'] ?? 0);
             $days = max(1, min(5, (int)($input['days'] ?? 3)));
-            $tanggalPinjam = trim((string)($input['tanggal_pinjam'] ?? '2026-10-22'));
+            $tanggalPinjam = trim((string)($input['tanggal_pinjam'] ?? date('Y-m-d')));
             if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $tanggalPinjam)) {
-                $tanggalPinjam = '2026-10-22';
+                $tanggalPinjam = date('Y-m-d');
             }
 
             $pdo->beginTransaction();
+
+            // Verify user exists as registered member
+            $stmtUserCheck = $pdo->prepare("SELECT id, email FROM users WHERE id = ?");
+            $stmtUserCheck->execute([$userId]);
+            if (!$stmtUserCheck->fetch()) {
+                $pdo->rollBack();
+                throw new RuntimeException("Pengguna tidak terdaftar sebagai anggota serikat.");
+            }
 
             // Find unit
             if ($unitId > 0) {
@@ -266,16 +291,16 @@ try {
             }
             if ($unitRow['status'] !== 'tersedia') {
                 $pdo->rollBack();
-                throw new RuntimeException("BR-04: Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang dipinjam dan tidak dapat disewa.");
+                throw new RuntimeException("Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang dipinjam dan tidak dapat disewa.");
             }
 
-            // Check user active loans count (BR-05: max 2 active loans)
+            // Check user active loans count (BR-05: max 2 active loans per member)
             $stmtCount = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE user_id = ? AND status = 'dipinjam'");
             $stmtCount->execute([$userId]);
             $activeCount = (int)$stmtCount->fetchColumn();
             if ($activeCount >= 2) {
                 $pdo->rollBack();
-                throw new RuntimeException("BR-05: Kuota peminjaman Anda penuh (2/2 aktif). Kembalikan salah satu naga terlebih dahulu sebelum meminjam unit baru.");
+                throw new RuntimeException("Kuota peminjaman penuh (2/2 aktif). Setiap anggota hanya dapat meminjam maksimal 2 unit naga.");
             }
 
             $dtPinjam = new DateTime($tanggalPinjam);
@@ -307,10 +332,10 @@ try {
             $loanId = (int)($input['loan_id'] ?? 0);
             $trxCode = trim((string)($input['trx_code'] ?? ''));
             $kodeUnit = trim((string)($input['kode_unit'] ?? ''));
-            $tanggalKembali = trim((string)($input['tanggal_kembali'] ?? '2026-10-22'));
+            $tanggalKembali = trim((string)($input['tanggal_kembali'] ?? date('Y-m-d')));
 
             if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $tanggalKembali)) {
-                $tanggalKembali = '2026-10-22';
+                $tanggalKembali = date('Y-m-d');
             }
 
             $pdo->beginTransaction();
@@ -522,6 +547,9 @@ try {
             if (!$namaKategori) {
                 throw new RuntimeException('Nama kategori wajib diisi.');
             }
+            if (mb_strlen($namaKategori) < 3) {
+                throw new RuntimeException('Nama kategori minimal 3 karakter.');
+            }
 
             if ($id > 0) {
                 $stmt = $pdo->prepare("UPDATE categories SET nama_kategori = ?, updated_at = NOW() WHERE id = ?");
@@ -591,8 +619,17 @@ try {
             $noTelp = trim((string)($input['no_telp'] ?? ''));
             $alamat = trim((string)($input['alamat'] ?? ''));
 
-            if (!$email || !$namaLengkap) {
-                throw new RuntimeException('Email dan Nama Lengkap wajib diisi.');
+            if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new RuntimeException('Email valid wajib diisi.');
+            }
+            if (!$namaLengkap) {
+                throw new RuntimeException('Nama Lengkap anggota wajib diisi.');
+            }
+            if (!$noTelp) {
+                throw new RuntimeException('Nomor Telepon anggota wajib diisi.');
+            }
+            if (!$alamat) {
+                throw new RuntimeException('Alamat tempat tinggal anggota wajib diisi.');
             }
 
             $pdo->beginTransaction();

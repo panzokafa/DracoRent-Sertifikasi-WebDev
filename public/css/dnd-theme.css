@@ -148,3 +148,52 @@ h1, h2, h3, h4 {
   color: var(--text-main);
   vertical-align: middle;
 }
+
+/* ================== MEDIA PRINT STYLES ================== */
+@media print {
+  aside,
+  header,
+  .ledger-dock,
+  #dracorent-global-toast,
+  button,
+  .btn-print-single,
+  a[title*="Keluar"],
+  input,
+  [data-path="masuk"],
+  [data-path="masuk-kurator"] {
+    display: none !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt !important;
+  }
+
+  .pl-60, .pl-\[240px\] {
+    padding-left: 0 !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+    background: transparent !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: 1px solid #333333 !important;
+    color: #000000 !important;
+  }
+
+  th, td {
+    border: 1px solid #cccccc !important;
+    color: #000000 !important;
+    padding: 6px 8px !important;
+  }
+
+  th {
+    background: #eeeeee !important;
+    font-weight: bold !important;
+  }
+}
