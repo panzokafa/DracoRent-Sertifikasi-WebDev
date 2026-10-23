@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html class="dark" lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>DracoRent — Sistem Rental Naga</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<!DOCTYPE html><html class="dark" lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>DracoRent — Sistem Rental Naga</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Libre+Caslon+Text:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#a3a6af","surface-raised":"#282C33","status-info":"#8FB5D1","on-tertiary":"#2d3138","secondary-fixed":"#dee2ed","on-tertiary-fixed":"#181c22","surface-container-lowest":"#0c0e12","on-secondary-fixed-variant":"#42474f","on-secondary":"#2c3138","surface":"#202329","tertiary-fixed":"#dfe2ec","on-surface-variant":"#d1c5b4","outline":"#9a8f80","surface-container":"#1e2024","on-secondary-fixed":"#171c23","on-primary":"#412d00","surface-dim":"#111317","text-subtle":"#898D93","on-primary-fixed":"#261900","secondary-container":"#444951","on-primary-container":"#4f3800","surface-container-high":"#282a2e","gold-ink":"#1A1916","status-danger-bg":"#412527","status-info-bg":"#242F39","status-borrowed":"#D5A35B","error":"#ffb4ab","on-primary-fixed-variant":"#5c4202","on-surface":"#e2e2e8","status-available":"#6EB895","text-muted":"#B0B2B5","text-primary":"#F0EBDD","secondary-fixed-dim":"#c2c7d0","gold-hover":"#D5B873","secondary":"#c2c7d0","primary-fixed":"#ffdea4","inverse-surface":"#e2e2e8","status-borrowed-bg":"#3C3020","surface-container-highest":"#333539","inverse-primary":"#775a1b","primary-container":"#c5a15b","primary-fixed-dim":"#e8c178","status-danger":"#E17B79","on-background":"#e2e2e8","status-available-bg":"#20392F","tertiary-fixed-dim":"#c3c6cf","on-tertiary-container":"#383c43","surface-variant":"#333539","surface-bright":"#37393e","tertiary":"#c3c6cf","on-tertiary-fixed-variant":"#43474e","primary":"#e8c178","inverse-on-surface":"#2f3035","surface-container-low":"#1a1c20","on-secondary-container":"#b4b8c2","on-error-container":"#ffdad6","surface-tint":"#e8c178","border":"#41464E","outline-variant":"#4e4639","error-container":"#93000a","on-error":"#690005","surface-muted":"#1C1F24","background":"#111317"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.25rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xl":"2.5rem","margin":"1rem","space-lg":"1.5rem","margin-tablet":"1.5rem","space-md":"1rem","margin-desktop":"2rem","space-sm":"0.5rem"},"fontFamily":{"label-regular":["Inter"],"hero-title-mobile":["Libre Caslon Text"],"helper-text":["Inter"],"card-title":["Libre Caslon Text"],"hero-title":["Libre Caslon Text"],"section-title":["Libre Caslon Text"],"page-title":["Libre Caslon Text"],"table-data":["Inter"],"body-default":["Inter"],"body-compact":["Inter"],"code-metadata":["Inter"]},"fontSize":{"label-regular":["13px",{"lineHeight":"18px","fontWeight":"500"}],"hero-title-mobile":["34px",{"lineHeight":"38px","fontWeight":"600"}],"helper-text":["12px",{"lineHeight":"16px","fontWeight":"400"}],"card-title":["18px",{"lineHeight":"24px","fontWeight":"600"}],"hero-title":["48px",{"lineHeight":"52px","letterSpacing":"-0.01em","fontWeight":"600"}],"section-title":["22px",{"lineHeight":"28px","fontWeight":"600"}],"page-title":["30px",{"lineHeight":"36px","fontWeight":"600"}],"table-data":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-default":["15px",{"lineHeight":"24px","fontWeight":"400"}],"body-compact":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-metadata":["11px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}]}}}};</script></head><body class="bg-background font-body-default text-text-primary antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-muted/95 backdrop-blur-md border-b border-border shadow-[0_4px_20px_rgba(0,0,0,0.5)]"><div class="h-18 max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-md focus:outline-none focus:ring-1 focus:ring-primary-container rounded" data-path="katalog-naga" href="#"><img alt="Logo DracoRent" class="h-9 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB1kZ2RaZMQESaKutWUajdnEugb6hVOoar5q3miDVxcNXk0GxHmnB-pGi_-TgKnFO-Z4sYU183ktSXzL5EZIL4J-Alc44SjK4Kbwx4zsndAFLZZv6jxGsXR4POR47HZVprhRpn5cWlKX0fBPyvbJLQxh1ILyKfTLdeB6nMBncp_Dpi-MkPLERlPZfbrf7nkVTUIGK-5QVZAdtnapGQXwbfWXqrYQt4SHRaRlu-Nvohpu78pLZsbtGr"><div class="flex flex-col"><span class="font-page-title text-card-title text-text-primary tracking-wide leading-none">DracoRent</span><span class="font-code-metadata text-code-metadata text-primary uppercase tracking-widest mt-0.5">Sistem Rental Naga</span></div></a><nav class="hidden md:flex items-center gap-space-lg ml-space-md h-18" data-active-classes="text-primary-container border-b-2 border-primary-container font-semibold"><a class="h-full flex items-center gap-space-xs px-space-xs font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors border-b-2 border-transparent" data-path="katalog-naga" href="#">Katalog Naga</a><a class="h-full flex items-center gap-space-xs px-space-xs font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors border-b-2 border-transparent" data-path="pinjaman-saya" href="#"><span>Pinjaman Saya</span><span class="px-1.5 py-0.5 rounded-full font-code-metadata text-code-metadata bg-surface-raised text-primary border border-border">2/2 Penuh</span></a><a class="h-full flex items-center px-space-xs font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors border-b-2 border-transparent" data-path="riwayat-rental" href="#">Riwayat</a><a class="h-full flex items-center px-space-xs font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors border-b-2 border-transparent" data-path="profil-saya" href="#">Profil Saya</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface border border-border"><span class="w-2 h-2 rounded-full bg-status-available"></span><span class="font-helper-text text-helper-text text-text-muted uppercase tracking-wider">ANGGOTA SERIKAT</span></div><div class="h-6 w-px bg-border hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group" data-path="profil-saya" title="Buka Profil Saya"><div class="relative"><img alt="Profile" class="w-9 h-9 rounded-full object-cover border border-border group-hover:border-primary-container transition-colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmHm66iqLtNecwEWReaYCB3_IISC7ek9DjCE8pizIbZCGLFOlbUoUnzFqy_sLH0cG2eS9iy3cIbv2qC3DkWTOEKvfs_K_vsw7SVDJNsVYQatu-LjZ2wjsQmdLCrJML4q-stk7TSBfSkj55baUIr7JO9inJDbBxwRNjUejIKcHK-ChEgT5VSHljsclaRSCPKQItfgVy6Ig7v7DdH05JOUbpOJ4bp3HFF9wjs53LotvCpg3wOrYS-Td_"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-available ring-2 ring-surface-muted"></span></div><div class="hidden lg:flex flex-col text-left"><div class="flex items-center gap-1"><span class="font-label-regular text-label-regular text-text-primary group-hover:text-primary transition-colors">Lyra Valen</span><span class="material-symbols-outlined text-text-subtle text-[16px]">expand_more</span></div><span class="font-code-metadata text-code-metadata text-text-subtle uppercase">G-4091</span></div></div><a href="#" data-path="masuk" title="Keluar dari Akun (Logout)" class="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-raised hover:bg-status-danger-bg text-text-muted hover:text-status-danger border border-border hover:border-status-danger/50 font-label-regular text-label-regular transition-colors"><span class="material-symbols-outlined text-[17px]">logout</span><span>Keluar</span></a></div></div></header><main class="w-full flex-1 pt-18 bg-background"><div class="flex flex-col w-full">
 <!-- Top Archival Bar / Registry Tracker Header -->
 <section class="w-full bg-surface-container-low px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl">
@@ -72,9 +72,9 @@
 </div>
 </div>
 <!-- Active Loans Grid / Ledger Cards -->
-<div class="flex flex-col gap-space-xl">
+<div class="flex flex-col gap-space-xl" id="active-loans-list">
 <!-- SPECIMEN CARD 1: Ignis Ashbringer (NGA-101) -->
-<article class="bg-surface rounded-xl overflow-hidden shadow-lg flex flex-col xl:flex-row">
+<article class="bg-surface rounded-xl overflow-hidden shadow-lg flex flex-col xl:flex-row" data-trx="TRX-2026-0891" data-unit-code="NGA-101">
 <!-- Image Slate / Left Asymmetric Column -->
 <div class="relative xl:w-5/12 min-h-[280px] xl:min-h-full bg-surface-muted overflow-hidden flex flex-col justify-between">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="Painterly dark fantasy red horned fire dragon wyrm named Ignis Ashbringer resting in an ancient basalt mountain fortress with glowing embers, volcanic ash floating, warm golden fire rim lighting, volumetric mist, archival dark fantasy illustration." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6e2SjC9tB9BZUgrGVSmarlnfvZWCk0yn4rFQmiPJRHg69DJFr6x30KWZhqhnH8aCTWzosXjBVlFu3lhF9uHtwzrUx30oNbgRI5xV0CnIL6G58BmxTEIsaaEuRYMoj8sEB0qMEjNf-qDoT1TZIiAGiavswfCl6MjxI_9P90m8PKQAGqwwmYwu0RPSh141JF9KnAOIUCuv0z0xrCIWvlMzc7IvATfkK-ykEM1uPl107Eg9HB1rP6HB8')"></div>
@@ -123,7 +123,7 @@
 <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">ID Transaksi Kontrak</span>
 <div class="flex items-center gap-space-xs">
 <span class="font-code-metadata text-code-metadata text-text-primary bg-surface-raised px-2 py-1 rounded">TRX-2026-0891</span>
-<button class="p-1 rounded text-text-subtle hover:text-primary transition-colors focus:outline-none" onclick="navigator.clipboard.writeText('TRX-2026-0891'); alert('ID Transaksi TRX-2026-0891 disalin.');" title="Salin ID Transaksi" type="button">
+<button class="p-1 rounded text-text-subtle hover:text-primary transition-colors focus:outline-none" data-copy-trx="TRX-2026-0891" title="Salin ID Transaksi" type="button">
 <span class="material-symbols-outlined text-[16px]">content_copy</span>
 </button>
 </div>
@@ -167,11 +167,11 @@
 <span>Pengembalian fisik wajib divalidasi oleh Admin di Pos Barat</span>
 </div>
 <div class="flex items-center gap-space-sm shrink-0 flex-wrap">
-<button class="px-space-md py-space-sm rounded bg-surface-container-high hover:bg-surface-raised font-label-regular text-label-regular text-text-primary transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<button class="px-space-md py-space-sm rounded bg-surface-container-high hover:bg-surface-raised font-label-regular text-label-regular text-text-primary transition-colors flex items-center gap-1.5 shadow-sm" data-action="view-contract" data-trx="TRX-2026-0891" type="button">
 <span class="material-symbols-outlined text-[18px]">receipt_long</span>
 <span>Lihat Lembar Kontrak</span>
 </button>
-<button class="px-space-md py-space-sm rounded bg-surface-muted hover:bg-surface-container-high font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" type="button">
+<button class="px-space-md py-space-sm rounded bg-surface-muted hover:bg-surface-container-high font-label-regular text-label-regular text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" data-action="contact-admin" data-trx="TRX-2026-0891" type="button">
 <span class="material-symbols-outlined text-[18px]">explore</span>
 <span>Petunjuk Pos Pengembalian</span>
 </button>
@@ -180,10 +180,10 @@
 </div>
 </article>
 <!-- SPECIMEN CARD 2: Aetherius Zenith (NGA-103) -->
-<article class="bg-surface rounded-xl overflow-hidden shadow-lg flex flex-col xl:flex-row">
+<article class="bg-surface rounded-xl overflow-hidden shadow-lg flex flex-col xl:flex-row" data-trx="TRX-2026-0894" data-unit-code="NGA-103">
 <!-- Image Slate / Left Asymmetric Column -->
 <div class="relative xl:w-5/12 min-h-[280px] xl:min-h-full bg-surface-muted overflow-hidden flex flex-col justify-between">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="Painterly majestic serpentine storm sky dragon named Aetherius Zenith soaring above rolling silver-blue clouds under cold moonlight, shimmering iridescent cerulean scales, elegant feathered wings, dark fantasy classical illustration style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvcERK_ES3Dq2kKVtfeQEoCTSZh0vCv_sg8L0S5yuLJyrKbvOoHEeOIDTtXa2e0mq9YbQhdB8ScBsxSxClzq5ssWYHuhiuRB4pHfYzkyGq5PsHzCtv8vAo7jfR_eosotwAmyEYqY9zCrTFGu7objPOE4wre5FJWT-Q1M9f3XsVqpOr4ObgtEH7kW32Y1xDyCVJKNcdSfx-j4nCZ-z5wR2cJ2FjOVZ0cs')"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="Painterly majestic serpentine storm sky dragon named Aetherius Zenith soaring above rolling silver-blue clouds under cold moonlight, shimmering iridescent cerulean scales, elegant feathered wings, dark fantasy classical illustration style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCy6iF5T8594MsOEhEOtakPSZuQQQhmlYD05U77NS6oE1qfpJUcP_tev8KGMy0hWNGn-ef2__Pu-HqMVSk6rVxTv2z3Q8MZKcKp-IdzkxY8Atb6HiHafdSi3Ffp4T1fBAeg5yunxKhyoVnP9JNU-7_tpe7WGe-Logx_NRNfaTKF4PHFYDHYkog8aCHygt8YK3oZaQdh0z-nfGKDGB3M884VVZcRQm9gJLL35NyIXSPKspCO4cB53g2m')"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent xl:bg-gradient-to-r xl:from-transparent xl:via-surface/40 xl:to-surface"></div>
 <!-- Badges Floating on Image Slate -->
 <div class="relative z-10 p-space-md flex items-center justify-between gap-space-sm">
@@ -229,7 +229,7 @@
 <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">ID Transaksi Kontrak</span>
 <div class="flex items-center gap-space-xs">
 <span class="font-code-metadata text-code-metadata text-text-primary bg-surface-raised px-2 py-1 rounded">TRX-2026-0894</span>
-<button class="p-1 rounded text-text-subtle hover:text-primary transition-colors focus:outline-none" onclick="navigator.clipboard.writeText('TRX-2026-0894'); alert('ID Transaksi TRX-2026-0894 disalin.');" title="Salin ID Transaksi" type="button">
+<button class="p-1 rounded text-text-subtle hover:text-primary transition-colors focus:outline-none" data-copy-trx="TRX-2026-0894" title="Salin ID Transaksi" type="button">
 <span class="material-symbols-outlined text-[16px]">content_copy</span>
 </button>
 </div>
@@ -273,11 +273,11 @@
 <span>Siapkan spesimen di landasan pelabuhan utara sebelum pukul 18:00 WIB</span>
 </div>
 <div class="flex items-center gap-space-sm shrink-0 flex-wrap">
-<button class="px-space-md py-space-sm rounded bg-surface-container-high hover:bg-surface-raised font-label-regular text-label-regular text-text-primary transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<button class="px-space-md py-space-sm rounded bg-surface-container-high hover:bg-surface-raised font-label-regular text-label-regular text-text-primary transition-colors flex items-center gap-1.5 shadow-sm" data-action="view-contract" data-trx="TRX-2026-0894" type="button">
 <span class="material-symbols-outlined text-[18px]">receipt_long</span>
 <span>Lihat Lembar Kontrak</span>
 </button>
-<button class="px-space-md py-space-sm rounded bg-primary-container text-gold-ink hover:bg-gold-hover font-label-regular text-label-regular font-semibold transition-colors flex items-center gap-1.5 shadow-md" type="button">
+<button class="px-space-md py-space-sm rounded bg-primary-container text-gold-ink hover:bg-gold-hover font-label-regular text-label-regular font-semibold transition-colors flex items-center gap-1.5 shadow-md" data-action="contact-admin" data-trx="TRX-2026-0894" type="button">
 <span class="material-symbols-outlined text-[18px]">calendar_month</span>
 <span>Jadwalkan Serah Terima</span>
 </button>
@@ -397,8 +397,7 @@
       }
       if (txt.includes('Lihat Semua Kontrak')) {
         a.addEventListener('click', function(e) {
-          e.preventDefault();
-          navigateTo('pinjaman-aktif');
+          e.preventDefault();\n          navigateTo('pinjaman-aktif');
         });
       }
     });
@@ -457,5 +456,3 @@
 })();
 </script>
 <script src="/js/dracorent-app.js"></script></body></html>
-
-

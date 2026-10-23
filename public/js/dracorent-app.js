@@ -29,6 +29,9 @@
   const SELECTED_UNIT_KEY = 'dracorent_selected_unit_code';
   const SELECTED_LOAN_KEY = 'dracorent_selected_loan_trx';
 
+  const CLEAN_IMG_NGA103 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCy6iF5T8594MsOEhEOtakPSZuQQQhmlYD05U77NS6oE1qfpJUcP_tev8KGMy0hWNGn-ef2__Pu-HqMVSk6rVxTv2z3Q8MZKcKp-IdzkxY8Atb6HiHafdSi3Ffp4T1fBAeg5yunxKhyoVnP9JNU-7_tpe7WGe-Logx_NRNfaTKF4PHFYDHYkog8aCHygt8YK3oZaQdh0z-nfGKDGB3M884VVZcRQm9gJLL35NyIXSPKspCO4cB53g2m';
+  const CLEAN_IMG_NGA105 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCCfXvUmdNJJSdrQdK5lEHbY8JKaA4xDdepnV7slthXOYZt_frgVBnljwWeRXeyR0EAL0UDqIt9Yb_u40cG2yVldW43Gtj-mLkfueGJ5OewPtEL5C4XAR-XMgTGvX6MgvJOBx5oKP9ZKKMGJdd3UHPLcJOFqa4ORACVZOCl6bxfz8hQdehLVmQS3xWMmtRNuFJxxExXqWkFrbEdO09ZBCyvRZFHS164MmB7gneEdEWX-h-3NRJZ8l1';
+
   const DEFAULT_STATE = {
     categories: [
       { id: 1, nama_kategori: 'Wyrm Api', unit_count: 2 },
@@ -60,7 +63,7 @@
         id: 3,
         kode_unit: 'NGA-103',
         nama_unit: 'Aetherius Zenith',
-        gambar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvcERK_ES3Dq2kKVtfeQEoCTSZh0vCv_sg8L0S5yuLJyrKbvOoHEeOIDTtXa2e0mq9YbQhdB8ScBsxSxClzq5ssWYHuhiuRB4pHfYzkyGq5PsHzCtv8vAo7jfR_eosotwAmyEYqY9zCrTFGu7objPOE4wre5FJWT-Q1M9f3XsVqpOr4ObgtEH7kW32Y1xDyCVJKNcdSfx-j4nCZ-z5wR2cJ2FjOVZ0cs',
+        gambar: CLEAN_IMG_NGA103,
         status: 'dipinjam',
         category_names: ['Wyvern Badai', 'Patroli Udara']
       },
@@ -76,7 +79,7 @@
         id: 5,
         kode_unit: 'NGA-105',
         nama_unit: 'Zephyr Galecrest',
-        gambar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvcERK_ES3Dq2kKVtfeQEoCTSZh0vCv_sg8L0S5yuLJyrKbvOoHEeOIDTtXa2e0mq9YbQhdB8ScBsxSxClzq5ssWYHuhiuRB4pHfYzkyGq5PsHzCtv8vAo7jfR_eosotwAmyEYqY9zCrTFGu7objPOE4wre5FJWT-Q1M9f3XsVqpOr4ObgtEH7kW32Y1xDyCVJKNcdSfx-j4nCZ-z5wR2cJ2FjOVZ0cs',
+        gambar: CLEAN_IMG_NGA105,
         status: 'tersedia',
         category_names: ['Wyvern Badai', 'Patroli Udara']
       },
@@ -108,7 +111,7 @@
         user_email: 'user@dracorent.com',
         kode_unit: 'NGA-103',
         nama_unit: 'Aetherius Zenith',
-        unit_gambar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvcERK_ES3Dq2kKVtfeQEoCTSZh0vCv_sg8L0S5yuLJyrKbvOoHEeOIDTtXa2e0mq9YbQhdB8ScBsxSxClzq5ssWYHuhiuRB4pHfYzkyGq5PsHzCtv8vAo7jfR_eosotwAmyEYqY9zCrTFGu7objPOE4wre5FJWT-Q1M9f3XsVqpOr4ObgtEH7kW32Y1xDyCVJKNcdSfx-j4nCZ-z5wR2cJ2FjOVZ0cs',
+        unit_gambar: CLEAN_IMG_NGA103,
         unit_categories: ['Wyvern Badai', 'Patroli Udara'],
         tanggal_pinjam: '2026-10-20',
         tanggal_tenggat: '2026-10-24',
@@ -203,7 +206,7 @@
         user_email: 'brandon.sunder@dracorent.com',
         kode_unit: 'NGA-105',
         nama_unit: 'Zephyr Galecrest',
-        unit_gambar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvcERK_ES3Dq2kKVtfeQEoCTSZh0vCv_sg8L0S5yuLJyrKbvOoHEeOIDTtXa2e0mq9YbQhdB8ScBsxSxClzq5ssWYHuhiuRB4pHfYzkyGq5PsHzCtv8vAo7jfR_eosotwAmyEYqY9zCrTFGu7objPOE4wre5FJWT-Q1M9f3XsVqpOr4ObgtEH7kW32Y1xDyCVJKNcdSfx-j4nCZ-z5wR2cJ2FjOVZ0cs',
+        unit_gambar: CLEAN_IMG_NGA105,
         unit_categories: ['Wyvern Badai', 'Patroli Udara'],
         tanggal_pinjam: '2026-10-05',
         tanggal_tenggat: '2026-10-08',
@@ -222,6 +225,23 @@
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed && Array.isArray(parsed.units) && Array.isArray(parsed.loans)) {
+          // Heal old screenshot URLs if cached
+          parsed.units.forEach(u => {
+            if (u.kode_unit === 'NGA-103' && u.gambar && u.gambar.includes('AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc')) {
+              u.gambar = CLEAN_IMG_NGA103;
+            }
+            if (u.kode_unit === 'NGA-105' && u.gambar && u.gambar.includes('AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc')) {
+              u.gambar = CLEAN_IMG_NGA105;
+            }
+          });
+          parsed.loans.forEach(l => {
+            if (l.kode_unit === 'NGA-103' && l.unit_gambar && l.unit_gambar.includes('AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc')) {
+              l.unit_gambar = CLEAN_IMG_NGA103;
+            }
+            if (l.kode_unit === 'NGA-105' && l.unit_gambar && l.unit_gambar.includes('AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc')) {
+              l.unit_gambar = CLEAN_IMG_NGA105;
+            }
+          });
           return parsed;
         }
       }
@@ -241,12 +261,16 @@
   function getCurrentUser() {
     try {
       const raw = localStorage.getItem(SESSION_KEY);
+      if (raw === '__LOGGED_OUT__') return null;
       if (raw) {
         const u = JSON.parse(raw);
         if (u && u.email) return u;
       }
     } catch (e) {}
-    return null;
+    const path = window.location.pathname.toLowerCase().replace(/\\/g, '/');
+    if (path.includes('masuk')) return null;
+    // Default active user fallback (Lyra Valen) so preview dock & standalone screens work seamlessly
+    return (dbState.members || DEFAULT_STATE.members)[1];
   }
 
   function setCurrentUser(u) {
@@ -254,7 +278,7 @@
       if (u) {
         localStorage.setItem(SESSION_KEY, JSON.stringify(u));
       } else {
-        localStorage.removeItem(SESSION_KEY);
+        localStorage.setItem(SESSION_KEY, '__LOGGED_OUT__');
       }
     } catch (e) {}
   }
@@ -638,18 +662,17 @@
     const isLoginPage = path.includes('masuk.html') || path.endsWith('/masuk');
     const isPreviewPortal = path.endsWith('/preview-dnd.html') || path.endsWith('/');
 
-    if (isPreviewPortal) return; // allow parent preview container
+    if (isPreviewPortal) return true; // allow parent preview container
+    if (window.parent && window.parent !== window) return true; // preview dock mode
 
     const currentUser = getCurrentUser();
     if (!currentUser && !isLoginPage) {
-      // User is not logged in and trying to access an authenticated screen
       const inScreensDir = path.includes('/screens/');
       window.location.href = inScreensDir ? 'masuk.html' : 'screens/masuk.html';
       return false;
     }
 
-    if (currentUser && isLoginPage) {
-      // Already logged in, redirect away from login page
+    if (currentUser && isLoginPage && localStorage.getItem(SESSION_KEY) && localStorage.getItem(SESSION_KEY) !== '__LOGGED_OUT__') {
       if (currentUser.role === 'admin') {
         navigateScreen('ringkasan');
       } else {
@@ -1097,13 +1120,14 @@
   // 3. SCREEN: ADMIN DASHBOARD RINGKASAN (ringkasan.html)
   // =========================================================================
   function initRingkasanScreen() {
+    const isRingkasan = window.location.pathname.includes('ringkasan') || document.querySelector('h1')?.textContent.includes('Ringkasan Operasional');
+    if (!isRingkasan) return;
+
     const totalUnits = (dbState.units || []).length;
     const borrowedUnits = (dbState.units || []).filter(u => u.status === 'dipinjam').length;
     const availableUnits = totalUnits - borrowedUnits;
     const activeLoans = (dbState.loans || []).filter(l => l.status === 'dipinjam').length;
-    const totalMembers = (dbState.members || []).length;
 
-    // Dynamically update metrics
     document.querySelectorAll('.font-hero-title-mobile, .font-page-title').forEach(el => {
       const card = el.closest('div');
       const text = card?.textContent || '';
@@ -1118,7 +1142,6 @@
       }
     });
 
-    // Populate active loans table in dashboard
     const tbody = document.querySelector('table tbody');
     if (tbody && (dbState.loans || []).length > 0) {
       const activeList = (dbState.loans || []).filter(l => l.status === 'dipinjam').slice(0, 5);
@@ -1157,6 +1180,9 @@
   // 4. SCREEN: UNIT NAGA & TAMBAH UNIT MODAL (unit-naga.html)
   // =========================================================================
   function initUnitNagaScreen() {
+    const isUnitScreen = document.getElementById('sidePanel') || document.getElementById('modalRegistrationBackdrop') || window.location.pathname.includes('unit-naga');
+    if (!isUnitScreen) return;
+
     const tbody = document.querySelector('table tbody');
     if (!tbody) return;
 
@@ -1239,7 +1265,6 @@
       }).join('');
     }
 
-    // Render category checkboxes in the side panel for multiple categories
     function renderCategoryCheckboxes(selectedCategories = []) {
       const container = document.getElementById('unitCategoryCheckboxes');
       if (!container) return;
@@ -1256,7 +1281,6 @@
       }).join('');
     }
 
-    // Make sure category checkbox container exists in sidePanel
     const panel = document.getElementById('sidePanel');
     if (panel && !document.getElementById('unitCategoryCheckboxes')) {
       const formGroup = document.createElement('div');
@@ -1329,7 +1353,6 @@
         return;
       }
 
-      // Collect selected categories (Multiple Categories requirement)
       const selectedCats = [];
       document.querySelectorAll('#unitCategoryCheckboxes input[name="unit_cats"]:checked').forEach(cb => {
         selectedCats.push(cb.value);
@@ -1366,7 +1389,6 @@
       renderUnitsTable();
     };
 
-    // Live search input
     const sInput = document.getElementById('searchInput') || document.querySelector('input[type="search"]');
     if (sInput) {
       sInput.addEventListener('input', (e) => {
@@ -1503,6 +1525,9 @@
   // 6. SCREEN: ANGGOTA (Admin Only: anggota.html)
   // =========================================================================
   function initAnggotaScreen() {
+    const isAnggotaScreen = document.getElementById('panel-tambah-anggota') || document.getElementById('form-anggota-baru') || window.location.pathname.includes('anggota');
+    if (!isAnggotaScreen) return;
+
     const tbody = document.querySelector('table tbody');
     if (!tbody) return;
 
@@ -1636,10 +1661,12 @@
   // 7. SCREEN: KATALOG NAGA (katalog-naga.html)
   // =========================================================================
   function initKatalogNagaScreen() {
+    const isKatalog = document.getElementById('rentalModal') || document.getElementById('dragonSearchInput') || window.location.pathname.includes('katalog');
+    if (!isKatalog) return;
+
     const rentalModal = document.getElementById('rentalModal');
     const rentalForm = document.getElementById('rentalForm');
 
-    // Live search on dragon cards
     const searchInput = document.getElementById('dragonSearchInput') || document.getElementById('searchInput') || document.querySelector('input[placeholder*="Cari nama naga"], input[type="search"]');
     if (searchInput) {
       searchInput.addEventListener('input', function (e) {
@@ -1654,7 +1681,6 @@
       });
     }
 
-    // Sync dragon card status from dbState.units
     document.querySelectorAll('.dragon-card').forEach(card => {
       const code = card.getAttribute('data-code');
       const unit = (dbState.units || []).find(u => u.kode_unit === code);
@@ -1691,7 +1717,6 @@
               return;
             }
 
-            // Check if user already borrowed 2 units
             const myActiveLoans = (dbState.loans || []).filter(
               l => l.status === 'dipinjam' && (l.user_id === user.id || l.user_email === user.email)
             );
@@ -1716,7 +1741,6 @@
       }
     });
 
-    // Detail button
     document.querySelectorAll('.view-detail-btn').forEach(btn => {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1726,7 +1750,6 @@
       });
     });
 
-    // Duration selector in rentalModal
     let selectedDays = 3;
     document.querySelectorAll('#rentalModal button[data-days]').forEach(btn => {
       btn.onclick = function () {
@@ -1777,7 +1800,10 @@
   // 8. SCREEN: DETAIL NAGA (detail-naga.html)
   // =========================================================================
   function initDetailNagaScreen() {
+    // CRITICAL: Screen guard so detail logic does not overwrite other pages' <h1>
     const btnConfirm = document.getElementById('btn-confirm-rental');
+    if (!btnConfirm) return;
+
     const selectedCode = localStorage.getItem(SELECTED_UNIT_KEY) || 'NGA-101';
     const unit = (dbState.units || []).find(u => u.kode_unit === selectedCode) || (dbState.units || [])[0];
 
@@ -1799,38 +1825,36 @@
       });
     });
 
-    if (btnConfirm) {
-      btnConfirm.addEventListener('click', async function (e) {
-        e.preventDefault();
-        const user = getCurrentUser();
-        if (!user) {
-          showDracoToast('Login Diperlukan', 'Silakan login terlebih dahulu.', true);
-          navigateScreen('masuk');
-          return;
-        }
+    btnConfirm.addEventListener('click', async function (e) {
+      e.preventDefault();
+      const user = getCurrentUser();
+      if (!user) {
+        showDracoToast('Login Diperlukan', 'Silakan login terlebih dahulu.', true);
+        navigateScreen('masuk');
+        return;
+      }
 
-        btnConfirm.disabled = true;
-        btnConfirm.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Menyimpan ke Database...</span>`;
+      btnConfirm.disabled = true;
+      btnConfirm.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Menyimpan ke Database...</span>`;
 
-        const res = await apiCall('borrow_loan', {
-          user_id: user.id,
-          kode_unit: unit ? unit.kode_unit : 'NGA-101',
-          days: chosenDays
-        });
-
-        btnConfirm.disabled = false;
-        btnConfirm.innerHTML = `<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Konfirmasi Pinjaman</span>`;
-
-        if (!res || !res.ok) {
-          showDracoToast('Peminjaman Ditolak', (res && res.error) || 'Gagal memproses pinjaman.', true);
-          return;
-        }
-
-        showDracoToast('Kontrak Peminjaman Terbit!', res.message);
-        syncGlobalHeaderBadges();
-        setTimeout(() => navigateScreen('pinjaman-saya'), 600);
+      const res = await apiCall('borrow_loan', {
+        user_id: user.id,
+        kode_unit: unit ? unit.kode_unit : 'NGA-101',
+        days: chosenDays
       });
-    }
+
+      btnConfirm.disabled = false;
+      btnConfirm.innerHTML = `<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Konfirmasi Pinjaman</span>`;
+
+      if (!res || !res.ok) {
+        showDracoToast('Peminjaman Ditolak', (res && res.error) || 'Gagal memproses pinjaman.', true);
+        return;
+      }
+
+      showDracoToast('Kontrak Peminjaman Terbit!', res.message);
+      syncGlobalHeaderBadges();
+      setTimeout(() => navigateScreen('pinjaman-saya'), 600);
+    });
   }
 
   // =========================================================================
@@ -1839,11 +1863,13 @@
   // Requirement: Only Admin can return unit. Member must contact admin.
   // =========================================================================
   function initPinjamanSayaScreen() {
-    const pageTitle = document.querySelector('h1');
-    if (!pageTitle || !pageTitle.textContent.includes('Pinjaman Saya')) return;
+    const path = window.location.pathname.toLowerCase().replace(/\\/g, '/');
+    const isPinjamanSaya = path.includes('pinjaman-saya') ||
+                           document.getElementById('active-loans-list') ||
+                           (document.querySelector('h1')?.textContent.includes('Pinjaman Saya'));
+    if (!isPinjamanSaya) return;
 
-    const user = getCurrentUser();
-    if (!user) return;
+    const user = getCurrentUser() || (dbState.members || DEFAULT_STATE.members)[1];
 
     // Filter ONLY loans belonging to logged-in user
     const myActiveLoans = (dbState.loans || []).filter(
@@ -1857,8 +1883,8 @@
       }
     });
 
-    // Populate user active loans container
-    const container = document.querySelector('main section .grid, main section .space-y-6') || document.querySelector('article')?.parentElement;
+    // Populate user active loans container if empty
+    const container = document.getElementById('active-loans-list') || document.querySelector('main section .flex.flex-col.gap-space-xl');
     if (container && myActiveLoans.length === 0) {
       container.innerHTML = `
         <div class="p-8 rounded-xl bg-surface border border-border text-center space-y-3 col-span-full">
@@ -1879,72 +1905,216 @@
       return;
     }
 
-    // REQUIREMENT: Hanya Admin yang dapat melakukan pengembalian unit.
-    // Setiap anggota harus menghubungi admin jika ingin mengembalikan unit.
-    document.querySelectorAll('article button, button').forEach(btn => {
+    // 1. Wire Copy Transaction ID Buttons
+    document.querySelectorAll('[data-copy-trx], button[onclick*="navigator.clipboard"], button[title*="Salin"]').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const article = btn.closest('article');
+        const trxCode = btn.getAttribute('data-copy-trx') || article?.getAttribute('data-trx') || (article?.querySelector('.bg-surface-raised.px-2.py-1')?.textContent.trim()) || 'TRX-2026-0891';
+        try {
+          navigator.clipboard.writeText(trxCode);
+        } catch (err) {}
+        showDracoToast('ID Disalin', `Nomor warkat transaksi ${trxCode} berhasil disalin ke papan klip.`);
+      };
+    });
+
+    // 2. Wire 'Lihat Lembar Kontrak' buttons
+    document.querySelectorAll('[data-action="view-contract"], button').forEach(btn => {
+      const txt = (btn.textContent || '').trim();
+      if (txt.includes('Lihat Lembar Kontrak')) {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const article = btn.closest('article');
+          const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
+          const code = article?.getAttribute('data-unit-code');
+          const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
+                              (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
+          showDracoContractModal(matchedLoan);
+        };
+      }
+    });
+
+    // 3. Wire 'Jadwalkan Serah Terima' & 'Petunjuk Pos Pengembalian'
+    document.querySelectorAll('[data-action="contact-admin"], button').forEach(btn => {
       const txt = (btn.textContent || '').trim();
       if (txt.includes('Jadwalkan Serah Terima') || txt.includes('Petunjuk Pos Pengembalian') || txt.includes('Kembalikan')) {
         btn.onclick = (e) => {
           e.preventDefault();
-          showDracoContactAdminModal();
+          e.stopPropagation();
+          const article = btn.closest('article');
+          const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
+          const code = article?.getAttribute('data-unit-code');
+          const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
+                              (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
+          showDracoContactAdminModal(matchedLoan);
         };
       }
     });
+
+    // 4. Wire Navigation Tabs
+    document.querySelectorAll('a[data-path="riwayat-rental"]').forEach(link => {
+      link.onclick = (e) => {
+        e.preventDefault();
+        navigateScreen('riwayat-rental');
+      };
+    });
   }
 
-  // Modal Hubungi Admin untuk Pengembalian Unit
-  function showDracoContactAdminModal() {
+  // Modal Detail Lembar Kontrak (Warkat Resmi)
+  function showDracoContractModal(loan) {
+    if (!loan) {
+      loan = (dbState.loans || []).find(l => l.status === 'dipinjam') || {
+        trx_code: 'TRX-2026-0891',
+        nama_unit: 'Ignis Ashbringer',
+        kode_unit: 'NGA-101',
+        peminjam_nama: 'Lyra Valen',
+        peminjam_reg: 'G-4091',
+        tanggal_pinjam: '2026-10-24',
+        tanggal_tenggat: '2026-10-27',
+        denda: 0
+      };
+    }
+    let modal = document.getElementById('draco-contract-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'draco-contract-modal';
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md';
+      document.body.appendChild(modal);
+    }
+    modal.innerHTML = `
+      <div class="bg-surface border border-primary rounded-xl max-w-xl w-full p-6 shadow-2xl space-y-4 text-text-primary">
+        <div class="flex items-center justify-between border-b border-border pb-3">
+          <div class="flex items-center gap-2 text-primary font-section-title text-card-title">
+            <span class="material-symbols-outlined text-[26px]">receipt_long</span>
+            <span>Lembar Kontrak Warkat Serikat</span>
+          </div>
+          <button type="button" class="text-text-subtle hover:text-text-primary p-1" onclick="document.getElementById('draco-contract-modal').classList.add('hidden')">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div class="p-4 rounded-lg bg-surface-muted border border-border space-y-3 font-body-compact text-body-compact">
+          <div class="flex items-center justify-between border-b border-border/60 pb-2">
+            <span class="text-text-subtle text-[12px] uppercase tracking-wider font-code-metadata">Nomor Registrasi Kontrak</span>
+            <span class="font-code-metadata text-primary font-bold text-[14px] bg-surface-raised px-2.5 py-0.5 rounded border border-border">${loan.trx_code || 'TRX-2026-0891'}</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-[13px]">
+            <div>
+              <span class="text-text-subtle block text-[11px] uppercase">Penyewa Terdaftar:</span>
+              <span class="font-semibold text-text-primary">${loan.peminjam_nama || 'Lyra Valen'}</span>
+              <span class="font-code-metadata text-text-subtle block text-[11px]">ID: ${loan.peminjam_reg || 'G-4091'}</span>
+            </div>
+            <div>
+              <span class="text-text-subtle block text-[11px] uppercase">Spesimen Naga:</span>
+              <span class="font-semibold text-primary">${loan.nama_unit || 'Ignis Ashbringer'}</span>
+              <span class="font-code-metadata text-text-subtle block text-[11px]">Kode: ${loan.kode_unit || 'NGA-101'}</span>
+            </div>
+            <div>
+              <span class="text-text-subtle block text-[11px] uppercase">Mulai Masa Penugasan:</span>
+              <span class="text-text-primary font-medium">${formatDateIndo(loan.tanggal_pinjam)}</span>
+            </div>
+            <div>
+              <span class="text-text-subtle block text-[11px] uppercase">Tenggat Wajib Kembali:</span>
+              <span class="text-status-danger font-semibold">${formatDateIndo(loan.tanggal_tenggat)} (18:00 WIB)</span>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded bg-surface-container-high border border-border/80 text-[12px] text-text-muted space-y-1">
+            <div class="text-text-primary font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-primary">gavel</span>
+              Ketentuan Denda & Batas Waktu (BR-05 & BR-06):
+            </div>
+            <p>Maksimal peminjaman 5 hari. Keterlambatan pengembalian dikenakan denda resmi serikat sebesar <strong>Rp50.000 / hari</strong>.</p>
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-between gap-2">
+          <button type="button" class="px-4 py-2 rounded bg-surface-container hover:bg-surface-raised border border-border text-text-primary font-label-regular text-label-regular flex items-center gap-1.5 transition-colors" onclick="window.print()">
+            <span class="material-symbols-outlined text-[18px]">print</span>
+            <span>Cetak Kontrak</span>
+          </button>
+          <div class="flex items-center gap-2">
+            <button type="button" class="px-4 py-2 rounded bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover transition-colors font-label-regular text-label-regular shadow-sm" onclick="document.getElementById('draco-contract-modal').classList.add('hidden')">
+              Tutup Lembar Kontrak
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    modal.classList.remove('hidden');
+  }
+
+  // Modal Hubungi Admin untuk Pengembalian Unit (BR-06)
+  function showDracoContactAdminModal(loan) {
+    if (!loan) {
+      loan = (dbState.loans || []).find(l => l.status === 'dipinjam') || {
+        trx_code: 'TRX-2026-0894',
+        nama_unit: 'Aetherius Zenith',
+        kode_unit: 'NGA-103'
+      };
+    }
     let modal = document.getElementById('draco-contact-admin-modal');
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'draco-contact-admin-modal';
-      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm';
-      modal.innerHTML = `
-        <div class="bg-surface border border-primary rounded-xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-          <div class="flex items-center justify-between border-b border-border pb-3">
-            <div class="flex items-center gap-2 text-primary font-section-title text-card-title">
-              <span class="material-symbols-outlined text-[24px]">support_agent</span>
-              <span>Prosedur Pengembalian Naga</span>
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md';
+      document.body.appendChild(modal);
+    }
+    modal.innerHTML = `
+      <div class="bg-surface border border-primary rounded-xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+        <div class="flex items-center justify-between border-b border-border pb-3">
+          <div class="flex items-center gap-2 text-primary font-section-title text-card-title">
+            <span class="material-symbols-outlined text-[24px]">support_agent</span>
+            <span>Prosedur Pengembalian Naga</span>
+          </div>
+          <button type="button" class="text-text-subtle hover:text-text-primary p-1" onclick="document.getElementById('draco-contact-admin-modal').classList.add('hidden')">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="space-y-3 font-body-compact text-body-compact text-text-muted">
+          <div class="p-3.5 rounded-lg bg-surface-muted border border-border">
+            <p class="text-text-primary font-semibold mb-1 flex items-center gap-1.5 text-primary">
+              <span class="material-symbols-outlined text-[18px]">info</span>
+              Aturan Pengembalian Unit (BR-06):
+            </p>
+            <p class="text-[13px] leading-relaxed">
+              Hanya <strong>Kurator Admin</strong> yang berwenang melakukan inspeksi fisik pelana, sayap, dan memproses penutupan warkat pinjaman naga di sistem.
+            </p>
+          </div>
+          <div class="space-y-2">
+            <p class="text-text-primary font-medium">Langkah Pengembalian:</p>
+            <ol class="list-decimal list-inside space-y-1 text-[13px] text-text-muted">
+              <li>Bawa unit naga <strong>${loan.nama_unit || 'Aetherius Zenith'} (${loan.kode_unit || 'NGA-103'})</strong> ke <strong>Pos Kandang Utama Kaer Drakon</strong>.</li>
+              <li>Tunjukkan Nomor Transaksi <strong class="text-primary font-mono">${loan.trx_code || 'TRX-2026-0894'}</strong> kepada Kurator Admin.</li>
+              <li>Admin akan memverifikasi kondisi fisik naga dan menyelesaikan pengembalian di sistem.</li>
+            </ol>
+          </div>
+          <div class="p-3 rounded-lg bg-surface-container-high border border-border flex items-center justify-between">
+            <div>
+              <div class="font-semibold text-text-primary text-[13px]">Kontak Admin Kurator:</div>
+              <div class="font-code-metadata text-[12px] text-primary">admin@dracorent.com • +62 811-9041-0012</div>
             </div>
-            <button type="button" class="text-text-subtle hover:text-text-primary p-1" onclick="document.getElementById('draco-contact-admin-modal').classList.add('hidden')">
-              <span class="material-symbols-outlined">close</span>
+            <span class="px-2 py-1 rounded bg-status-available-bg text-status-available font-code-metadata text-[11px] font-bold">POS SIAGA</span>
+          </div>
+        </div>
+        <div class="pt-2 flex items-center justify-between gap-2">
+          <button type="button" class="px-3.5 py-2 rounded bg-surface-container hover:bg-surface-raised border border-border text-text-primary font-label-regular text-label-regular text-[13px] transition-colors" onclick="navigator.clipboard.writeText('${loan.trx_code || 'TRX-2026-0894'}'); showDracoToast('Nomor Disalin', 'Nomor ${loan.trx_code || 'TRX-2026-0894'} berhasil disalin ke clipboard.');">
+            Salin Nomor Warkat
+          </button>
+          <div class="flex items-center gap-2">
+            <button type="button" class="px-3.5 py-2 rounded bg-surface-raised hover:bg-surface-container text-text-muted hover:text-text-primary font-label-regular text-[13px] transition-colors" onclick="localStorage.setItem('dracorent_selected_loan_trx', '${loan.trx_code || 'TRX-2026-0894'}'); navigateScreen('pinjaman-aktif');">
+              Buka Pos Admin
             </button>
-          </div>
-          <div class="space-y-3 font-body-compact text-body-compact text-text-muted">
-            <div class="p-3.5 rounded-lg bg-surface-muted border border-border">
-              <p class="text-text-primary font-semibold mb-1 flex items-center gap-1.5 text-primary">
-                <span class="material-symbols-outlined text-[18px]">info</span>
-                Aturan Pengembalian Unit (BR-06):
-              </p>
-              <p class="text-[13px] leading-relaxed">
-                Hanya <strong>Kurator Admin</strong> yang berwenang melakukan inspeksi fisik pelana, sayap, dan memproses penutupan warkat pinjaman naga di sistem.
-              </p>
-            </div>
-            <div class="space-y-2">
-              <p class="text-text-primary font-medium">Langkah Pengembalian:</p>
-              <ol class="list-decimal list-inside space-y-1 text-[13px] text-text-muted">
-                <li>Bawa unit naga ke <strong>Pos Kandang Utama Kaer Drakon</strong>.</li>
-                <li>Tunjukkan Kode Warkat Peminjaman Anda kepada Kurator Admin yang bertugas.</li>
-                <li>Admin akan memverifikasi kondisi fisik naga dan mencatat pengembalian resmi.</li>
-              </ol>
-            </div>
-            <div class="p-3 rounded-lg bg-surface-container-high border border-border flex items-center justify-between">
-              <div>
-                <div class="font-semibold text-text-primary text-[13px]">Kontak Admin Kurator:</div>
-                <div class="font-code-metadata text-[12px] text-primary">admin@dracorent.com • +62 811-9041-0012</div>
-              </div>
-              <span class="px-2 py-1 rounded bg-status-available-bg text-status-available font-code-metadata text-[11px] font-bold">POS SIAGA</span>
-            </div>
-          </div>
-          <div class="pt-2 flex justify-end">
             <button type="button" class="px-4 py-2 rounded bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover transition-colors font-label-regular text-label-regular" onclick="document.getElementById('draco-contact-admin-modal').classList.add('hidden')">
               Mengerti & Tutup
             </button>
           </div>
         </div>
-      `;
-      document.body.appendChild(modal);
-    }
+      </div>
+    `;
     modal.classList.remove('hidden');
   }
 
@@ -1953,11 +2123,11 @@
   // Requirement: User only views their own loan history
   // =========================================================================
   function initRiwayatRentalUserScreen() {
-    const pageHeading = document.querySelector('h1');
-    if (!pageHeading || !pageHeading.textContent.toLowerCase().includes('riwayat')) return;
-    if (window.location.pathname.includes('riwayat-dan-laporan')) return; // that's admin
+    const isRiwayat = window.location.pathname.includes('riwayat-rental') ||
+                      (document.querySelector('h1')?.textContent.toLowerCase().includes('riwayat') && !window.location.pathname.includes('laporan'));
+    if (!isRiwayat) return;
 
-    const user = getCurrentUser();
+    const user = getCurrentUser() || (dbState.members || DEFAULT_STATE.members)[1];
     if (!user) return;
 
     const tbody = document.querySelector('table tbody');
@@ -1990,7 +2160,7 @@
           </td>
           <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_pinjam)}</td>
           <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_tenggat)}</td>
-          <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${loan.tanggal_kembali ? formatDateIndo(loan.tanggal_kembali) : '—'}</td>
+          <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${loan.tanggal_kembali ? formatDateIndo(loan.tanggal_kembali) : '— (Aktif)'}</td>
           <td class="py-3.5 px-space-md">
             ${isBorrowed
               ? `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-status-borrowed-bg text-status-borrowed text-helper-text font-semibold">Sedang Dipinjam</span>`
@@ -2010,8 +2180,11 @@
   // Requirement: Admin can view and print loan history
   // =========================================================================
   function initRiwayatLaporanAdminScreen() {
+    const isLaporan = window.location.pathname.includes('riwayat-dan-laporan');
+    if (!isLaporan) return;
+
     const tbody = document.querySelector('table tbody');
-    if (!tbody || !window.location.pathname.includes('riwayat-dan-laporan')) return;
+    if (!tbody) return;
 
     const loans = dbState.loans || [];
 
@@ -2092,7 +2265,7 @@
     const profileForm = document.getElementById('profile-form');
     if (!profileForm) return;
 
-    const user = getCurrentUser();
+    const user = getCurrentUser() || (dbState.members || DEFAULT_STATE.members)[1];
     if (!user) return;
 
     const namaInput = document.getElementById('nama_lengkap');
@@ -2152,7 +2325,6 @@
         return;
       }
 
-      // Update current user session
       user.nama_lengkap = nama;
       user.no_telp = telp;
       user.alamat = alamat;
@@ -2177,7 +2349,7 @@
   // BOOTSTRAP ON DOM READY
   // =========================================================================
   document.addEventListener('DOMContentLoaded', async function () {
-    // 1. Fetch fresh DB state
+    // 1. Fetch fresh DB state from api.php (MySQL PDO)
     const res = await apiCall('bootstrap');
     if (res && res.units) {
       saveLocalState(res);

@@ -36,7 +36,7 @@ $dbName = $envVars['DB_DATABASE'] ?? 'sistem_peminjaman_naga';
 
 try {
     $pdo = new PDO(
-        "mysql:host={$host};port={$port};dbname={$dbName};charset=utf8mb4",
+        "mysql:host={$host};port={$port};charset=utf8mb4",
         $user,
         $pass,
         [
@@ -44,6 +44,34 @@ try {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]
     );
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    $pdo->exec("USE `{$dbName}`");
+
+    // Auto-seed if tables are empty (e.g. when user ran `php artisan migrate` without `--seed`)
+    $needsSeed = false;
+    try {
+        $userCount = (int)$pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
+        $unitCount = (int)$pdo->query("SELECT COUNT(*) FROM units")->fetchColumn();
+        if ($userCount === 0 || $unitCount === 0) {
+            $needsSeed = true;
+        }
+    } catch (Throwable $tableCheckErr) {
+        $needsSeed = true;
+    }
+
+    if ($needsSeed) {
+        $sqlPath = __DIR__ . '/../database/schema.sql';
+        if (is_file($sqlPath)) {
+            $sql = preg_replace('/^\xEF\xBB\xBF/', '', file_get_contents($sqlPath));
+            $pdo->exec($sql);
+        }
+    } else {
+        // Heal old Stitch screenshot URL on NGA-103 and NGA-105 if present in existing database
+        $cleanNga103 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCy6iF5T8594MsOEhEOtakPSZuQQQhmlYD05U77NS6oE1qfpJUcP_tev8KGMy0hWNGn-ef2__Pu-HqMVSk6rVxTv2z3Q8MZKcKp-IdzkxY8Atb6HiHafdSi3Ffp4T1fBAeg5yunxKhyoVnP9JNU-7_tpe7WGe-Logx_NRNfaTKF4PHFYDHYkog8aCHygt8YK3oZaQdh0z-nfGKDGB3M884VVZcRQm9gJLL35NyIXSPKspCO4cB53g2m';
+        $cleanNga105 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCCfXvUmdNJJSdrQdK5lEHbY8JKaA4xDdepnV7slthXOYZt_frgVBnljwWeRXeyR0EAL0UDqIt9Yb_u40cG2yVldW43Gtj-mLkfueGJ5OewPtEL5C4XAR-XMgTGvX6MgvJOBx5oKP9ZKKMGJdd3UHPLcJOFqa4ORACVZOCl6bxfz8hQdehLVmQS3xWMmtRNuFJxxExXqWkFrbEdO09ZBCyvRZFHS164MmB7gneEdEWX-h-3NRJZ8l1';
+        $pdo->prepare("UPDATE units SET gambar = ? WHERE kode_unit = 'NGA-103' AND gambar LIKE '%AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc%'")->execute([$cleanNga103]);
+        $pdo->prepare("UPDATE units SET gambar = ? WHERE kode_unit = 'NGA-105' AND gambar LIKE '%AB6AXuD-4wLy8wJT7HC0XtzKCoGqmvc%'")->execute([$cleanNga105]);
+    }
 } catch (Throwable $e) {
     http_response_code(500);
     echo json_encode([
