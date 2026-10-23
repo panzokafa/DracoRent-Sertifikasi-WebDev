@@ -22,7 +22,7 @@ if (is_file($envFile)) {
         if (strpos(trim($line), '#') === 0) continue;
         if (strpos($line, '=') !== false) {
             [$key, $val] = array_map('trim', explode('=', $line, 2));
-            $val = trim($val, '"\'');
+            $val = trim($val, "\"'");
             $envVars[$key] = $val;
         }
     }
@@ -75,9 +75,17 @@ function getFullState(PDO $pdo): array
         ORDER BY c.id ASC
     ")->fetchAll();
 
-    // 2. Units with their categories
+    // 2. Units with their categories & loan counts
     $units = $pdo->query("
-        SELECT u.id, u.kode_unit, u.nama_unit, u.gambar, u.status, u.created_at, u.updated_at
+        SELECT
+            u.id,
+            u.kode_unit,
+            u.nama_unit,
+            u.gambar,
+            u.status,
+            u.created_at,
+            u.updated_at,
+            (SELECT COUNT(*) FROM loans l WHERE l.unit_id = u.id) AS total_loans_count
         FROM units u
         ORDER BY u.kode_unit ASC
     ")->fetchAll();
@@ -104,6 +112,7 @@ function getFullState(PDO $pdo): array
     foreach ($units as &$u) {
         $uid = (int)$u['id'];
         $u['id'] = $uid;
+        $u['total_loans_count'] = (int)($u['total_loans_count'] ?? 0);
         $u['categories'] = $unitCatMap[$uid] ?? [];
         $u['category_names'] = array_map(fn($c) => $c['nama_kategori'], $u['categories']);
     }
@@ -526,9 +535,15 @@ try {
                 throw new RuntimeException("BR-08 (Proteksi Relasi): Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang berstatus DIPINJAM. Selesaikan pengembalian terlebih dahulu sebelum menghapus unit.");
             }
 
+            // BR-08: Protect loan history (ON DELETE RESTRICT)
+            $stmtUnitLoans = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE unit_id = ?");
+            $stmtUnitLoans->execute([$unitRow['id']]);
+            $unitLoansCount = (int)$stmtUnitLoans->fetchColumn();
+            if ($unitLoansCount > 0) {
+                throw new RuntimeException("BR-08 (Proteksi Riwayat Pinjaman): Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) memiliki {$unitLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.");
+            }
+
             $pdo->beginTransaction();
-            // Remove completed loan history for this unit if user explicitly deletes idle unit, or delete unit directly
-            $pdo->prepare("DELETE FROM loans WHERE unit_id = ? AND status = 'dikembalikan'")->execute([$unitRow['id']]);
             $pdo->prepare("DELETE FROM category_unit WHERE unit_id = ?")->execute([$unitRow['id']]);
             $pdo->prepare("DELETE FROM units WHERE id = ?")->execute([$unitRow['id']]);
             $pdo->commit();
@@ -701,11 +716,18 @@ try {
             $stmtLoans->execute([$uRow['id']]);
             $activeLoansCount = (int)$stmtLoans->fetchColumn();
             if ($activeLoansCount > 0) {
-                throw new RuntimeException("BR-08: Anggota {$uRow['nama_lengkap']} masih memiliki {$activeLoansCount} pinjaman naga aktif. Selesaikan pengembalian terlebih dahulu.");
+                throw new RuntimeException("BR-08 (Proteksi Relasi): Anggota {$uRow['nama_lengkap']} masih memiliki {$activeLoansCount} pinjaman naga aktif. Selesaikan pengembalian terlebih dahulu.");
+            }
+
+            // BR-08: Protect loan history (ON DELETE RESTRICT)
+            $stmtTotalLoans = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE user_id = ?");
+            $stmtTotalLoans->execute([$uRow['id']]);
+            $totalLoansCount = (int)$stmtTotalLoans->fetchColumn();
+            if ($totalLoansCount > 0) {
+                throw new RuntimeException("BR-08 (Proteksi Riwayat Pinjaman): Anggota {$uRow['nama_lengkap']} memiliki {$totalLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.");
             }
 
             $pdo->beginTransaction();
-            $pdo->prepare("DELETE FROM loans WHERE user_id = ?")->execute([$uRow['id']]);
             $pdo->prepare("DELETE FROM profiles WHERE user_id = ?")->execute([$uRow['id']]);
             $pdo->prepare("DELETE FROM users WHERE id = ?")->execute([$uRow['id']]);
             $pdo->commit();

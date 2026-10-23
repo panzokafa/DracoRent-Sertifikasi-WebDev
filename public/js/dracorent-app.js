@@ -433,7 +433,11 @@
       const idx = s.units.findIndex(u => u.kode_unit === payload.kode_unit || u.id === Number(payload.id));
       if (idx === -1) return { ok: false, error: 'Unit tidak ditemukan.' };
       if (s.units[idx].status === 'dipinjam') {
-        return { ok: false, error: `Unit ${s.units[idx].nama_unit} sedang DIPINJAM dan tidak dapat dihapus sebelum dikembalikan!` };
+        return { ok: false, error: `BR-08 (Proteksi Relasi): Unit ${s.units[idx].nama_unit} (${s.units[idx].kode_unit}) sedang berstatus DIPINJAM. Selesaikan pengembalian terlebih dahulu sebelum menghapus unit.` };
+      }
+      const unitLoansCount = Number(s.units[idx].total_loans_count || 0) || (s.loans || []).filter(l => l.unit_id === s.units[idx].id || l.kode_unit === s.units[idx].kode_unit).length;
+      if (unitLoansCount > 0) {
+        return { ok: false, error: `BR-08 (Proteksi Riwayat Pinjaman): Unit ${s.units[idx].nama_unit} (${s.units[idx].kode_unit}) memiliki ${unitLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.` };
       }
       const removed = s.units.splice(idx, 1)[0];
       saveLocalState(s);
@@ -512,7 +516,11 @@
       const idx = s.members.findIndex(m => m.id === Number(payload.id) || m.email === payload.email);
       if (idx === -1) return { ok: false, error: 'Anggota tidak ditemukan.' };
       if (Number(s.members[idx].active_loans_count) > 0) {
-        return { ok: false, error: `Anggota ${s.members[idx].nama_lengkap} masih memiliki pinjaman aktif!` };
+        return { ok: false, error: `BR-08 (Proteksi Relasi): Anggota ${s.members[idx].nama_lengkap} masih memiliki ${s.members[idx].active_loans_count} pinjaman naga aktif. Selesaikan pengembalian terlebih dahulu.` };
+      }
+      const memberLoansCount = Number(s.members[idx].total_loans_count || 0) || (s.loans || []).filter(l => l.user_id === s.members[idx].id || l.user_email === s.members[idx].email).length;
+      if (memberLoansCount > 0) {
+        return { ok: false, error: `BR-08 (Proteksi Riwayat Pinjaman): Anggota ${s.members[idx].nama_lengkap} memiliki ${memberLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.` };
       }
       const rem = s.members.splice(idx, 1)[0];
       saveLocalState(s);
