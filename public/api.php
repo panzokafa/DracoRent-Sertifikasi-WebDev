@@ -14,11 +14,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$host = '127.0.0.1';
-$port = 3306;
-$user = 'root';
-$pass = '';
-$dbName = 'sistem_peminjaman_naga';
+// Load .env configuration
+$envFile = __DIR__ . '/../.env';
+$envVars = [];
+if (is_file($envFile)) {
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') !== false) {
+            [$key, $val] = array_map('trim', explode('=', $line, 2));
+            $val = trim($val, "\"'");
+            $envVars[$key] = $val;
+        }
+    }
+}
+
+$host = $envVars['DB_HOST'] ?? '127.0.0.1';
+$port = (int)($envVars['DB_PORT'] ?? 3306);
+$user = $envVars['DB_USERNAME'] ?? 'root';
+$pass = $envVars['DB_PASSWORD'] ?? '';
+$dbName = $envVars['DB_DATABASE'] ?? 'sistem_peminjaman_naga';
 
 try {
     $pdo = new PDO(
@@ -61,9 +75,17 @@ function getFullState(PDO $pdo): array
         ORDER BY c.id ASC
     ")->fetchAll();
 
-    // 2. Units with their categories
+    // 2. Units with their categories & loan counts
     $units = $pdo->query("
-        SELECT u.id, u.kode_unit, u.nama_unit, u.gambar, u.status, u.created_at, u.updated_at
+        SELECT
+            u.id,
+            u.kode_unit,
+            u.nama_unit,
+            u.gambar,
+            u.status,
+            u.created_at,
+            u.updated_at,
+            (SELECT COUNT(*) FROM loans l WHERE l.unit_id = u.id) AS total_loans_count
         FROM units u
         ORDER BY u.kode_unit ASC
     ")->fetchAll();
@@ -90,6 +112,7 @@ function getFullState(PDO $pdo): array
     foreach ($units as &$u) {
         $uid = (int)$u['id'];
         $u['id'] = $uid;
+        $u['total_loans_count'] = (int)($u['total_loans_count'] ?? 0);
         $u['categories'] = $unitCatMap[$uid] ?? [];
         $u['category_names'] = array_map(fn($c) => $c['nama_kategori'], $u['categories']);
     }
@@ -240,16 +263,27 @@ try {
             break;
 
         case 'borrow_loan':
-            $userId = (int)($input['user_id'] ?? 2);
+            $userId = (int)($input['user_id'] ?? 0);
+            if ($userId <= 0) {
+                throw new RuntimeException("User ID wajib disertakan dan harus terdaftar sebagai anggota.");
+            }
             $kodeUnit = trim((string)($input['kode_unit'] ?? ''));
             $unitId = (int)($input['unit_id'] ?? 0);
             $days = max(1, min(5, (int)($input['days'] ?? 3)));
-            $tanggalPinjam = trim((string)($input['tanggal_pinjam'] ?? '2026-10-22'));
+            $tanggalPinjam = trim((string)($input['tanggal_pinjam'] ?? date('Y-m-d')));
             if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $tanggalPinjam)) {
-                $tanggalPinjam = '2026-10-22';
+                $tanggalPinjam = date('Y-m-d');
             }
 
             $pdo->beginTransaction();
+
+            // Verify user exists as registered member
+            $stmtUserCheck = $pdo->prepare("SELECT id, email FROM users WHERE id = ?");
+            $stmtUserCheck->execute([$userId]);
+            if (!$stmtUserCheck->fetch()) {
+                $pdo->rollBack();
+                throw new RuntimeException("Pengguna tidak terdaftar sebagai anggota serikat.");
+            }
 
             // Find unit
             if ($unitId > 0) {
@@ -266,16 +300,16 @@ try {
             }
             if ($unitRow['status'] !== 'tersedia') {
                 $pdo->rollBack();
-                throw new RuntimeException("BR-04: Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang dipinjam dan tidak dapat disewa.");
+                throw new RuntimeException("Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang dipinjam dan tidak dapat disewa.");
             }
 
-            // Check user active loans count (BR-05: max 2 active loans)
+            // Check user active loans count (BR-05: max 2 active loans per member)
             $stmtCount = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE user_id = ? AND status = 'dipinjam'");
             $stmtCount->execute([$userId]);
             $activeCount = (int)$stmtCount->fetchColumn();
             if ($activeCount >= 2) {
                 $pdo->rollBack();
-                throw new RuntimeException("BR-05: Kuota peminjaman Anda penuh (2/2 aktif). Kembalikan salah satu naga terlebih dahulu sebelum meminjam unit baru.");
+                throw new RuntimeException("Kuota peminjaman penuh (2/2 aktif). Setiap anggota hanya dapat meminjam maksimal 2 unit naga.");
             }
 
             $dtPinjam = new DateTime($tanggalPinjam);
@@ -307,10 +341,10 @@ try {
             $loanId = (int)($input['loan_id'] ?? 0);
             $trxCode = trim((string)($input['trx_code'] ?? ''));
             $kodeUnit = trim((string)($input['kode_unit'] ?? ''));
-            $tanggalKembali = trim((string)($input['tanggal_kembali'] ?? '2026-10-22'));
+            $tanggalKembali = trim((string)($input['tanggal_kembali'] ?? date('Y-m-d')));
 
             if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $tanggalKembali)) {
-                $tanggalKembali = '2026-10-22';
+                $tanggalKembali = date('Y-m-d');
             }
 
             $pdo->beginTransaction();
@@ -501,9 +535,15 @@ try {
                 throw new RuntimeException("BR-08 (Proteksi Relasi): Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) sedang berstatus DIPINJAM. Selesaikan pengembalian terlebih dahulu sebelum menghapus unit.");
             }
 
+            // BR-08: Protect loan history (ON DELETE RESTRICT)
+            $stmtUnitLoans = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE unit_id = ?");
+            $stmtUnitLoans->execute([$unitRow['id']]);
+            $unitLoansCount = (int)$stmtUnitLoans->fetchColumn();
+            if ($unitLoansCount > 0) {
+                throw new RuntimeException("BR-08 (Proteksi Riwayat Pinjaman): Unit {$unitRow['nama_unit']} ({$unitRow['kode_unit']}) memiliki {$unitLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.");
+            }
+
             $pdo->beginTransaction();
-            // Remove completed loan history for this unit if user explicitly deletes idle unit, or delete unit directly
-            $pdo->prepare("DELETE FROM loans WHERE unit_id = ? AND status = 'dikembalikan'")->execute([$unitRow['id']]);
             $pdo->prepare("DELETE FROM category_unit WHERE unit_id = ?")->execute([$unitRow['id']]);
             $pdo->prepare("DELETE FROM units WHERE id = ?")->execute([$unitRow['id']]);
             $pdo->commit();
@@ -521,6 +561,9 @@ try {
             $namaKategori = trim((string)($input['nama_kategori'] ?? ''));
             if (!$namaKategori) {
                 throw new RuntimeException('Nama kategori wajib diisi.');
+            }
+            if (mb_strlen($namaKategori) < 3) {
+                throw new RuntimeException('Nama kategori minimal 3 karakter.');
             }
 
             if ($id > 0) {
@@ -591,8 +634,17 @@ try {
             $noTelp = trim((string)($input['no_telp'] ?? ''));
             $alamat = trim((string)($input['alamat'] ?? ''));
 
-            if (!$email || !$namaLengkap) {
-                throw new RuntimeException('Email dan Nama Lengkap wajib diisi.');
+            if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new RuntimeException('Email valid wajib diisi.');
+            }
+            if (!$namaLengkap) {
+                throw new RuntimeException('Nama Lengkap anggota wajib diisi.');
+            }
+            if (!$noTelp) {
+                throw new RuntimeException('Nomor Telepon anggota wajib diisi.');
+            }
+            if (!$alamat) {
+                throw new RuntimeException('Alamat tempat tinggal anggota wajib diisi.');
             }
 
             $pdo->beginTransaction();
@@ -664,11 +716,18 @@ try {
             $stmtLoans->execute([$uRow['id']]);
             $activeLoansCount = (int)$stmtLoans->fetchColumn();
             if ($activeLoansCount > 0) {
-                throw new RuntimeException("BR-08: Anggota {$uRow['nama_lengkap']} masih memiliki {$activeLoansCount} pinjaman naga aktif. Selesaikan pengembalian terlebih dahulu.");
+                throw new RuntimeException("BR-08 (Proteksi Relasi): Anggota {$uRow['nama_lengkap']} masih memiliki {$activeLoansCount} pinjaman naga aktif. Selesaikan pengembalian terlebih dahulu.");
+            }
+
+            // BR-08: Protect loan history (ON DELETE RESTRICT)
+            $stmtTotalLoans = $pdo->prepare("SELECT COUNT(*) FROM loans WHERE user_id = ?");
+            $stmtTotalLoans->execute([$uRow['id']]);
+            $totalLoansCount = (int)$stmtTotalLoans->fetchColumn();
+            if ($totalLoansCount > 0) {
+                throw new RuntimeException("BR-08 (Proteksi Riwayat Pinjaman): Anggota {$uRow['nama_lengkap']} memiliki {$totalLoansCount} catatan di riwayat peminjaman dan tidak dapat dihapus agar histori laporan tetap terjaga.");
             }
 
             $pdo->beginTransaction();
-            $pdo->prepare("DELETE FROM loans WHERE user_id = ?")->execute([$uRow['id']]);
             $pdo->prepare("DELETE FROM profiles WHERE user_id = ?")->execute([$uRow['id']]);
             $pdo->prepare("DELETE FROM users WHERE id = ?")->execute([$uRow['id']]);
             $pdo->commit();
