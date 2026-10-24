@@ -128,7 +128,7 @@ INSERT INTO `categories` (`id`, `nama_kategori`, `created_at`, `updated_at`) VAL
 INSERT INTO `units` (`id`, `kode_unit`, `nama_unit`, `gambar`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'NGA-101', 'Ignis Ashbringer', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCggr2psag6dAxaGbwXTGvrINqx3QXfiyJdLkFopL0EbsauyBRKq-elqsUojQKaHg9qzNR8CmYOCS7t2wxx55qufczvfub52P728CLzNCSl0cCJbFJFVAx3sWHkoNpD59C9t4w05Lzt2sxH8cV1t_9PQflYUiNrd1Zq-n17ZImrS4P-Z8XSlG-KjFyycaxId_yPYhMyHu8EbTFM40257jnosUyPK0rk5Q3Ujquk5kParp4sldZgXHxm', 'tersedia', NOW(), NOW()),
 (2, 'NGA-102', 'Vermithrax Obsidian', 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6e2SjC9tB9BZUgrGVSmarlnfvZWCk0yn4rFQmiPJRHg69DJFr6x30KWZhqhnH8aCTWzosXjBVlFu3lhF9uHtwzrUx30oNbgRI5xV0CnIL6G58BmxTEIsaaEuRYMoj8sEB0qMEjNf-qDoT1TZIiAGiavswfCl6MjxI_9P90m8PKQAGqwwmYwu0RPSh141JF9KnAOIUCuv0z0xrCIWvlMzc7IvATfkK-ykEM1uPl107Eg9HB1rP6HB8', 'dipinjam', NOW(), NOW()),
-(3, 'NGA-103', 'Aetherius Zenith', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCy6iF5T8594MsOEhEOtakPSZuQQQhmlYD05U77NS6oE1qfpJUcP_tev8KGMy0hWNGn-ef2__Pu-HqMVSk6rVxTv2z3Q8MZKcKp-IdzkxY8Atb6HiHafdSi3Ffp4T1fBAeg5yunxKhyoVnP9JNU-7_tpe7WGe-Logx_NRNfaTKF4PHFYDHYkog8aCHygt8YK3oZaQdh0z-nfGKDGB3M884VVZcRQm9gJLL35NyIXSPKspCO4cB53g2m', 'dipinjam', NOW(), NOW()),
+(3, 'NGA-103', 'Aetherius Zenith', 'https://lh3.googleusercontent.com/aida-public/AB6AXuCy6iF5T8594MsOEhEOtakPSZuQQQhmlYD05U77NS6oE1qfpJUcP_tev8KGMy0hWNGn-ef2__Pu-HqMVSk6rVxTv2z3Q8MZKcKp-IdzkxY8Atb6HiHafdSi3Ffp4T1fBAeg5yunxKhyoVnP9JNU-7_tpe7WGe-Logx_NRNfaTKF4PHFYDHYkog8aCHygt8YK3oZaQdh0z-nfGKDGB3M884VVZcRQm9gJLL35NyIXSPKspCO4cB53g2m', 'tersedia', NOW(), NOW()),
 (4, 'NGA-104', 'Boreas Glacie', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDpAbGTFQTRefSL0Wl-3RlmzNbQbuYGlsAzQxjnJLUVIWpIbetTzJT1S1kYyZMnyVBjG_QLrqeAZHTEIdFlIyYUDYQGPai8uQ-6PL06Gb0QMn3UMxr2Ejnb8LpgKIFYs8G3UZpFpJRAVl1VZ9IIaalOmouxbB5UQ0HCoK6rVeTLUwliif950m7ix48WY3dwenaXcLAcKq0F7cF7lBTTG-O-Wk6rLhgYREtQ4ImbuL_sW0ih7OIuIpFX', 'tersedia', NOW(), NOW()),
 (5, 'NGA-105', 'Zephyr Galecrest', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCCfXvUmdNJJSdrQdK5lEHbY8JKaA4xDdepnV7slthXOYZt_frgVBnljwWeRXeyR0EAL0UDqIt9Yb_u40cG2yVldW43Gtj-mLkfueGJ5OewPtEL5C4XAR-XMgTGvX6MgvJOBx5oKP9ZKKMGJdd3UHPLcJOFqa4ORACVZOCl6bxfz8hQdehLVmQS3xWMmtRNuFJxxExXqWkFrbEdO09ZBCyvRZFHS164MmB7gneEdEWX-h-3NRJZ8l1', 'tersedia', NOW(), NOW()),
 (6, 'NGA-106', 'Pyrothrax the Bold', 'https://lh3.googleusercontent.com/aida-public/AB6AXuAace1CfliGw20QpY8A6evAIKORjH-umCaw5-mCMMblE9eCeDktlxBmCcffJ2rHVHLjcNzG40dt_-BfCNijuXbhULgKYJ8GY2ChC_QBLlqu188CVL5VL0eAO7qTHGQWT5yFKfQzw0AzOQPw17pBkxEt0BF9RJtCltIG4dMDeprs_CykmXWyiTiesFcPBlHd_c8W4qaTw6lZOa8fxm1fzfAEz7PMJeheTOEknEaNfwU0tZVrOd0bQTjO', 'dipinjam', NOW(), NOW());
@@ -142,7 +142,7 @@ INSERT INTO `category_unit` (`unit_id`, `category_id`) VALUES
 (6, 1), (6, 7);
 
 INSERT INTO `loans` (`id`, `user_id`, `unit_id`, `tanggal_pinjam`, `tanggal_tenggat`, `tanggal_kembali`, `denda`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, '2026-10-20', '2026-10-24', NULL, 0.00, 'dipinjam', NOW(), NOW()),
+(1, 2, 3, '2026-10-20', '2026-10-24', '2026-10-23', 0.00, 'dikembalikan', NOW(), NOW()),
 (2, 3, 2, '2026-10-18', '2026-10-21', NULL, 50000.00, 'dipinjam', NOW(), NOW()),
 (3, 4, 6, '2026-10-19', '2026-10-22', NULL, 0.00, 'dipinjam', NOW(), NOW()),
 (4, 2, 1, '2026-10-12', '2026-10-15', '2026-10-15', 0.00, 'dikembalikan', NOW(), NOW()),

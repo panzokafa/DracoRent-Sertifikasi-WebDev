@@ -24,7 +24,7 @@
   if (window.__DRACORENT_ENGINE_LOADED__) return;
   window.__DRACORENT_ENGINE_LOADED__ = true;
 
-  const STORAGE_KEY = 'dracorent_db_state_v2';
+  const STORAGE_KEY = 'dracorent_db_state_v3';
   const SESSION_KEY = 'dracorent_current_user_v2';
   const SELECTED_UNIT_KEY = 'dracorent_selected_unit_code';
   const SELECTED_LOAN_KEY = 'dracorent_selected_loan_trx';
@@ -64,7 +64,7 @@
         kode_unit: 'NGA-103',
         nama_unit: 'Aetherius Zenith',
         gambar: CLEAN_IMG_NGA103,
-        status: 'dipinjam',
+        status: 'tersedia',
         category_names: ['Wyvern Badai', 'Patroli Udara']
       },
       {
@@ -94,7 +94,7 @@
     ],
     members: [
       { id: 1, email: 'admin@dracorent.com', role: 'admin', nama_lengkap: 'Kaelen Varr', no_telp: '+62 811-9041-0012', alamat: 'Menara Pengawas Timur No. 01, Wilayah Dalam Benteng Kaer Drakon', reg_code: 'ADM-001', active_loans_count: 0 },
-      { id: 2, email: 'user@dracorent.com', role: 'user', nama_lengkap: 'Lyra Valen', no_telp: '+62 812-4091-8821', alamat: 'Kompleks Pemukiman Pengawas Naga, Blok Karang Barat No. 14, Distrik Menara Api', reg_code: 'G-4091', active_loans_count: 1 },
+      { id: 2, email: 'user@dracorent.com', role: 'user', nama_lengkap: 'Lyra Valen', no_telp: '+62 812-4091-8821', alamat: 'Kompleks Pemukiman Pengawas Naga, Blok Karang Barat No. 14, Distrik Menara Api', reg_code: 'G-4091', active_loans_count: 0 },
       { id: 3, email: 'roderic.vance@dracorent.com', role: 'user', nama_lengkap: 'Roderic Vance', no_telp: '+62 813-8821-0094', alamat: 'Garnisun Ksatria Perbatasan Utara, Blok C-08', reg_code: 'G-4092', active_loans_count: 1 },
       { id: 4, email: 'samantha.drakos@dracorent.com', role: 'user', nama_lengkap: 'Samantha Drakos', no_telp: '+62 815-7732-1190', alamat: 'Distrik Akademi Drakonik, Menara Observasi Angin Lt. 3', reg_code: 'G-4093', active_loans_count: 1 },
       { id: 5, email: 'brandon.sunder@dracorent.com', role: 'user', nama_lengkap: 'Brandon Sunder', no_telp: '+62 817-5501-3342', alamat: 'Pos Ekspedisi Lembah Belerang, Sektor B-12', reg_code: 'G-4094', active_loans_count: 0 }
@@ -115,9 +115,9 @@
         unit_categories: ['Wyvern Badai', 'Patroli Udara'],
         tanggal_pinjam: '2026-10-20',
         tanggal_tenggat: '2026-10-24',
-        tanggal_kembali: null,
+        tanggal_kembali: '2026-10-23',
         denda: 0,
-        status: 'dipinjam'
+        status: 'dikembalikan'
       },
       {
         id: 2,
@@ -295,10 +295,7 @@
   window.logoutDraco = logout;
 
   function getApiUrl() {
-    const p = window.location.pathname.replace(/\\/g, '/');
-    if (p.includes('/screens/')) return '../api.php';
-    if (p.includes('/admin/')) return '../api.php';
-    return 'api.php';
+    return '/api.php';
   }
 
   async function apiCall(action, payload = {}) {
@@ -1686,27 +1683,70 @@
       const unit = (dbState.units || []).find(u => u.kode_unit === code);
       if (!unit) return;
 
+      // 1. Sync data-status attribute for filter tabs
       card.setAttribute('data-status', unit.status);
-      const rentBtn = card.querySelector('.rent-action-btn') || card.querySelector('button[disabled]');
-      const badgeSpans = card.querySelectorAll('span');
-      badgeSpans.forEach(sp => {
-        const t = sp.textContent.trim().toUpperCase();
-        if (t === 'TERSEDIA' || t === 'DIPINJAM') {
-          if (unit.status === 'tersedia') {
-            sp.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-available-bg/95 text-status-available font-code-metadata text-code-metadata uppercase tracking-wider shadow-sm';
-            sp.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-status-available"></span> Tersedia`;
-          } else {
-            sp.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg/95 text-status-borrowed font-code-metadata text-code-metadata uppercase tracking-wider shadow-sm';
-            sp.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-status-borrowed"></span> Dipinjam`;
-          }
-        }
-      });
 
+      // 2. Cleanly replace the single top-right status chip container (eliminates double/nested badges)
+      const statusChip = card.querySelector('.absolute.top-3.right-3');
+      if (statusChip) {
+        if (unit.status === 'tersedia') {
+          statusChip.className = 'absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-available-bg text-status-available border border-status-available/30 font-code-metadata text-code-metadata shadow-sm';
+          statusChip.innerHTML = `<span class="w-2 h-2 rounded-full bg-status-available animate-pulse"></span><span class="tracking-wide uppercase font-semibold">Tersedia</span>`;
+        } else {
+          statusChip.className = 'absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-status-borrowed-bg text-status-borrowed border border-[#57442B] font-code-metadata text-code-metadata shadow-sm';
+          statusChip.innerHTML = `<span class="w-2 h-2 rounded-full bg-status-borrowed"></span><span class="tracking-wide uppercase font-semibold">Dipinjam</span>`;
+        }
+      }
+
+      // 3. Card visual opacity & image cleanup
+      const cardImg = card.querySelector('img');
+      if (cardImg && unit.gambar) {
+        cardImg.src = unit.gambar;
+      }
+      if (unit.status === 'tersedia') {
+        card.classList.remove('opacity-90');
+        if (cardImg) cardImg.classList.remove('grayscale-[20%]', 'filter');
+      } else {
+        card.classList.add('opacity-90');
+        if (cardImg) cardImg.classList.add('grayscale-[20%]', 'filter');
+      }
+
+      // 4. Toggle "Tenggat Pengembalian" block cleanly (target only the inner info box, never the entire card body)
+      const deadlineSpan = Array.from(card.querySelectorAll('span')).find(s => (s.textContent || '').includes('Tenggat Pengembalian'));
+      let deadlineBlock = deadlineSpan ? (deadlineSpan.closest('.bg-surface-container') || deadlineSpan.parentElement) : null;
+      if (unit.status === 'tersedia') {
+        if (deadlineBlock) {
+          deadlineBlock.classList.add('hidden');
+          deadlineBlock.classList.remove('flex');
+          deadlineBlock.style.display = 'none';
+        }
+      } else {
+        const activeLoan = (dbState.loans || []).find(l => (l.kode_unit === code || l.unit_id === unit.id) && l.status === 'dipinjam');
+        const returnDateText = (activeLoan && activeLoan.tanggal_tenggat) ? formatDateIndo(activeLoan.tanggal_tenggat) : 'Segera';
+        if (!deadlineBlock) {
+          const contentTop = card.querySelector('.p-space-md > div:first-child');
+          if (contentTop) {
+            deadlineBlock = document.createElement('div');
+            deadlineBlock.className = 'mt-3 py-1.5 px-2.5 rounded bg-surface-container border border-border flex items-center gap-2';
+            deadlineBlock.innerHTML = `<span class="material-symbols-outlined text-status-borrowed text-[16px]">schedule</span><span class="font-code-metadata text-code-metadata text-text-subtle">Tenggat Pengembalian: <span class="text-status-borrowed font-medium">${returnDateText}</span></span>`;
+            contentTop.appendChild(deadlineBlock);
+          }
+        } else {
+          deadlineBlock.classList.remove('hidden');
+          deadlineBlock.classList.add('flex');
+          deadlineBlock.style.display = '';
+          const dateSpan = deadlineBlock.querySelector('.text-status-borrowed.font-medium, span:last-child');
+          if (dateSpan) dateSpan.textContent = returnDateText;
+        }
+      }
+
+      // 5. Update rent button
+      const rentBtn = card.querySelector('.rent-action-btn') || card.querySelector('button[disabled]') || card.querySelector('.pt-space-sm button:last-child');
       if (rentBtn) {
         if (unit.status === 'tersedia') {
           rentBtn.disabled = false;
           rentBtn.className = 'rent-action-btn flex-1 py-2 px-3 rounded bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover transition-colors font-label-regular text-label-regular flex items-center justify-center gap-1.5 shadow-sm';
-          rentBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">how_to_reg</span><span>Pinjam Naga</span>`;
+          rentBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">key</span><span>Pinjam Naga</span>`;
           rentBtn.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -1871,38 +1911,213 @@
 
     const user = getCurrentUser() || (dbState.members || DEFAULT_STATE.members)[1];
 
-    // Filter ONLY loans belonging to logged-in user
+    // Filter ONLY loans belonging to logged-in user with status 'dipinjam'
     const myActiveLoans = (dbState.loans || []).filter(
-      l => l.status === 'dipinjam' && (l.user_id === user.id || l.user_email === user.email)
+      l => l.status === 'dipinjam' && (Number(l.user_id) === Number(user.id) || (l.user_email && l.user_email.toLowerCase() === user.email.toLowerCase()))
     );
 
-    // Update quota indicator
+    // Update quota indicator in header banner
     document.querySelectorAll('span').forEach(sp => {
       if (sp.textContent.includes('DARI 2 AKTIF')) {
+        sp.className = `font-code-metadata text-code-metadata ${myActiveLoans.length >= 2 ? 'text-status-danger bg-status-danger-bg' : 'text-status-borrowed bg-status-borrowed-bg'} px-2 py-0.5 rounded`;
         sp.textContent = `${myActiveLoans.length} DARI 2 AKTIF ${myActiveLoans.length >= 2 ? '(KUOTA PENUH)' : '(TERSEDIA)'}`;
       }
     });
 
-    // Populate user active loans container if empty
+    // Update tab badge count
+    document.querySelectorAll('section button span.rounded-full, section button .w-5.h-5').forEach(badge => {
+      badge.textContent = String(myActiveLoans.length);
+    });
+
+    // Populate user active loans container dynamically
     const container = document.getElementById('active-loans-list') || document.querySelector('main section .flex.flex-col.gap-space-xl');
-    if (container && myActiveLoans.length === 0) {
-      container.innerHTML = `
-        <div class="p-8 rounded-xl bg-surface border border-border text-center space-y-3 col-span-full">
-          <span class="material-symbols-outlined text-[48px] text-text-subtle">pets</span>
-          <div class="font-card-title text-card-title text-text-primary">Tidak Ada Naga yang Sedang Dipinjam</div>
-          <p class="font-body-compact text-body-compact text-text-muted max-w-md mx-auto">
-            Anda belum memiliki pinjaman naga yang aktif saat ini. Telusuri katalog serikat dan sewa naga untuk perjalanan Anda (maksimal 2 unit).
-          </p>
-          <div class="pt-2">
-            <a href="#" data-path="katalog-naga" class="inline-flex items-center gap-2 px-4 py-2 rounded bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover transition-colors font-label-regular text-label-regular shadow-sm">
-              <span class="material-symbols-outlined text-[18px]">explore</span>
-              <span>Buka Katalog Naga</span>
-            </a>
+    if (container) {
+      if (myActiveLoans.length === 0) {
+        container.innerHTML = `
+          <div class="p-10 rounded-xl bg-surface border border-border text-center space-y-4 col-span-full shadow-lg">
+            <div class="w-16 h-16 rounded-full bg-surface-muted border border-border flex items-center justify-center mx-auto text-primary">
+              <span class="material-symbols-outlined text-[36px]">shield_with_heart</span>
+            </div>
+            <div class="font-section-title text-card-title text-text-primary">Tidak Ada Naga yang Sedang Dipinjam</div>
+            <p class="font-body-compact text-body-compact text-text-muted max-w-lg mx-auto leading-relaxed">
+              Anda belum memiliki kontrak peminjaman naga aktif saat ini. Telusuri katalog serikat dan ajukan peminjaman naga untuk ekspedisi Anda (kuota tersedia: <strong>2 unit naga</strong>).
+            </p>
+            <div class="pt-2">
+              <a href="#" data-path="katalog-naga" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover transition-colors font-label-regular text-label-regular shadow-md">
+                <span class="material-symbols-outlined text-[20px]">explore</span>
+                <span>Jelajahi Katalog Naga</span>
+              </a>
+            </div>
           </div>
-        </div>
-      `;
-      wireAllNavLinks();
-      return;
+        `;
+        wireAllNavLinks();
+        return;
+      }
+
+      container.innerHTML = myActiveLoans.map((loan, idx) => {
+        const unit = (dbState.units || []).find(u => u.kode_unit === loan.kode_unit || u.id === loan.unit_id) || {};
+        const dragonImg = loan.unit_gambar || unit.gambar || DEFAULT_STATE.units[0].gambar;
+        const categoriesList = loan.unit_categories || unit.category_names || ['Wyrm Api'];
+        const categoryLabel = categoriesList.join(' • ');
+
+        // Calculate days remaining / overdue
+        const now = new Date();
+        const dueDt = new Date(loan.tanggal_tenggat);
+        const diffDays = Math.ceil((dueDt - now) / (1000 * 60 * 60 * 24));
+        const isOverdue = diffDays < 0;
+        const isNearDue = diffDays >= 0 && diffDays <= 1;
+
+        let statusPillHtml = '';
+        let badgeHtml = '';
+
+        if (isOverdue) {
+          const lateDays = Math.abs(diffDays);
+          badgeHtml = `
+            <span class="px-space-sm py-1 rounded bg-status-danger-bg/95 backdrop-blur-sm font-code-metadata text-code-metadata text-status-danger flex items-center gap-1.5 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-status-danger animate-pulse"></span>
+              TERLAMBAT
+            </span>
+          `;
+          statusPillHtml = `
+            <div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-status-danger-bg shadow-sm">
+              <span class="material-symbols-outlined text-[18px] text-status-danger animate-pulse">warning</span>
+              <div class="flex flex-col text-right">
+                <span class="font-code-metadata text-code-metadata text-status-danger uppercase font-bold">Terlambat ${lateDays} Hari</span>
+                <span class="font-label-regular text-label-regular text-status-danger font-semibold">Denda Aktif</span>
+              </div>
+            </div>
+          `;
+        } else if (isNearDue) {
+          badgeHtml = `
+            <span class="px-space-sm py-1 rounded bg-status-danger-bg/95 backdrop-blur-sm font-code-metadata text-code-metadata text-status-danger flex items-center gap-1.5 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-status-danger animate-pulse"></span>
+              TENGGAT BESOK
+            </span>
+          `;
+          statusPillHtml = `
+            <div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-status-danger-bg shadow-sm">
+              <span class="material-symbols-outlined text-[18px] text-status-danger animate-pulse">crisis_alert</span>
+              <div class="flex flex-col text-right">
+                <span class="font-code-metadata text-code-metadata text-status-danger uppercase font-bold">Peringatan Tenggat</span>
+                <span class="font-label-regular text-label-regular text-status-danger">Sisa 1 Hari Kalender</span>
+              </div>
+            </div>
+          `;
+        } else {
+          badgeHtml = `
+            <span class="px-space-sm py-1 rounded bg-status-borrowed-bg/95 backdrop-blur-sm font-code-metadata text-code-metadata text-status-borrowed flex items-center gap-1.5 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-status-borrowed"></span>
+              DIPINJAM
+            </span>
+          `;
+          statusPillHtml = `
+            <div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-high shadow-sm">
+              <span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+              <div class="flex flex-col text-right">
+                <span class="font-code-metadata text-code-metadata text-text-subtle uppercase">Status Tenggat</span>
+                <span class="font-label-regular text-label-regular text-text-primary">Sisa ${Math.max(1, diffDays)} Hari Kalender</span>
+              </div>
+            </div>
+          `;
+        }
+
+        const posText = idx === 0 ? 'Kandang Barat • B-04 (Pos Vulkanik)' : 'Kandang Menara Utara • F-02 (Landasan Terbang)';
+
+        return `
+          <article class="bg-surface rounded-xl overflow-hidden shadow-lg flex flex-col xl:flex-row border border-border transition-all duration-300 hover:border-primary/40" data-trx="${loan.trx_code}" data-unit-code="${loan.kode_unit}">
+            <!-- Image Slate / Left Asymmetric Column -->
+            <div class="relative xl:w-5/12 min-h-[260px] xl:min-h-full bg-surface-muted overflow-hidden flex flex-col justify-between">
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" style="background-image: url('${dragonImg}')"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent xl:bg-gradient-to-r xl:from-transparent xl:via-surface/40 xl:to-surface"></div>
+              <!-- Badges Floating on Image Slate -->
+              <div class="relative z-10 p-space-md flex items-center justify-between gap-space-sm">
+                <span class="px-space-sm py-1 rounded bg-surface-container-lowest/90 backdrop-blur-sm font-code-metadata text-code-metadata text-primary uppercase border border-border">
+                  KODE: ${loan.kode_unit}
+                </span>
+                ${badgeHtml}
+              </div>
+            </div>
+            <!-- Dossier Details / Right Administrative Column -->
+            <div class="xl:w-7/12 p-space-md md:p-space-lg flex flex-col justify-between gap-space-lg bg-surface">
+              <!-- Header Block -->
+              <div class="flex flex-col gap-space-xs">
+                <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                  <div>
+                    <h2 class="font-section-title text-section-title text-text-primary">${loan.nama_unit}</h2>
+                    <p class="font-body-compact text-body-compact text-text-muted mt-0.5">
+                      ${categoryLabel}
+                    </p>
+                  </div>
+                  ${statusPillHtml}
+                </div>
+              </div>
+              <!-- Ledger Meta Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-lg">
+                <!-- Transaction ID -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">ID Transaksi Kontrak</span>
+                  <div class="flex items-center gap-space-xs">
+                    <span class="font-code-metadata text-code-metadata text-text-primary bg-surface-raised px-2 py-1 rounded border border-border">${loan.trx_code}</span>
+                    <button class="p-1 rounded text-text-subtle hover:text-primary transition-colors focus:outline-none" data-copy-trx="${loan.trx_code}" title="Salin ID Transaksi" type="button">
+                      <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- Pos Pengembalian -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Pos Serah-Terima Resmi</span>
+                  <span class="font-table-data text-table-data text-text-primary flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary">pin_drop</span>
+                    ${posText}
+                  </span>
+                </div>
+                <!-- Mulai Penugasan -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Mulai Penugasan (Kalender)</span>
+                  <span class="font-table-data text-table-data text-text-muted">${formatDateIndo(loan.tanggal_pinjam)}</span>
+                </div>
+                <!-- Tenggat Waktu -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Tenggat Pengembalian (Maks. 5 Hari)</span>
+                  <span class="font-table-data text-table-data ${isOverdue ? 'text-status-danger font-semibold' : 'text-text-primary font-medium'} flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] ${isOverdue ? 'text-status-danger' : 'text-status-borrowed'}">event_available</span>
+                    ${formatDateIndo(loan.tanggal_tenggat)} (18:00 WIB)
+                  </span>
+                </div>
+                <!-- Akumulasi Denda -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Akumulasi Denda (Rp50.000/Hari)</span>
+                  <span class="font-table-data text-table-data ${Number(loan.denda || 0) > 0 ? 'text-status-danger font-semibold' : 'text-status-available font-medium'}">
+                    ${Number(loan.denda || 0) > 0 ? `${formatRupiah(loan.denda)} (Keterlambatan tercatat)` : 'Rp0 (Tenggat belum terlewati)'}
+                  </span>
+                </div>
+                <!-- Kurator Serikat -->
+                <div class="flex flex-col gap-1">
+                  <span class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider">Kurator Serikat</span>
+                  <span class="font-table-data text-table-data text-text-primary">Kurator Vaelin Voss <span class="font-code-metadata text-code-metadata text-text-subtle block">Lisensi Pengawas Ordo I</span></span>
+                </div>
+              </div>
+              <!-- Procedural Warning & Actions -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-space-xs">
+                <div class="flex items-center gap-space-xs font-helper-text text-helper-text text-text-subtle">
+                  <span class="material-symbols-outlined text-[16px]">info</span>
+                  <span>Pengembalian fisik wajib divalidasi oleh Admin di Pos Serikat</span>
+                </div>
+                <div class="flex items-center gap-space-sm shrink-0 flex-wrap">
+                  <button class="px-space-md py-space-sm rounded bg-surface-container-high hover:bg-surface-raised font-label-regular text-label-regular text-text-primary transition-colors flex items-center gap-1.5 shadow-sm border border-border" data-action="view-contract" data-trx="${loan.trx_code}" type="button">
+                    <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                    <span>Lihat Lembar Kontrak</span>
+                  </button>
+                  <button class="px-space-md py-space-sm rounded ${isNearDue || isOverdue ? 'bg-primary-container text-gold-ink font-semibold hover:bg-gold-hover' : 'bg-surface-raised hover:bg-surface-container-high text-text-primary'} font-label-regular text-label-regular transition-colors flex items-center gap-1.5 shadow-md" data-action="contact-admin" data-trx="${loan.trx_code}" type="button">
+                    <span class="material-symbols-outlined text-[18px]">${isNearDue || isOverdue ? 'calendar_month' : 'explore'}</span>
+                    <span>${isNearDue || isOverdue ? 'Jadwalkan Serah Terima' : 'Petunjuk Pos Pengembalian'}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
     }
 
     // 1. Wire Copy Transaction ID Buttons
@@ -1920,37 +2135,31 @@
     });
 
     // 2. Wire 'Lihat Lembar Kontrak' buttons
-    document.querySelectorAll('[data-action="view-contract"], button').forEach(btn => {
-      const txt = (btn.textContent || '').trim();
-      if (txt.includes('Lihat Lembar Kontrak')) {
-        btn.onclick = (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const article = btn.closest('article');
-          const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
-          const code = article?.getAttribute('data-unit-code');
-          const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
-                              (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
-          showDracoContractModal(matchedLoan);
-        };
-      }
+    document.querySelectorAll('[data-action="view-contract"]').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const article = btn.closest('article');
+        const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
+        const code = article?.getAttribute('data-unit-code');
+        const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
+                            (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
+        showDracoContractModal(matchedLoan);
+      };
     });
 
     // 3. Wire 'Jadwalkan Serah Terima' & 'Petunjuk Pos Pengembalian'
-    document.querySelectorAll('[data-action="contact-admin"], button').forEach(btn => {
-      const txt = (btn.textContent || '').trim();
-      if (txt.includes('Jadwalkan Serah Terima') || txt.includes('Petunjuk Pos Pengembalian') || txt.includes('Kembalikan')) {
-        btn.onclick = (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const article = btn.closest('article');
-          const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
-          const code = article?.getAttribute('data-unit-code');
-          const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
-                              (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
-          showDracoContactAdminModal(matchedLoan);
-        };
-      }
+    document.querySelectorAll('[data-action="contact-admin"]').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const article = btn.closest('article');
+        const trx = btn.getAttribute('data-trx') || article?.getAttribute('data-trx');
+        const code = article?.getAttribute('data-unit-code');
+        const matchedLoan = (dbState.loans || []).find(l => (trx && l.trx_code === trx) || (code && l.kode_unit === code)) ||
+                            (myActiveLoans.length > 0 ? myActiveLoans[0] : (dbState.loans || [])[0]);
+        showDracoContactAdminModal(matchedLoan);
+      };
     });
 
     // 4. Wire Navigation Tabs
