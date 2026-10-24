@@ -657,7 +657,8 @@ try {
             $id = (int)($input['id'] ?? 0);
             $email = trim((string)($input['email'] ?? ''));
             $password = (string)($input['password'] ?? '123456');
-            $role = in_array($input['role'] ?? 'user', ['admin', 'user'], true) ? $input['role'] : 'user';
+            $roleInput = $input['role'] ?? 'user';
+            $role = in_array($roleInput, ['admin', 'user'], true) ? $roleInput : 'user';
             $namaLengkap = trim((string)($input['nama_lengkap'] ?? ''));
             $noTelp = trim((string)($input['no_telp'] ?? ''));
             $alamat = trim((string)($input['alamat'] ?? ''));

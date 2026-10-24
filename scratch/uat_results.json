@@ -1,0 +1,178 @@
+[
+    {
+        "id": "TC-BOOT-01",
+        "feature": "F-00 System",
+        "title": "Bootstrap Database & Initial State API",
+        "status": "PASS",
+        "details": "Units: 9, Members: 8, Categories: 10, Loans: 14",
+        "notes": ""
+    },
+    {
+        "id": "TC-F01-01",
+        "feature": "F-01 Autentikasi",
+        "title": "Login Berhasil sebagai Admin",
+        "status": "PASS",
+        "details": "Role returned: admin, RegCode: ADM-001",
+        "notes": ""
+    },
+    {
+        "id": "TC-F01-02",
+        "feature": "F-01 Autentikasi",
+        "title": "Login Berhasil sebagai User (Anggota)",
+        "status": "PASS",
+        "details": "User: Lyra Valen, Role: user",
+        "notes": ""
+    },
+    {
+        "id": "TC-F01-03",
+        "feature": "F-01 Autentikasi",
+        "title": "Login Gagal dengan Password Salah",
+        "status": "PASS",
+        "details": "Expected error received: Kata sandi tidak sesuai.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F01-04",
+        "feature": "F-01 Autentikasi",
+        "title": "Login Gagal dengan Email Tidak Terdaftar",
+        "status": "PASS",
+        "details": "Expected error received: Akun dengan surel tersebut tidak ditemukan di database.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F02-01",
+        "feature": "F-02 Profil 1:1",
+        "title": "Update Profil Anggota (Nama, Telepon, Alamat)",
+        "status": "PASS",
+        "details": "Verified profile persistence in DB: {\"id\":2,\"email\":\"user@dracorent.com\",\"role\":\"user\",\"created_at\":\"2026-10-24 10:53:34\",\"nama_lengkap\":\"Lyra Valen UAT\",\"no_telp\":\"+62 812-4091-9999\",\"alamat\":\"Distrik Menara Api Sektor 4B\",\"active_loans_count\":1,\"total_loans_count\":4,\"reg_code\":\"G-4091\"}",
+        "notes": ""
+    },
+    {
+        "id": "TC-F02-02",
+        "feature": "F-02 Profil 1:1",
+        "title": "Validasi Update Profil Gagal jika Data Kosong",
+        "status": "PASS",
+        "details": "Validation rejected empty fields: Nama lengkap, nomor telepon, dan alamat wajib diisi.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F03-01",
+        "feature": "F-03 Kategori",
+        "title": "Tambah Kategori Baru Berhasil",
+        "status": "PASS",
+        "details": "Category added: Kategori UAT 352",
+        "notes": ""
+    },
+    {
+        "id": "TC-F03-02",
+        "feature": "F-03 Kategori",
+        "title": "Validasi Kategori Minimal 3 Karakter",
+        "status": "PASS",
+        "details": "Error message: Nama kategori minimal 3 karakter.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F03-03",
+        "feature": "F-03 Kategori",
+        "title": "Proteksi Hapus Kategori yang Memiliki Relasi Unit (BR-08)",
+        "status": "PASS",
+        "details": "Constraint enforced: BR-08 (Proteksi Integritas Relasi): Kategori 'Wyrm Api' masih terikat pada 5 unit naga di tabel category_unit dan tidak dapat dihapus.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F04-01",
+        "feature": "F-04 Unit Naga",
+        "title": "Tambah Unit Naga Baru dengan Multiple Kategori (M:N)",
+        "status": "PASS",
+        "details": "Created unit UAT-373 with 2 categories",
+        "notes": ""
+    },
+    {
+        "id": "TC-F04-02",
+        "feature": "F-04 Unit Naga",
+        "title": "Validasi Kode Unit Wajib Unik (BR-02)",
+        "status": "PASS",
+        "details": "Duplicate code rejected: Kode unit NGA-101 sudah terdaftar di database. Gunakan kode unik lain.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F04-03",
+        "feature": "F-04 Unit Naga",
+        "title": "Proteksi Hapus Unit Naga yang Memiliki Riwayat Peminjaman (BR-08)",
+        "status": "PASS",
+        "details": "Delete rejected due to relation constraint (BR-08): BR-08 (Proteksi Relasi): Unit Ignis Ashbringer (NGA-101) sedang berstatus DIPINJAM. Selesaikan pengembalian terlebih dahulu sebelum menghapus unit.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F05-01",
+        "feature": "F-05 Anggota",
+        "title": "Tambah Anggota Baru dengan Profil Tunggal 1:1 Berhasil",
+        "status": "PASS",
+        "details": "New member registered: member.uat3602@dracorent.com",
+        "notes": ""
+    },
+    {
+        "id": "TC-F05-02",
+        "feature": "F-05 Anggota",
+        "title": "Validasi Format Email Anggota",
+        "status": "PASS",
+        "details": "Invalid email rejected with message: Email valid wajib diisi.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F06-01",
+        "feature": "F-06 Katalog & Search",
+        "title": "Katalog Menampilkan Daftar Naga Lengkap dengan Status & Kategori",
+        "status": "PASS",
+        "details": "Found 10 units. All units contain mandatory fields.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F07-01",
+        "feature": "F-07 Peminjaman",
+        "title": "Peminjaman Unit Naga Berstatus Tersedia (1\u20135 Hari) (BR-01, BR-04)",
+        "status": "PASS",
+        "details": "Loan successful. Unit NGA-104 status in DB is now: dipinjam",
+        "notes": ""
+    },
+    {
+        "id": "TC-F07-02",
+        "feature": "F-07 Peminjaman",
+        "title": "Penolakan Meminjam Unit yang Sedang Berstatus Dipinjam (BR-04)",
+        "status": "PASS",
+        "details": "Correctly rejected: Unit Boreas Glacie (NGA-104) sedang dipinjam dan tidak dapat disewa.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F07-03",
+        "feature": "F-07 Peminjaman",
+        "title": "Pembatasan Maksimal 2 Pinjaman Aktif per Anggota (BR-05)",
+        "status": "PASS",
+        "details": "Max quota rule enforced. Error message: Kuota peminjaman penuh (2\/2 aktif). Setiap anggota hanya dapat meminjam maksimal 2 unit naga.",
+        "notes": ""
+    },
+    {
+        "id": "TC-F08-01",
+        "feature": "F-08 Pengembalian",
+        "title": "Pengembalian Tepat Waktu (Denda = Rp0) (BR-06, BR-07)",
+        "status": "PASS",
+        "details": "Fine: Rp0, Days late: 0. Unit NGA-105 status: tersedia",
+        "notes": ""
+    },
+    {
+        "id": "TC-F08-02",
+        "feature": "F-08 Pengembalian",
+        "title": "Kalkulasi Denda Keterlambatan Otomatis (Hari x Rp50.000) (BR-06, BR-10)",
+        "status": "PASS",
+        "details": "Calculated Days Late: 3, Fine: Rp150.000 (Expected: Rp150.000)",
+        "notes": ""
+    },
+    {
+        "id": "TC-F09-01",
+        "feature": "F-09 Riwayat & Laporan",
+        "title": "Semua Transaksi Tercatat Lengkap dengan Tanggal & Denda di Riwayat",
+        "status": "PASS",
+        "details": "Total historical loans found: 16 records with complete audit trails.",
+        "notes": ""
+    }
+]

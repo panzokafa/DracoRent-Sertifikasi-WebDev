@@ -13,6 +13,9 @@ Seluruh dokumen perancangan resmi proyek **DracoRent (Versi 1.1)** tersedia dala
 | **Business Requirement Document (BRD)** | [DracoRent_BRD.md](./DracoRent_BRD.md) | [docs/DracoRent_BRD.pdf](./docs/DracoRent_BRD.pdf) | Latar belakang, tujuan bisnis, ruang lingkup, *Business Rules* (`BR-01` s/d `BR-11`), rancangan relasi data, dan kebutuhan nonfungsional. |
 | **Product Requirement Document (PRD)** | [DracoRent_PRD.md](./DracoRent_PRD.md) | [docs/DracoRent_PRD.pdf](./docs/DracoRent_PRD.pdf) | Matriks hak akses, spesifikasi fitur `F-01` s/d `F-09`, validasi server-side, dan kriteria penerimaan (`AC-01` s/d `AC-34`). |
 | **Flowchart & ERD (6 Tabel)** | [DracoRent_Flowchart_ERD.md](./DracoRent_Flowchart_ERD.md) | [docs/DracoRent_Flowchart_ERD.pdf](./docs/DracoRent_Flowchart_ERD.pdf) | Flowchart Login & Pemilihan Role, Flowchart Peminjaman User, Flowchart Pengembalian Admin, serta ERD 6 Tabel. |
+| **Laporan Hasil UAT (Test Results)** | [DracoRent_UAT_Results.md](./DracoRent_UAT_Results.md) | [docs/DracoRent_UAT_Results.md](./docs/DracoRent_UAT_Results.md) | Hasil eksekusi 34 kasus uji (`AC-01` s/d `AC-34`), RTM, log temuan, dan matriks *sign-off* kelulusan 100%. |
+| **Dokumentasi Proyek (Project Doc)** | [DracoRent_Project_Documentation.md](./DracoRent_Project_Documentation.md) | [docs/DracoRent_Project_Documentation.md](./docs/DracoRent_Project_Documentation.md) | Arsitektur sistem, skema 6 tabel ERD, spesifikasi REST API, keamanan Bcrypt & PDO, serta panduan deployment. |
+| **Buku Panduan Pengguna (Manual Book)** | [DracoRent_Manual_Book.md](./DracoRent_Manual_Book.md) | [docs/DracoRent_Manual_Book.md](./docs/DracoRent_Manual_Book.md) | Buku panduan pengguna lengkap (Manual Book) untuk Admin Kurator dan Anggota Serikat (6 Bab terstruktur). |
 
 ---
 
