@@ -16,6 +16,7 @@ Seluruh dokumen perancangan resmi proyek **DracoRent (Versi 1.1)** tersedia dala
 | **Laporan Hasil UAT (Test Results)** | [DracoRent_UAT_Results.md](./DracoRent_UAT_Results.md) | [docs/DracoRent_UAT_Results.md](./docs/DracoRent_UAT_Results.md) | Hasil eksekusi 34 kasus uji (`AC-01` s/d `AC-34`), RTM, log temuan, dan matriks *sign-off* kelulusan 100%. |
 | **Dokumentasi Proyek (Project Doc)** | [DracoRent_Project_Documentation.md](./DracoRent_Project_Documentation.md) | [docs/DracoRent_Project_Documentation.md](./docs/DracoRent_Project_Documentation.md) | Arsitektur sistem, skema 6 tabel ERD, spesifikasi REST API, keamanan Bcrypt & PDO, serta panduan deployment. |
 | **Buku Panduan Pengguna (Manual Book)** | [DracoRent_Manual_Book.md](./DracoRent_Manual_Book.md) | [docs/DracoRent_Manual_Book.md](./docs/DracoRent_Manual_Book.md) | Buku panduan pengguna lengkap (Manual Book) untuk Admin Kurator dan Anggota Serikat (6 Bab terstruktur). |
+| **Galeri Screenshots & Bukti UAT** | [screenshots/README.md](./screenshots/README.md) | [docs/screenshots/](./docs/screenshots/) | 18 berkas tangkapan layar (14 layar terverifikasi unik), skema ERD, bukti UAT, dan video animasi pengujian. |
 
 ---
 
