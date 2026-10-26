@@ -2386,45 +2386,310 @@
 
   // =========================================================================
   // 11. SCREEN: RIWAYAT & LAPORAN AUDIT (Admin Only: riwayat-dan-laporan.html)
-  // Requirement: Admin can view and print loan history
+  // Requirement: Admin can view and print loan history, with custom Date Range Filter & Export
   // =========================================================================
   function initRiwayatLaporanAdminScreen() {
     const isLaporan = window.location.pathname.includes('riwayat-dan-laporan');
     if (!isLaporan) return;
 
-    const tbody = document.querySelector('table tbody');
+    const tbody = document.querySelector('#transaction-table-body') || document.querySelector('table tbody');
     if (!tbody) return;
 
-    const loans = dbState.loans || [];
+    // Filter controls in table filter deck
+    const searchInput = document.getElementById('input-search');
+    const statusSelect = document.getElementById('filter-status');
+    const ordoSelect = document.getElementById('filter-ordo');
+    const startDateInput = document.getElementById('filter-date-start');
+    const endDateInput = document.getElementById('filter-date-end');
+    const resetFilterBtn = document.getElementById('btn-reset-filter');
+    const countBadge = document.getElementById('filter-active-count-badge');
 
-    tbody.innerHTML = loans.map(loan => {
-      const isBorrowed = loan.status === 'dipinjam';
-      return `
-        <tr class="hover:bg-surface-raised transition-colors">
-          <td class="py-3.5 px-space-md font-code-metadata text-primary font-semibold">${loan.trx_code}</td>
-          <td class="py-3.5 px-space-md">
-            <div class="font-medium text-text-primary">${loan.peminjam_nama}</div>
-            <div class="font-code-metadata text-code-metadata text-text-subtle">${loan.user_email} • ${loan.peminjam_reg || 'G-4091'}</div>
-          </td>
-          <td class="py-3.5 px-space-md">
-            <div class="text-text-primary font-medium">${loan.nama_unit}</div>
-            <div class="font-code-metadata text-code-metadata text-text-subtle">${loan.kode_unit}</div>
-          </td>
-          <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_pinjam)}</td>
-          <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_tenggat)}</td>
-          <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${loan.tanggal_kembali ? formatDateIndo(loan.tanggal_kembali) : '— (Aktif)'}</td>
-          <td class="py-3.5 px-space-md">
-            ${isBorrowed
-              ? `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-status-borrowed-bg text-status-borrowed text-helper-text font-semibold">Dipinjam</span>`
-              : `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-status-available-bg text-status-available text-helper-text font-semibold">Dikembalikan</span>`
-            }
-          </td>
-          <td class="py-3.5 px-space-md text-right font-code-metadata ${Number(loan.denda) > 0 ? 'text-status-danger font-semibold' : 'text-text-muted'}">
-            ${formatRupiah(loan.denda || 0)}
-          </td>
-        </tr>
-      `;
-    }).join('');
+    // Export Modal elements
+    const exportModal = document.getElementById('export-date-modal');
+    const btnOpenExportModal = document.getElementById('btn-export-csv');
+    const btnCloseExportModal = document.getElementById('btn-close-export-modal');
+    const btnCancelExportModal = document.getElementById('btn-cancel-export-modal');
+    const btnConfirmExportCsv = document.getElementById('btn-confirm-export-csv');
+    const modalStartDate = document.getElementById('modal-export-start-date');
+    const modalEndDate = document.getElementById('modal-export-end-date');
+    const modalCountPreview = document.getElementById('modal-export-count-preview');
+    const modalRangeLabel = document.getElementById('modal-export-range-label');
+
+    function getFilteredLoans(sDate, eDate, qText, statusVal, ordoVal) {
+      let list = dbState.loans || [];
+
+      // Date Range Filter
+      if (sDate) {
+        list = list.filter(l => (l.tanggal_pinjam >= sDate || (l.tanggal_kembali && l.tanggal_kembali >= sDate)));
+      }
+      if (eDate) {
+        list = list.filter(l => (l.tanggal_pinjam <= eDate));
+      }
+
+      // Keyword Search
+      if (qText) {
+        const q = qText.toLowerCase();
+        list = list.filter(l =>
+          (l.trx_code || '').toLowerCase().includes(q) ||
+          (l.peminjam_nama || '').toLowerCase().includes(q) ||
+          (l.user_email || '').toLowerCase().includes(q) ||
+          (l.kode_unit || '').toLowerCase().includes(q) ||
+          (l.nama_unit || '').toLowerCase().includes(q)
+        );
+      }
+
+      // Status Filter
+      if (statusVal && statusVal !== 'all') {
+        if (statusVal === 'ontime') {
+          list = list.filter(l => l.status === 'dikembalikan' && (!l.denda || Number(l.denda) === 0));
+        } else if (statusVal === 'fined') {
+          list = list.filter(l => Number(l.denda) > 0);
+        } else if (statusVal === 'dipinjam') {
+          list = list.filter(l => l.status === 'dipinjam');
+        } else if (statusVal === 'dikembalikan') {
+          list = list.filter(l => l.status === 'dikembalikan');
+        }
+      }
+
+      // Ordo / Category Filter
+      if (ordoVal && ordoVal !== 'all') {
+        const oq = ordoVal.toLowerCase();
+        list = list.filter(l => (l.unit_categories || []).some(cat => cat.toLowerCase().includes(oq)));
+      }
+
+      return list;
+    }
+
+    function renderTable() {
+      const sDate = startDateInput ? startDateInput.value : '';
+      const eDate = endDateInput ? endDateInput.value : '';
+      const qText = searchInput ? searchInput.value.trim() : '';
+      const statusVal = statusSelect ? statusSelect.value : 'all';
+      const ordoVal = ordoSelect ? ordoSelect.value : 'all';
+
+      const filtered = getFilteredLoans(sDate, eDate, qText, statusVal, ordoVal);
+
+      if (countBadge) {
+        if (sDate || eDate || qText || (statusVal && statusVal !== 'all') || (ordoVal && ordoVal !== 'all')) {
+          countBadge.textContent = `${filtered.length} Dari ${(dbState.loans || []).length} Warkat Sesuai Filter`;
+        } else {
+          countBadge.textContent = `Menampilkan Semua Warkat (${filtered.length})`;
+        }
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="py-10 text-center text-text-muted">
+              <span class="material-symbols-outlined text-[32px] text-text-subtle mb-1 block">search_off</span>
+              Tidak ada data transaksi peminjaman pada rentang parameter ini.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(loan => {
+        const isBorrowed = loan.status === 'dipinjam';
+        return `
+          <tr class="hover:bg-surface-raised transition-colors">
+            <td class="py-3.5 px-space-md font-code-metadata text-primary font-semibold">${loan.trx_code}</td>
+            <td class="py-3.5 px-space-md">
+              <div class="font-medium text-text-primary">${loan.peminjam_nama}</div>
+              <div class="font-code-metadata text-code-metadata text-text-subtle">${loan.user_email} • ${loan.peminjam_reg || 'G-4091'}</div>
+            </td>
+            <td class="py-3.5 px-space-md">
+              <div class="text-text-primary font-medium">${loan.nama_unit}</div>
+              <div class="font-code-metadata text-code-metadata text-text-subtle">${loan.kode_unit} • ${(loan.unit_categories || []).join(', ')}</div>
+            </td>
+            <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_pinjam)}</td>
+            <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${formatDateIndo(loan.tanggal_tenggat)}</td>
+            <td class="py-3.5 px-space-md font-code-metadata text-text-muted">${loan.tanggal_kembali ? formatDateIndo(loan.tanggal_kembali) : '— (Aktif)'}</td>
+            <td class="py-3.5 px-space-md">
+              ${isBorrowed
+                ? `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-status-borrowed-bg text-status-borrowed text-helper-text font-semibold">Dipinjam</span>`
+                : `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-status-available-bg text-status-available text-helper-text font-semibold">Dikembalikan</span>`
+              }
+            </td>
+            <td class="py-3.5 px-space-md text-right font-code-metadata ${Number(loan.denda) > 0 ? 'text-status-danger font-semibold' : 'text-text-muted'}">
+              ${formatRupiah(loan.denda || 0)}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Attach listeners for filter controls
+    if (searchInput) searchInput.addEventListener('input', renderTable);
+    if (statusSelect) statusSelect.addEventListener('change', renderTable);
+    if (ordoSelect) ordoSelect.addEventListener('change', renderTable);
+    if (startDateInput) startDateInput.addEventListener('change', renderTable);
+    if (endDateInput) endDateInput.addEventListener('change', renderTable);
+
+    // Preset Buttons in Filter Deck
+    const presetThisMonth = document.getElementById('btn-filter-preset-this-month');
+    const presetLastMonth = document.getElementById('btn-filter-preset-last-month');
+    const presetAll = document.getElementById('btn-filter-preset-all');
+
+    if (presetThisMonth) {
+      presetThisMonth.onclick = () => {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        if (startDateInput) startDateInput.value = `${y}-${m}-01`;
+        if (endDateInput) {
+          const lastDay = new Date(y, now.getMonth() + 1, 0).getDate();
+          endDateInput.value = `${y}-${m}-${lastDay}`;
+        }
+        renderTable();
+      };
+    }
+
+    if (presetLastMonth) {
+      presetLastMonth.onclick = () => {
+        const now = new Date();
+        const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        const y = prev.getFullYear();
+        const m = String(prev.getMonth() + 1).padStart(2, '0');
+        if (startDateInput) startDateInput.value = `${y}-${m}-01`;
+        if (endDateInput) {
+          const lastDay = new Date(y, prev.getMonth() + 1, 0).getDate();
+          endDateInput.value = `${y}-${m}-${lastDay}`;
+        }
+        renderTable();
+      };
+    }
+
+    if (presetAll) {
+      presetAll.onclick = () => {
+        if (startDateInput) startDateInput.value = '';
+        if (endDateInput) endDateInput.value = '';
+        renderTable();
+      };
+    }
+
+    if (resetFilterBtn) {
+      resetFilterBtn.onclick = () => {
+        if (searchInput) searchInput.value = '';
+        if (statusSelect) statusSelect.value = 'all';
+        if (ordoSelect) ordoSelect.value = 'all';
+        if (startDateInput) startDateInput.value = '';
+        if (endDateInput) endDateInput.value = '';
+        renderTable();
+      };
+    }
+
+    // Modal Export Functions
+    function updateModalExportPreview() {
+      if (!modalCountPreview) return;
+      const sDate = modalStartDate ? modalStartDate.value : '';
+      const eDate = modalEndDate ? modalEndDate.value : '';
+      const matched = getFilteredLoans(sDate, eDate);
+
+      modalCountPreview.textContent = `${matched.length} Warkat`;
+      if (modalRangeLabel) {
+        if (sDate && eDate) {
+          modalRangeLabel.textContent = `Periode: ${formatDateIndo(sDate)} s/d ${formatDateIndo(eDate)}`;
+        } else if (sDate) {
+          modalRangeLabel.textContent = `Periode: Sejak ${formatDateIndo(sDate)}`;
+        } else if (eDate) {
+          modalRangeLabel.textContent = `Periode: Hingga ${formatDateIndo(eDate)}`;
+        } else {
+          modalRangeLabel.textContent = 'Semua Periode Transaksi';
+        }
+      }
+    }
+
+    function openExportModal() {
+      if (!exportModal) {
+        exportLoansToCSV(startDateInput?.value, endDateInput?.value);
+        return;
+      }
+      // Sync initial dates from filter bar if present, or set current month
+      const sVal = startDateInput?.value;
+      const eVal = endDateInput?.value;
+      if (sVal && modalStartDate) modalStartDate.value = sVal;
+      if (eVal && modalEndDate) modalEndDate.value = eVal;
+
+      if (!modalStartDate?.value && !modalEndDate?.value) {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        if (modalStartDate) modalStartDate.value = `${y}-${m}-01`;
+        if (modalEndDate) {
+          const lastDay = new Date(y, now.getMonth() + 1, 0).getDate();
+          modalEndDate.value = `${y}-${m}-${lastDay}`;
+        }
+      }
+
+      updateModalExportPreview();
+      exportModal.classList.remove('hidden');
+      exportModal.classList.add('flex');
+    }
+    window.openDracoExportModal = openExportModal;
+
+    function closeExportModal() {
+      if (!exportModal) return;
+      exportModal.classList.add('hidden');
+      exportModal.classList.remove('flex');
+    }
+
+    if (btnOpenExportModal) {
+      btnOpenExportModal.onclick = (e) => {
+        e.preventDefault();
+        openExportModal();
+      };
+    }
+
+    if (btnCloseExportModal) btnCloseExportModal.onclick = closeExportModal;
+    if (btnCancelExportModal) btnCancelExportModal.onclick = closeExportModal;
+
+    if (modalStartDate) modalStartDate.addEventListener('change', updateModalExportPreview);
+    if (modalEndDate) modalEndDate.addEventListener('change', updateModalExportPreview);
+
+    // Modal Preset Buttons
+    document.querySelectorAll('#export-modal-presets button[data-preset]').forEach(btn => {
+      btn.onclick = () => {
+        const p = btn.getAttribute('data-preset');
+        const now = new Date();
+        const y = now.getFullYear();
+
+        if (p === 'this-month') {
+          const m = String(now.getMonth() + 1).padStart(2, '0');
+          if (modalStartDate) modalStartDate.value = `${y}-${m}-01`;
+          if (modalEndDate) {
+            const lastDay = new Date(y, now.getMonth() + 1, 0).getDate();
+            modalEndDate.value = `${y}-${m}-${lastDay}`;
+          }
+        } else if (p === 'last-month') {
+          const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+          const py = prev.getFullYear();
+          const pm = String(prev.getMonth() + 1).padStart(2, '0');
+          if (modalStartDate) modalStartDate.value = `${py}-${pm}-01`;
+          if (modalEndDate) {
+            const lastDay = new Date(py, prev.getMonth() + 1, 0).getDate();
+            modalEndDate.value = `${py}-${pm}-${lastDay}`;
+          }
+        } else if (p === 'last-7-days') {
+          const past = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+          if (modalStartDate) modalStartDate.value = past.toISOString().split('T')[0];
+          if (modalEndDate) modalEndDate.value = now.toISOString().split('T')[0];
+        } else if (p === 'all') {
+          if (modalStartDate) modalStartDate.value = '';
+          if (modalEndDate) modalEndDate.value = '';
+        }
+        updateModalExportPreview();
+      };
+    });
+
+    if (btnConfirmExportCsv) {
+      btnConfirmExportCsv.onclick = () => {
+        const s = modalStartDate?.value || '';
+        const e = modalEndDate?.value || '';
+        closeExportModal();
+        exportLoansToCSV(s, e);
+      };
+    }
 
     // Wire Print Button
     document.querySelectorAll('button').forEach(btn => {
@@ -2434,37 +2699,82 @@
           window.print();
         };
       }
-      if (txt.includes('Ekspor Rekapitulasi') || txt.includes('Ekspor CSV') || btn.id === 'btn-export-csv') {
-        btn.onclick = () => exportLoansToCSV();
-      }
     });
+
+    renderTable();
   }
 
-  function exportLoansToCSV() {
-    const loans = dbState.loans || [];
-    const headers = ['Kode Transaksi', 'Peminjam', 'Email', 'Kode Unit', 'Nama Unit', 'Tgl Pinjam', 'Tgl Tenggat', 'Tgl Kembali', 'Status', 'Denda (Rp)'];
+  function exportLoansToCSV(startDate = '', endDate = '') {
+    let loans = dbState.loans || [];
+
+    if (startDate) {
+      loans = loans.filter(l => (l.tanggal_pinjam >= startDate || (l.tanggal_kembali && l.tanggal_kembali >= startDate)));
+    }
+    if (endDate) {
+      loans = loans.filter(l => (l.tanggal_pinjam <= endDate));
+    }
+
+    if (loans.length === 0) {
+      showDracoToast('Ekspor Dibatalkan', 'Tidak ditemukan data warkat peminjaman pada rentang tanggal yang dipilih.', true);
+      return;
+    }
+
+    const headers = [
+      'Kode Transaksi',
+      'Peminjam',
+      'Email Peminjam',
+      'Kode Registrasi Peminjam',
+      'Kode Unit Naga',
+      'Nama Spesimen Naga',
+      'Kategori Ordo',
+      'Tanggal Pinjam',
+      'Tenggat Waktu',
+      'Tanggal Kembali',
+      'Status Warkat',
+      'Denda Fisik (Rp)'
+    ];
+
     const rows = loans.map(l => [
       l.trx_code,
       `"${(l.peminjam_nama || '').replace(/"/g, '""')}"`,
-      l.user_email,
+      l.user_email || '',
+      l.peminjam_reg || '',
       l.kode_unit,
       `"${(l.nama_unit || '').replace(/"/g, '""')}"`,
+      `"${(l.unit_categories || []).join(', ').replace(/"/g, '""')}"`,
       l.tanggal_pinjam,
       l.tanggal_tenggat,
-      l.tanggal_kembali || '-',
-      l.status,
-      l.denda
+      l.tanggal_kembali || 'Belum Kembali',
+      l.status === 'dipinjam' ? 'Sedang Dipinjam' : 'Selesai Dikembalikan',
+      l.denda || 0
     ]);
-    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+
+    const csvContent = 'data:text/csv;charset=utf-8,\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
+
+    let filename = 'Laporan_Peminjaman_DracoRent';
+    if (startDate && endDate) {
+      filename += `_${startDate}_sd_${endDate}`;
+    } else if (startDate) {
+      filename += `_Sejak_${startDate}`;
+    } else if (endDate) {
+      filename += `_Sampai_${endDate}`;
+    } else {
+      filename += `_Semua_Waktu`;
+    }
+    filename += '.csv';
+
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'Laporan_Peminjaman_DracoRent.csv');
+    link.setAttribute('download', filename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    showDracoToast('Ekspor Berhasil', 'Berkas Laporan_Peminjaman_DracoRent.csv telah diunduh.');
+
+    const rangeInfo = (startDate || endDate) ? ` (${startDate || 'Awal'} s/d ${endDate || 'Sekarang'})` : '';
+    showDracoToast('Ekspor CSV Berhasil', `${loans.length} warkat data riwayat berhasil diekspor ke ${filename}${rangeInfo}.`);
   }
+  window.exportLoansToCSV = exportLoansToCSV;
 
   // =========================================================================
   // 12. SCREEN: PROFIL SAYA (profil-saya.html)

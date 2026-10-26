@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="dark" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container":"#1e2024","surface-raised":"#282C33","secondary-container":"#444951","on-tertiary":"#2d3138","tertiary-fixed-dim":"#c3c6cf","text-primary":"#F0EBDD","gold-ink":"#1A1916","outline-variant":"#4e4639","secondary-fixed-dim":"#c2c7d0","surface-muted":"#1C1F24","status-available":"#6EB895","text-subtle":"#898D93","on-secondary-container":"#b4b8c2","on-tertiary-fixed":"#181c22","on-secondary":"#2c3138","surface-tint":"#e8c178","primary-fixed-dim":"#e8c178","on-tertiary-container":"#383c43","primary-fixed":"#ffdea4","status-available-bg":"#20392F","surface":"#202329","status-info-bg":"#242F39","background":"#111317","error":"#ffb4ab","on-primary-fixed":"#261900","surface-container-lowest":"#0c0e12","inverse-on-surface":"#2f3035","border":"#41464E","on-secondary-fixed":"#171c23","status-borrowed":"#D5A35B","outline":"#9a8f80","tertiary-fixed":"#dfe2ec","on-primary-container":"#4f3800","tertiary":"#c3c6cf","on-primary":"#412d00","status-danger-bg":"#412527","primary":"#e8c178","on-background":"#e2e2e8","inverse-primary":"#775a1b","on-surface-variant":"#d1c5b4","tertiary-container":"#a3a6af","surface-variant":"#333539","on-surface":"#e2e2e8","surface-container-low":"#1a1c20","on-error-container":"#ffdad6","on-secondary-fixed-variant":"#42474f","surface-container-highest":"#333539","surface-bright":"#37393e","on-error":"#690005","text-muted":"#B0B2B5","secondary":"#c2c7d0","inverse-surface":"#e2e2e8","secondary-fixed":"#dee2ed","surface-dim":"#111317","surface-container-high":"#282a2e","status-danger":"#E17B79","status-borrowed-bg":"#3C3020","on-tertiary-fixed-variant":"#43474e","gold-hover":"#D5B873","primary-container":"#c5a15b","status-info":"#8FB5D1","on-primary-fixed-variant":"#5c4202","error-container":"#93000a"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1rem","space-lg":"1.5rem","gutter-desktop":"1.5rem","space-md":"1rem","space-xl":"2.5rem","margin-tablet":"1.5rem","margin-desktop":"2rem",margin:"1rem","space-sm":"0.5rem","space-xs":"0.25rem"},fontFamily:{"card-title":["Libre Caslon Text"],"code-metadata":["Inter"],"body-default":["Inter"],"section-title":["Libre Caslon Text"],"body-compact":["Inter"],"hero-title":["Libre Caslon Text"],"page-title":["Libre Caslon Text"],"table-data":["Inter"],"hero-title-mobile":["Libre Caslon Text"],"helper-text":["Inter"],"label-regular":["Inter"]},fontSize:{"card-title":["18px",{lineHeight:"24px",fontWeight:"600"}],"code-metadata":["11px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"body-default":["15px",{lineHeight:"24px",fontWeight:"400"}],"section-title":["22px",{lineHeight:"28px",fontWeight:"600"}],"body-compact":["14px",{lineHeight:"20px",fontWeight:"400"}],"hero-title":["48px",{lineHeight:"52px",letterSpacing:"-0.01em",fontWeight:"600"}],"page-title":["30px",{lineHeight:"36px",fontWeight:"600"}],"table-data":["13px",{lineHeight:"18px",fontWeight:"400"}],"hero-title-mobile":["34px",{lineHeight:"38px",fontWeight:"600"}],"helper-text":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-regular":["13px",{lineHeight:"18px",fontWeight:"500"}]}}}};</script></head><body class="bg-background font-body-default text-text-primary antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low z-50 flex flex-col justify-between border-r border-border"><div class="flex flex-col"><div class="p-space-md"><div class="flex items-center gap-space-sm mb-space-xs"><div class="w-8 h-8 rounded-lg bg-surface-raised flex items-center justify-center text-primary-container"><span class="material-symbols-outlined text-[20px]">shield_moon</span></div><div><span class="font-card-title text-card-title text-text-primary tracking-wide block leading-none">DracoRent</span></div></div><div class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-wider pl-1">Sistem Rental Naga — Kurator Admin</div></div><div class="px-space-md py-space-xs"><div class="font-code-metadata text-code-metadata text-text-subtle uppercase tracking-widest px-space-xs mb-space-xs">Registri Guild</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-status-borrowed-bg text-primary-container font-semibold rounded-lg"><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="ringkasan" href="#">Ringkasan</a><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="unit-naga" href="#">Unit Naga</a><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="kategori" href="#">Kategori</a><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="anggota" href="#">Anggota</a><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="pinjaman-aktif" href="#">Pinjaman Aktif</a><a class="flex items-center px-space-sm py-space-sm rounded-lg font-label-regular text-label-regular text-on-surface-variant hover:bg-surface-raised hover:text-on-surface transition-colors" data-path="riwayat-dan-laporan" href="#">Riwayat &amp; Laporan</a></nav></div></div><div class="p-space-md"><div class="bg-surface p-space-sm rounded-lg flex items-center justify-between border border-border"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-surface-raised flex items-center justify-center text-primary-container shrink-0"><span class="font-code-metadata text-code-metadata font-bold">KL</span></div><div class="min-w-0"><div class="font-label-regular text-label-regular text-text-primary truncate">Kaelen</div><div class="font-code-metadata text-code-metadata text-text-subtle truncate">ID: ADM-001</div></div></div><a class="p-space-xs text-text-subtle hover:text-status-danger hover:bg-surface-raised rounded-lg transition-colors shrink-0" data-path="masuk" href="#" title="Keluar dari Portal"><span class="material-symbols-outlined text-[18px] block">logout</span></a></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface/90 backdrop-blur-md z-40 flex items-center justify-between px-margin-desktop shadow-[0_1px_8px_rgba(0,0,0,0.25)] border-b border-border"><div class="flex items-center gap-space-xs font-helper-text text-helper-text text-text-subtle"><span class="hover:text-text-primary transition-colors cursor-pointer">Pustaka Guild</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="hover:text-text-primary transition-colors cursor-pointer">Biro Logistik &amp; Kurasi</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary-container font-medium">Registri Pengelolaan</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-code-metadata text-code-metadata text-text-subtle bg-surface-muted px-space-sm py-space-xs rounded-lg border border-border"><span class="material-symbols-outlined text-[15px] text-primary-container">event</span><span>24 Okt 2026</span></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-status-borrowed-bg text-status-borrowed font-helper-text text-helper-text border border-status-borrowed/30"><span class="w-1.5 h-1.5 rounded-full bg-status-borrowed animate-pulse"></span><span>3 Pengembalian Menunggu</span></div><nav class="flex items-center"><a class="font-label-regular text-label-regular text-on-surface-variant hover:text-text-primary transition-colors flex items-center" data-path="katalog-naga" href="#">Katalog Publik</a></nav><div class="flex items-center gap-space-xs"><button class="w-8 h-8 rounded-lg bg-surface-muted flex items-center justify-center text-text-subtle hover:text-text-primary hover:bg-surface-raised transition-colors border border-border" type="button"><span class="material-symbols-outlined text-[18px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center cursor-pointer"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-background min-h-screen px-margin-desktop py-space-lg"><div class="flex flex-col w-full">
@@ -268,6 +268,31 @@
 <button class="w-full bg-surface-raised hover:bg-surface-container-highest text-text-subtle hover:text-text-primary py-space-sm rounded-lg font-label-regular text-label-regular flex items-center justify-center transition-colors shadow-sm" id="btn-reset-filter" title="Reset Parameter Saringan" type="button">
 <span class="material-symbols-outlined text-[18px]">restart_alt</span>
 </button>
+</div>
+</div>
+<!-- Date Range Filter Sub-Bar -->
+<div class="mt-space-sm pt-space-sm border-t border-border/60 flex flex-wrap items-center justify-between gap-space-sm text-[12px]">
+  <div class="flex flex-wrap items-center gap-space-sm">
+    <span class="font-code-metadata text-text-subtle flex items-center gap-1 uppercase tracking-wider">
+      <span class="material-symbols-outlined text-[15px] text-primary">calendar_month</span>
+      Rentang Tanggal Warkat:
+    </span>
+    <div class="flex items-center gap-2 bg-surface-muted px-2.5 py-1 rounded-lg border border-border">
+      <span class="text-text-muted text-[11px]">Dari:</span>
+      <input type="date" id="filter-date-start" class="bg-transparent text-text-primary text-[11px] font-code-metadata focus:outline-none cursor-pointer">
+      <span class="text-text-subtle text-[11px]">—</span>
+      <span class="text-text-muted text-[11px]">Sampai:</span>
+      <input type="date" id="filter-date-end" class="bg-transparent text-text-primary text-[11px] font-code-metadata focus:outline-none cursor-pointer">
+    </div>
+    <div class="flex items-center gap-1">
+      <button type="button" id="btn-filter-preset-this-month" class="px-2 py-0.5 rounded bg-surface-raised hover:bg-surface-container text-text-muted hover:text-text-primary text-[10px] font-code-metadata transition-colors">Bulan Ini</button>
+      <button type="button" id="btn-filter-preset-last-month" class="px-2 py-0.5 rounded bg-surface-raised hover:bg-surface-container text-text-muted hover:text-text-primary text-[10px] font-code-metadata transition-colors">Bulan Lalu</button>
+      <button type="button" id="btn-filter-preset-all" class="px-2 py-0.5 rounded bg-surface-raised hover:bg-surface-container text-text-muted hover:text-text-primary text-[10px] font-code-metadata transition-colors">Semua Waktu</button>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="font-code-metadata text-primary text-[11px] font-semibold" id="filter-active-count-badge">Menampilkan Semua Warkat</span>
+  </div>
 </div>
 </div>
 </div>
@@ -816,6 +841,82 @@
 </div>
 </div>
 </div>
+<!-- Modal Ekspor Rentang Waktu (Date Range CSV Export Modal) -->
+<div class="fixed inset-0 z-50 bg-[#0B0C0E]/85 hidden items-center justify-center p-space-md backdrop-blur-sm" id="export-date-modal">
+  <div class="bg-surface border border-primary/50 rounded-xl max-w-lg w-full p-space-lg shadow-2xl relative text-text-primary space-y-4">
+    <div class="flex items-center justify-between pb-space-sm border-b border-border">
+      <div class="flex items-center gap-space-xs">
+        <div class="w-9 h-9 rounded-lg bg-surface-raised border border-primary flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[22px]">date_range</span>
+        </div>
+        <div>
+          <h3 class="font-card-title text-card-title text-text-primary">Ekspor Riwayat &amp; Laporan</h3>
+          <p class="font-code-metadata text-code-metadata text-text-subtle">Tentukan rentang tanggal &amp; bulan warkat peminjaman</p>
+        </div>
+      </div>
+      <button class="text-text-subtle hover:text-text-primary p-1.5 rounded-lg hover:bg-surface-raised transition-colors" id="btn-close-export-modal" type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+
+    <!-- Pilihan Cepat / Preset Periode -->
+    <div class="space-y-1.5">
+      <label class="font-label-regular text-[12px] text-text-muted flex items-center gap-1">
+        <span class="material-symbols-outlined text-[14px] text-primary">bolt</span>
+        Pilihan Cepat Rentang Waktu / Bulan:
+      </label>
+      <div class="flex flex-wrap gap-1.5" id="export-modal-presets">
+        <button type="button" class="px-2.5 py-1 rounded text-[11px] font-code-metadata bg-surface-raised hover:bg-surface-container text-text-primary border border-border transition-colors" data-preset="this-month">Bulan Ini (Okt 2026)</button>
+        <button type="button" class="px-2.5 py-1 rounded text-[11px] font-code-metadata bg-surface-raised hover:bg-surface-container text-text-primary border border-border transition-colors" data-preset="last-month">Bulan Lalu (Sep 2026)</button>
+        <button type="button" class="px-2.5 py-1 rounded text-[11px] font-code-metadata bg-surface-raised hover:bg-surface-container text-text-primary border border-border transition-colors" data-preset="last-7-days">7 Hari Terakhir</button>
+        <button type="button" class="px-2.5 py-1 rounded text-[11px] font-code-metadata bg-surface-raised hover:bg-surface-container text-text-primary border border-border transition-colors" data-preset="all">Semua Waktu</button>
+      </div>
+    </div>
+
+    <!-- Input Dari Tanggal ke Tanggal -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-1">
+      <div class="space-y-1">
+        <label for="modal-export-start-date" class="font-label-regular text-[12px] text-text-primary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px] text-primary">calendar_today</span>
+          Dari Tanggal:
+        </label>
+        <input type="date" id="modal-export-start-date" class="w-full bg-surface-muted border border-border text-text-primary font-body-compact text-body-compact px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer">
+      </div>
+      <div class="space-y-1">
+        <label for="modal-export-end-date" class="font-label-regular text-[12px] text-text-primary flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px] text-primary">event_available</span>
+          Sampai Tanggal:
+        </label>
+        <input type="date" id="modal-export-end-date" class="w-full bg-surface-muted border border-border text-text-primary font-body-compact text-body-compact px-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer">
+      </div>
+    </div>
+
+    <!-- Ringkasan Filter & Pratinjau Jumlah Data -->
+    <div class="p-3.5 rounded-lg bg-surface-muted border border-border flex items-center justify-between font-body-compact text-body-compact">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-[20px]">table_chart</span>
+        <div>
+          <div class="text-text-primary text-[12px] font-semibold" id="modal-export-range-label">Semua Periode</div>
+          <div class="text-text-subtle text-[11px]" id="modal-export-sublabel">Data mencakup tanggal pinjam / kembali</div>
+        </div>
+      </div>
+      <span class="font-code-metadata font-bold text-primary px-2.5 py-1 rounded bg-surface border border-border text-[12px]" id="modal-export-count-preview">
+        0 Warkat
+      </span>
+    </div>
+
+    <!-- Modal Actions -->
+    <div class="pt-space-xs flex justify-end gap-space-xs border-t border-border">
+      <button class="bg-surface-raised hover:bg-surface-container text-text-primary px-space-md py-space-sm rounded-lg font-label-regular text-label-regular transition-colors" id="btn-cancel-export-modal" type="button">
+        Batal
+      </button>
+      <button class="bg-primary hover:bg-gold-hover text-gold-ink font-semibold px-space-md py-space-sm rounded-lg font-label-regular text-label-regular flex items-center gap-1.5 shadow-md transition-colors" id="btn-confirm-export-csv" type="button">
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        <span>Unduh Berkas CSV</span>
+      </button>
+    </div>
+  </div>
+</div>
 <!-- Interactive Logic Script for Filters, Search, and Print Modal Triggering -->
 <script>
     (function initArchivalReport() {
@@ -872,17 +973,13 @@
         });
       }
 
-      // CSV Export Notification Toast Simulation
+      // Delegate to DracoRent engine for Date Range CSV Export Modal
       if (exportCsvBtn) {
-        exportCsvBtn.addEventListener('click', () => {
-          const originalText = exportCsvBtn.innerHTML;
-          exportCsvBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Mengemas Berkas...</span>';
-          setTimeout(() => {
-            exportCsvBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-status-available">check</span><span>Ekspor CSV Selesai</span>';
-            setTimeout(() => {
-              exportCsvBtn.innerHTML = originalText;
-            }, 2000);
-          }, 900);
+        exportCsvBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.openDracoExportModal) {
+            window.openDracoExportModal();
+          }
         });
       }
 
